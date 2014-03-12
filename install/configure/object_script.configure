@@ -1,0 +1,12 @@
+INPUT(
+./..\..\tmp\mainC.o
+./..\..\tmp\qtwizard.o
+./..\..\tmp\usettings.o
+./..\..\tmp\settings.o
+./..\..\tmp\db_own.o
+./..\..\tmp\udiff_func.o
+./..\..\tmp\moc_qtwizard.o
+./..\..\tmp\moc_settings.o
+./..\..\tmp\qrc_UImgLib.o
+./..\..\tmp\qrc_tke_rc.o
+);

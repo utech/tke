@@ -1,0 +1,31 @@
+CREATE TABLE narahTest(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	Year INTEGER,
+	Month INTEGER,
+	Rahunok INTEGER,
+	Budynok_ID INTEGER,
+	PlosKvart REAL,
+	ZaivaPlosKvart REAL,
+	PilgaDlya INTEGER,
+	VidsotkyPilgy REAL,
+	PlosPilgy REAL,
+	PilgaDlya_2 INTEGER,
+	VidsotkyPilgy_2 REAL,
+	PlosPilgy_2 REAL,
+	Kimnaty INTEGER,
+	Taryf REAL,
+	Vh_saldo REAL,
+	Narah REAL,
+	Pilga_sum REAL,
+	Pilga_ID INTEGER,
+	Pilga_sum_2 REAL,
+	Pilga_ID_2 INTEGER,
+	KorecturaPloshchi REAL,
+	KorecturaSumy REAL,
+	needDateLimits INTEGER
+);
+
+INSERT INTO narahTest(Year, Month, Rahunok, Budynok_ID, PlosKvart, ZaivaPlosKvart, PilgaDlya, VidsotkyPilgy, 
+		PlosPilgy, PilgaDlya_2, VidsotkyPilgy_2, PlosPilgy_2, Kimnaty, Taryf, Vh_saldo, Narah, Pilga_sum, 
+		Pilga_ID, Pilga_sum_2, Pilga_ID_2, KorecturaPloshchi, KorecturaSumy, needDateLimits) 
+VALUES (2007,5,44,108,10.5,11.3,5,10.4,47,4,5,5,5,5,5,5,5,5,5,5,5,5,5);

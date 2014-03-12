@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>tke_Form_struct_GV_organiz</class>
+ <widget class="QWidget" name="tke_Form_struct_GV_organiz">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>902</width>
+    <height>456</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Структура постачання гарячої води оргпнізаціям-клієнтам підприємства</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../tkeAbonent/tke/tke_rc">
+    <normaloff>:/pictures/pictures/cube.png</normaloff>:/pictures/pictures/cube.png</iconset>
+  </property>
+  <layout class="QVBoxLayout">
+   <property name="spacing">
+    <number>2</number>
+   </property>
+   <property name="margin">
+    <number>2</number>
+   </property>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QGroupBox" name="groupBox_Kotelni">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Котельні</string>
+      </property>
+      <layout class="QVBoxLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="pushButton_kotelniShowHide"/>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget_kotelni">
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>id</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Номер кот.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Вулиця</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>№ буд.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Нас.пункт</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Тел.</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_countKotelni">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="toolButton_addKotelni">
+           <property name="text">
+            <string>Додати</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../tkeAbonent/tke/tke_rc">
+             <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>12</width>
+             <height>12</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_delKotelni">
+           <property name="text">
+            <string>Видалити</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../tkeAbonent/tke/tke_rc">
+             <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>12</width>
+             <height>12</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_budLich">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Загальний лічильник ГВ</string>
+      </property>
+      <layout class="QVBoxLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="pushButton_spilniLichylnykyShowHide"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_showHideStructZagalnLich">
+           <property name="text">
+            <string>Структура</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_showHidePokaznZagalnLich">
+           <property name="text">
+            <string>Показники</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_ZagalnLichMonth">
+           <property name="text">
+            <string>Місяць</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDateEdit" name="dateEdit_pokaznZagalnLich">
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+           <property name="displayFormat">
+            <string>MM.yyyy</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget_zagLich">
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>idLich</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>idPokazn</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Номер</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Ліч.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Тест</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Котельня</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Пок.попер.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Пок.поточн.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Корект.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Викор.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Дні без ліч.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Дні без ГВ</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_countBudLich">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="toolButton_editZagalnLich">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Редагування загальних лічильників ГВ</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="toolButton_addBudLich">
+           <property name="text">
+            <string>Додати</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../tkeAbonent/tke/tke_rc">
+             <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>12</width>
+             <height>12</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_delBudLich">
+           <property name="text">
+            <string>Видалити</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../tkeAbonent/tke/tke_rc">
+             <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>12</width>
+             <height>12</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_abonLich">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Лічильники ГВ підрозділів</string>
+      </property>
+      <layout class="QVBoxLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="pushButton_lichylnykyPidrozdilivShowHide_2"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_showHideStructLichPidrozd">
+           <property name="text">
+            <string>Структура</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_showHidePokaznLichPidrozd">
+           <property name="text">
+            <string>Показники</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_ZagalnMonth">
+           <property name="text">
+            <string>Місяць</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDateEdit" name="dateEdit_pokaznLichPidrozd">
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+           <property name="displayFormat">
+            <string>MM.yyyy</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="tableWidget_pidrozdLich">
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>idLich</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>idPokazn</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>№ ліч.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Ліч.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Тест</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Підрозд.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Пок.попер.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Пок.поточн.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Корект.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Викор.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Дні без ліч.</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Дні без ГВ</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_countAbonLich">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="toolButton_editPidrozdilLich">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Редагування лічильників підрозділів</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="toolButton_addAbonLich">
+           <property name="text">
+            <string>Додати</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../tkeAbonent/tke/tke_rc">
+             <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>12</width>
+             <height>12</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton_delAbonLich">
+           <property name="text">
+            <string>Видалити</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../tkeAbonent/tke/tke_rc">
+             <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>12</width>
+             <height>12</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout">
+     <property name="spacing">
+      <number>2</number>
+     </property>
+     <item>
+      <widget class="QToolButton" name="toolButton_reload">
+       <property name="text">
+        <string>Поновити</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../tkeAbonent/tke/tke_rc">
+         <normaloff>:/pictures/pictures/redeal.png</normaloff>:/pictures/pictures/redeal.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>12</width>
+         <height>12</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
+       </property>
+       <property name="autoRaise">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>2</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton_closeForm">
+       <property name="text">
+        <string>Закрити</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../tkeAbonent/tke/tke_rc">
+         <normaloff>:/pictures/pictures/button_cancel.png</normaloff>:/pictures/pictures/button_cancel.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>12</width>
+         <height>12</height>
+        </size>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
+       </property>
+       <property name="autoRaise">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../tkeAbonent/tke/tke_rc"/>
+ </resources>
+ <connections/>
+</ui>

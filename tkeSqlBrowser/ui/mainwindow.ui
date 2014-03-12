@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>824</width>
+    <height>577</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SQL запити</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../tkeAbonent/tke/tke_rc">
+    <normaloff>:/pictures/pictures/cube.png</normaloff>:/pictures/pictures/cube.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QSplitter" name="splitter_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QGroupBox" name="groupBox_shablony">
+       <property name="title">
+        <string>Шаблони запитів</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>1</number>
+        </property>
+        <property name="leftMargin">
+         <number>1</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>1</number>
+        </property>
+        <property name="bottomMargin">
+         <number>1</number>
+        </property>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QTableView" name="SqlTemplateTableView">
+            <property name="contextMenuPolicy">
+             <enum>Qt::CustomContextMenu</enum>
+            </property>
+            <property name="toolTip">
+             <string>Дана таблиця містить список шаблонів введені користувачем</string>
+            </property>
+            <property name="statusTip">
+             <string>Дана таблиця містить список шаблонів введені користувачем</string>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="_2">
+            <property name="margin">
+             <number>0</number>
+            </property>
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <item row="0" column="1">
+             <widget class="QPushButton" name="removePushButton">
+              <property name="text">
+               <string>Видалити</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/button_cancel.png</normaloff>:/pictures/pictures/button_cancel.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QPushButton" name="insertPushButton">
+              <property name="text">
+               <string>Вставити</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/ark.png</normaloff>:/pictures/pictures/ark.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QPushButton" name="NewPushButton">
+              <property name="text">
+               <string>Новий</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/media-record.png</normaloff>:/pictures/pictures/media-record.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="editPushButton">
+              <property name="text">
+               <string>Редагувати</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/editors_section.png</normaloff>:/pictures/pictures/editors_section.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_querys">
+       <property name="title">
+        <string>Виконання запитів</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>1</number>
+        </property>
+        <property name="leftMargin">
+         <number>1</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>1</number>
+        </property>
+        <property name="bottomMargin">
+         <number>1</number>
+        </property>
+        <item>
+         <widget class="QSplitter" name="splitter_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="handleWidth">
+           <number>6</number>
+          </property>
+          <widget class="QSplitter" name="splitter_2">
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <property name="lineWidth">
+            <number>1</number>
+           </property>
+           <property name="midLineWidth">
+            <number>0</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="handleWidth">
+            <number>6</number>
+           </property>
+           <property name="childrenCollapsible">
+            <bool>false</bool>
+           </property>
+           <widget class="QTextEdit" name="textEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Поле для введення SQL-запитів</string>
+            </property>
+            <property name="statusTip">
+             <string>Поле для введення SQL-запитів</string>
+            </property>
+           </widget>
+           <widget class="QWidget" name="layoutWidget">
+            <layout class="QVBoxLayout">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout">
+               <property name="spacing">
+                <number>2</number>
+               </property>
+               <property name="margin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QPushButton" name="templatePushButton">
+                 <property name="text">
+                  <string>Шаблон -&gt;&gt;</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="../../tkeAbonent/tke/tke_rc">
+                   <normaloff>:/pictures/pictures/emblem-documents.png</normaloff>:/pictures/pictures/emblem-documents.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>12</width>
+                   <height>12</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="runPushButton">
+                 <property name="text">
+                  <string>Виконати</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="../../tkeAbonent/tke/tke_rc">
+                   <normaloff>:/pictures/pictures/debugger.png</normaloff>:/pictures/pictures/debugger.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>12</width>
+                   <height>12</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="clearPushButton">
+                 <property name="text">
+                  <string>Очистити</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="../../tkeAbonent/tke/tke_rc">
+                   <normaloff>:/pictures/pictures/button_cancel.png</normaloff>:/pictures/pictures/button_cancel.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>12</width>
+                   <height>12</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QSplitter" name="splitter">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="handleWidth">
+                <number>5</number>
+               </property>
+               <widget class="QTreeWidget" name="treeWidget">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="sizeIncrement">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>Відображення всіх таблиць з поточної бази даних, а також типів їхніх стовпців</string>
+                </property>
+                <property name="statusTip">
+                 <string>Відображення всіх таблиць з поточної бази даних, а також типів їхніх стовпців</string>
+                </property>
+                <column>
+                 <property name="text">
+                  <string>Таблиці бази даних</string>
+                 </property>
+                </column>
+               </widget>
+               <widget class="QTableView" name="tableView">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>10</horstretch>
+                  <verstretch>10</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="toolTip">
+                 <string>Виведення результату SQL-запиту, або вмісту вибраної таблиці</string>
+                </property>
+                <property name="statusTip">
+                 <string>Виведення результату SQL-запиту, або вмісту вибраної таблиці</string>
+                </property>
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::ContiguousSelection</enum>
+                </property>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="../../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/kolab-mdk.png</normaloff>:/pictures/pictures/kolab-mdk.png</iconset>
+   </property>
+   <property name="text">
+    <string>Копіювати</string>
+   </property>
+  </action>
+  <action name="actionSelectAll">
+   <property name="text">
+    <string>Позначити усі</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>textEdit</tabstop>
+  <tabstop>runPushButton</tabstop>
+  <tabstop>clearPushButton</tabstop>
+  <tabstop>treeWidget</tabstop>
+  <tabstop>tableView</tabstop>
+  <tabstop>templatePushButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../tkeAbonent/tke/tke_rc"/>
+  <include location="../../tkeAbonent/tke/tke_rc"/>
+ </resources>
+ <connections/>
+</ui>

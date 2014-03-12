@@ -1,0 +1,4010 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Роман Мулик</author>
+ <class>tke_MainWindow_organizacii</class>
+ <widget class="QMainWindow" name="tke_MainWindow_organizacii">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1191</width>
+    <height>710</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ТКЕнерго менеджер :: орагнізації</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../tkeAbonent/tke/tke_rc">
+    <normaloff>:/pictures/pictures/program_icon_org.png</normaloff>:/pictures/pictures/program_icon_org.png</iconset>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout">
+    <property name="margin">
+     <number>2</number>
+    </property>
+    <property name="spacing">
+     <number>2</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab_organizacii">
+       <attribute name="icon">
+        <iconset resource="../tkeAbonent/tke/tke_rc">
+         <normaloff>:/pictures/pictures/education_literature_section.png</normaloff>:/pictures/pictures/education_literature_section.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Підприємства, організації, установи</string>
+       </attribute>
+       <layout class="QHBoxLayout">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QVBoxLayout">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+            <item>
+             <layout class="QHBoxLayout">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_Poshuk">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Пошук:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_poshuk_NPR">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>По назві</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_Poshuk">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="statusTip">
+                 <string>Пошук по ПІБ</string>
+                </property>
+                <property name="editable">
+                 <bool>true</bool>
+                </property>
+                <property name="insertPolicy">
+                 <enum>QComboBox::NoInsert</enum>
+                </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
+                <property name="autoCompletion">
+                 <bool>true</bool>
+                </property>
+                <property name="modelColumn">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_poshuk_ugody">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>По угоді</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_Poshuk_ugody">
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>65</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="statusTip">
+                 <string>Пошук по рахунку</string>
+                </property>
+                <property name="editable">
+                 <bool>true</bool>
+                </property>
+                <property name="insertPolicy">
+                 <enum>QComboBox::NoInsert</enum>
+                </property>
+                <property name="sizeAdjustPolicy">
+                 <enum>QComboBox::AdjustToContents</enum>
+                </property>
+                <property name="autoCompletion">
+                 <bool>false</bool>
+                </property>
+                <property name="modelColumn">
+                 <number>0</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Nazva">
+                  <property name="text">
+                   <string>Назва</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_Nazva"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Ur_adresa">
+                  <property name="text">
+                   <string>Юридична адреса</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_Ur_adresa"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Ugoda">
+                  <property name="text">
+                   <string>Угода</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="spinBox_Ugoda">
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                  <property name="maximum">
+                   <number>10000</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Edrpou">
+                  <property name="text">
+                   <string>ЄДРПОУ</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_Edrpou">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="inputMask">
+                   <string>00000000; </string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Mfo">
+                  <property name="text">
+                   <string>МФО/ЗКПО</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_Bank">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Rozr_Rah">
+                  <property name="text">
+                   <string>Р/Р</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_Rozr_Rah"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Vidpovidaln">
+                  <property name="text">
+                   <string>Відповідальний</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_Vidpovidaln"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Tel1">
+                  <property name="text">
+                   <string>№ тел.1</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_Tel1"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Tel2">
+                  <property name="text">
+                   <string>№ тел.2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_Tel2"/>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_3">
+                  <item>
+                   <widget class="QLabel" name="label_nomerSvidPlatnPod">
+                    <property name="text">
+                     <string>Ном.всід.платн.под.</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="lineEdit_nomerSvidPlatnPod">
+                    <property name="maxLength">
+                     <number>8</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Finans">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Фінанс.</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_Finans">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout">
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_Pryznachennya">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Признач.</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="comboBox_Pryznach">
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_date_ugody">
+                <property name="text">
+                 <string>Дата угоди</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QDateEdit" name="dateEdit_date_ugody">
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="maximumDate">
+                 <date>
+                  <year>2050</year>
+                  <month>12</month>
+                  <day>31</day>
+                 </date>
+                </property>
+                <property name="minimumDate">
+                 <date>
+                  <year>2000</year>
+                  <month>1</month>
+                  <day>1</day>
+                 </date>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QLabel" name="label_indyvidPodNomer_2">
+                  <property name="text">
+                   <string>Індив.под.ном.</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_indyvidPodNomer">
+                  <property name="maxLength">
+                   <number>12</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <spacer>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableView" name="tableView_pidrozdily">
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::ExtendedSelection</enum>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout">
+              <property name="spacing">
+               <number>2</number>
+              </property>
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_year">
+                <property name="text">
+                 <string>Рік</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinBox_year_filtr">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="statusTip">
+                 <string>Поточний рік для таблиці операцій</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+                <property name="minimum">
+                 <number>2003</number>
+                </property>
+                <property name="maximum">
+                 <number>2100</number>
+                </property>
+                <property name="value">
+                 <number>2006</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer>
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>303</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_organiz_form_save">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+                <property name="text">
+                 <string>Збер.</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../tkeAbonent/tke/tke_rc">
+                  <normaloff>:/pictures/pictures/floppy.png</normaloff>:/pictures/pictures/floppy.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>12</width>
+                  <height>12</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_organiz_form_abort">
+                <property name="text">
+                 <string>Початк.</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../tkeAbonent/tke/tke_rc">
+                  <normaloff>:/pictures/pictures/redeal.png</normaloff>:/pictures/pictures/redeal.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>12</width>
+                  <height>12</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="tableWidget_rozrahunky">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>560</width>
+                <height>320</height>
+               </size>
+              </property>
+              <property name="statusTip">
+               <string>Таблиця ОПЕРАЦІЙ</string>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::SingleSelection</enum>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <property name="textElideMode">
+               <enum>Qt::ElideRight</enum>
+              </property>
+              <property name="showGrid">
+               <bool>true</bool>
+              </property>
+              <row>
+               <property name="text">
+                <string>01</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>02</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>03</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>04</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>05</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>06</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>07</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>08</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>09</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>10</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>11</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>12</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>Підс.</string>
+               </property>
+              </row>
+              <column>
+               <property name="text">
+                <string>Вх. сал.</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Нарах. опал.</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Нарах. гар.вода</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Оплач.</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Вих. сал.</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="pushButton_first">
+                <property name="focusPolicy">
+                 <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="statusTip">
+                 <string>Перейти на перший запис</string>
+                </property>
+                <property name="text">
+                 <string>Перший</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../tkeAbonent/tke/tke_rc">
+                  <normaloff>:/pictures/pictures/cubfirs.png</normaloff>:/pictures/pictures/cubfirs.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>12</width>
+                  <height>12</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_previous">
+                <property name="focusPolicy">
+                 <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="statusTip">
+                 <string>Перейти на попередній запис</string>
+                </property>
+                <property name="text">
+                 <string>Попередній</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../tkeAbonent/tke/tke_rc">
+                  <normaloff>:/pictures/pictures/cubprev.png</normaloff>:/pictures/pictures/cubprev.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>12</width>
+                  <height>12</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_next">
+                <property name="focusPolicy">
+                 <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="statusTip">
+                 <string>Перейти на наступний запис</string>
+                </property>
+                <property name="text">
+                 <string>Наступний</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../tkeAbonent/tke/tke_rc">
+                  <normaloff>:/pictures/pictures/cubnext.png</normaloff>:/pictures/pictures/cubnext.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>12</width>
+                  <height>12</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_last">
+                <property name="focusPolicy">
+                 <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="statusTip">
+                 <string>Перейти на останній запис</string>
+                </property>
+                <property name="text">
+                 <string>Останній</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../tkeAbonent/tke/tke_rc">
+                  <normaloff>:/pictures/pictures/cublast.png</normaloff>:/pictures/pictures/cublast.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>12</width>
+                  <height>12</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_new">
+                <property name="focusPolicy">
+                 <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="statusTip">
+                 <string>Новий запис</string>
+                </property>
+                <property name="text">
+                 <string>Новий</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="../tkeAbonent/tke/tke_rc">
+                  <normaloff>:/pictures/pictures/media-record.png</normaloff>:/pictures/pictures/media-record.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>12</width>
+                  <height>12</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spinBox_navigator">
+                <property name="focusPolicy">
+                 <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="statusTip">
+                 <string>Навігація по номеру запису</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_max_rows_organiz">
+                <property name="minimumSize">
+                 <size>
+                  <width>40</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>із 100</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>16</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_spec_rahunky">
+       <attribute name="icon">
+        <iconset resource="../tkeAbonent/tke/tke_rc">
+         <normaloff>:/pictures/pictures/education_economy_section.png</normaloff>:/pictures/pictures/education_economy_section.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Спеціальні рахунки</string>
+       </attribute>
+       <layout class="QHBoxLayout">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <layout class="QVBoxLayout">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <item>
+           <layout class="QHBoxLayout">
+            <property name="spacing">
+             <number>6</number>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_PoshukSpec">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:MS Shell Dlg; font-size:8.25pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Пошук:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_poshuk_RahName">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>По назві</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_Poshuk_RahName">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::ClickFocus</enum>
+              </property>
+              <property name="statusTip">
+               <string>Пошук по ПІБ</string>
+              </property>
+              <property name="editable">
+               <bool>true</bool>
+              </property>
+              <property name="insertPolicy">
+               <enum>QComboBox::NoInsert</enum>
+              </property>
+              <property name="sizeAdjustPolicy">
+               <enum>QComboBox::AdjustToContents</enum>
+              </property>
+              <property name="autoCompletion">
+               <bool>true</bool>
+              </property>
+              <property name="modelColumn">
+               <number>0</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_poshuk_Rahunok">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>По номеру</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_PoshukSpecRahunok">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>65</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::ClickFocus</enum>
+              </property>
+              <property name="statusTip">
+               <string>Пошук по рахунку</string>
+              </property>
+              <property name="editable">
+               <bool>true</bool>
+              </property>
+              <property name="insertPolicy">
+               <enum>QComboBox::NoInsert</enum>
+              </property>
+              <property name="sizeAdjustPolicy">
+               <enum>QComboBox::AdjustToContents</enum>
+              </property>
+              <property name="autoCompletion">
+               <bool>false</bool>
+              </property>
+              <property name="modelColumn">
+               <number>0</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <item>
+             <widget class="QLabel" name="label_Rahunok">
+              <property name="text">
+               <string>Рахунок</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox_Rahunok">
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_RahunokName">
+              <property name="text">
+               <string>Назва рахунка</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="lineEdit_RahunokName"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_Rahunok_type">
+              <property name="text">
+               <string>Тип рахунка</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_Rahunok_type">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>0</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="Line" name="line_slujb_1">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_slujb_rah_year">
+              <property name="text">
+               <string>Рік</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox_slujb_rah_year_filtr">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="statusTip">
+               <string>Поточний рік для таблиці операцій</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="minimum">
+               <number>2003</number>
+              </property>
+              <property name="maximum">
+               <number>2100</number>
+              </property>
+              <property name="value">
+               <number>2006</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_mor_info_spec_rah">
+              <property name="text">
+               <string>Більше інформації</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>303</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_organiz_form_slujb_rah_save">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Збер.</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/floppy.png</normaloff>:/pictures/pictures/floppy.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_organiz_form_slujb_rah_abort">
+              <property name="text">
+               <string>Початк.</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/redeal.png</normaloff>:/pictures/pictures/redeal.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="Line" name="line_slujb_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="tableWidget_slujb_rah_operacii">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>650</width>
+              <height>320</height>
+             </size>
+            </property>
+            <property name="statusTip">
+             <string>Таблиця ОПЕРАЦІЙ</string>
+            </property>
+            <property name="editTriggers">
+             <set>QAbstractItemView::DoubleClicked</set>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectRows</enum>
+            </property>
+            <property name="textElideMode">
+             <enum>Qt::ElideRight</enum>
+            </property>
+            <property name="showGrid">
+             <bool>true</bool>
+            </property>
+            <row>
+             <property name="text">
+              <string>01</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>02</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>03</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>04</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>05</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>06</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>07</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>08</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>09</string>
+             </property>
+            </row>
+            <row/>
+            <row/>
+            <row/>
+            <row>
+             <property name="text">
+              <string>Підс.</string>
+             </property>
+            </row>
+            <column>
+             <property name="text">
+              <string>id</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Вх. САЛЬДО</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Пропон.НАРАХ</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Дійсне НАРАХ</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Проп.ОПЛАТА</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Дійсна ОПЛАТА</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Вих.САЛЬДО</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+          <item>
+           <widget class="Line" name="line_slujb_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="margin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="pushButton_slujb_rah_first">
+              <property name="focusPolicy">
+               <enum>Qt::ClickFocus</enum>
+              </property>
+              <property name="statusTip">
+               <string>Перейти на перший запис</string>
+              </property>
+              <property name="text">
+               <string>Перший</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/cubfirs.png</normaloff>:/pictures/pictures/cubfirs.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_slujb_rah_previous">
+              <property name="focusPolicy">
+               <enum>Qt::ClickFocus</enum>
+              </property>
+              <property name="statusTip">
+               <string>Перейти на попередній запис</string>
+              </property>
+              <property name="text">
+               <string>Попередній</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/cubprev.png</normaloff>:/pictures/pictures/cubprev.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_slujb_rah_next">
+              <property name="focusPolicy">
+               <enum>Qt::ClickFocus</enum>
+              </property>
+              <property name="statusTip">
+               <string>Перейти на наступний запис</string>
+              </property>
+              <property name="text">
+               <string>Наступний</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/cubnext.png</normaloff>:/pictures/pictures/cubnext.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_slujb_rah_last">
+              <property name="focusPolicy">
+               <enum>Qt::ClickFocus</enum>
+              </property>
+              <property name="statusTip">
+               <string>Перейти на останній запис</string>
+              </property>
+              <property name="text">
+               <string>Останній</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/cublast.png</normaloff>:/pictures/pictures/cublast.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_slujb_rah_new">
+              <property name="focusPolicy">
+               <enum>Qt::ClickFocus</enum>
+              </property>
+              <property name="statusTip">
+               <string>Новий запис</string>
+              </property>
+              <property name="text">
+               <string>Новий</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/media-record.png</normaloff>:/pictures/pictures/media-record.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox_slujb_rah_navigator">
+              <property name="focusPolicy">
+               <enum>Qt::ClickFocus</enum>
+              </property>
+              <property name="statusTip">
+               <string>Навігація по номеру запису</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_max_rows_slujb_rah_organiz">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>із 100</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>131</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_narah_pidrozdily">
+       <attribute name="icon">
+        <iconset resource="../tkeAbonent/tke/tke_rc">
+         <normaloff>:/pictures/pictures/calculating.png</normaloff>:/pictures/pictures/calculating.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Нарахування по підрозділах</string>
+       </attribute>
+       <attribute name="toolTip">
+        <string>Нарахування окремо по підрозділах організацій</string>
+       </attribute>
+       <layout class="QHBoxLayout">
+        <property name="spacing">
+         <number>2</number>
+        </property>
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QTableWidget" name="tableWidget_pidrozdily_narah_pidrozdily">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>390</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <column>
+           <property name="text">
+            <string>id</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Угода</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Організація</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Підрозділ</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Опал.</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Ліч.</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>ГВ</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout">
+          <property name="spacing">
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox_date_narah_pidrozdil">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>1. Нарахування за місяць ...</string>
+            </property>
+            <layout class="QGridLayout">
+             <property name="margin">
+              <number>2</number>
+             </property>
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <item row="0" column="0">
+              <layout class="QHBoxLayout">
+               <item>
+                <widget class="QLabel" name="label_data_narah_pidrozdily">
+                 <property name="text">
+                  <string>Дата</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QDateEdit" name="dateEdit_narah_pidrozdily">
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="maximumDate">
+                  <date>
+                   <year>2100</year>
+                   <month>12</month>
+                   <day>31</day>
+                  </date>
+                 </property>
+                 <property name="minimumDate">
+                  <date>
+                   <year>2005</year>
+                   <month>1</month>
+                   <day>1</day>
+                  </date>
+                 </property>
+                 <property name="displayFormat">
+                  <string>MM.yyyy</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_dni_opal_pidrozdily">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>2. Дні опалення</string>
+            </property>
+            <layout class="QGridLayout">
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QTableWidget" name="tableWidget_dni_opal_narah_pidrozdily">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>60</height>
+                </size>
+               </property>
+               <property name="editTriggers">
+                <set>QAbstractItemView::NoEditTriggers</set>
+               </property>
+               <property name="selectionMode">
+                <enum>QAbstractItemView::NoSelection</enum>
+               </property>
+               <property name="showGrid">
+                <bool>true</bool>
+               </property>
+               <property name="gridStyle">
+                <enum>Qt::DotLine</enum>
+               </property>
+               <row/>
+               <column>
+                <property name="text">
+                 <string>Дні опал. по ліч.</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Дні опал без ліч.</string>
+                </property>
+               </column>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_pokaz_lich_narah_pidrozdil">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>3. Показники лічильника нарах. за ЦО</string>
+            </property>
+            <layout class="QGridLayout">
+             <property name="margin">
+              <number>2</number>
+             </property>
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_osnovna_kilkist_tepla">
+               <property name="text">
+                <string>Основна к-сть тепла, Гкал</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_osnovna_kilkist_tepla">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="decimals">
+                <number>4</number>
+               </property>
+               <property name="maximum">
+                <double>10000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_dodatkova_kilkist_tepla">
+               <property name="text">
+                <string>Додаткова к-сть тепла, Гкал</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_dodatkova_kilkist_tepla">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="decimals">
+                <number>4</number>
+               </property>
+               <property name="maximum">
+                <double>10000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_taryf_za_co_narah_pidrozdil">
+               <property name="text">
+                <string>Тариф за ЦО</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_taryf_za_CO_narah_pidrozdily">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="maximum">
+                <double>10000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_pokaz_lich_gar_voda_narah_pidrozdil">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>4.Показники для нарахування за ГВ</string>
+            </property>
+            <layout class="QGridLayout">
+             <property name="margin">
+              <number>2</number>
+             </property>
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_poch_pokazn_lich_narah_pidrozdily">
+               <property name="text">
+                <string>Початк.показн.ліч.Гкал</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_pochatk_pokazn_lich_narah_pidrozdily">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="decimals">
+                <number>4</number>
+               </property>
+               <property name="maximum">
+                <double>10000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_kinc_pokazn_lich_narah_pidrozdily">
+               <property name="text">
+                <string>Кінцевий.показн.ліч.Г.кал</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_kinc_pochatk_pokazn_lich_narah_pidrozdily">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="decimals">
+                <number>4</number>
+               </property>
+               <property name="maximum">
+                <double>10000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_kilkist_bilyzny_narah_pidrozdily">
+               <property name="text">
+                <string>Кількість білизни</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_kilkist_bilyzny_narah_pidrozdily">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="maximum">
+                <double>10000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="label_pochatk_pokazn_loch_GV_kub">
+               <property name="text">
+                <string>Початк.показн.ліч.КУБ</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_pochatk_pokazn_lich_narah_pidrozdily_kub">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="decimals">
+                <number>4</number>
+               </property>
+               <property name="maximum">
+                <double>10000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0" rowspan="2">
+              <widget class="QLabel" name="label_kinc_pokazn_loch_GV_kub">
+               <property name="text">
+                <string>Кінц.показн.ліч.КУБ</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_kinc_pokazn_lich_narah_pidrozdily_kub">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="decimals">
+                <number>4</number>
+               </property>
+               <property name="maximum">
+                <double>10000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="1" rowspan="2">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_taryf_za_gar_vodu_kub_narah_pidrozdily">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="maximum">
+                <double>10000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="0">
+              <widget class="QLabel" name="label_taryf_za_kub_GV">
+               <property name="text">
+                <string>Тариф за КУБ ГВ</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_taryf_za_gar_vodu_narah_pidrozdily">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly">
+                <bool>true</bool>
+               </property>
+               <property name="maximum">
+                <double>10000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_taryf_za_gar_voda_narah_pidrozdil">
+               <property name="text">
+                <string>Тариф за Гкал ГВ</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="Line" name="line_9">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="Line" name="line_10">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_narahovani_sumy_narah_pidrozdil">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>5. Нараховані суми</string>
+            </property>
+            <layout class="QGridLayout">
+             <property name="margin">
+              <number>2</number>
+             </property>
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_zag_kilkist_tepla_CO_narah_pidrozdily">
+               <property name="text">
+                <string>Кількість тепла ЦО</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_zag_kilkist_tepla_CO_narah_pidrozdily">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="decimals">
+                <number>4</number>
+               </property>
+               <property name="minimum">
+                <double>-100000.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>100000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_zag_narahuvannya_za_CO_narah_pidrozdily_2">
+               <property name="text">
+                <string>Нарахування за ЦО</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_zag_narah_za_CO_narah_pidrozdily">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="minimum">
+                <double>-10000000.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>10000000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_zag_kilkist_tepla_GV_narah_pidrozdily">
+               <property name="text">
+                <string>Кількість тепла ГВ</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_zag_kilkist_tepla_GV_narah_pidrozdily">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="decimals">
+                <number>4</number>
+               </property>
+               <property name="minimum">
+                <double>-100000.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>100000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_zag_narahuvannya_za_GV_narah_pidrozdily">
+               <property name="text">
+                <string>Нарахування за ГВ</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QDoubleSpinBox" name="doubleSpinBox_zag_narah_GV_narah_pidrozdily">
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="minimum">
+                <double>-10000000.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>10000000.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_avtomatychne_narahuvannya_pidrozdily">
+            <property name="text">
+             <string>Автоматичне нарахування</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QPushButton" name="pushButton_reload_narah_pidrozdily">
+              <property name="text">
+               <string>Поновити</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/redeal.png</normaloff>:/pictures/pictures/redeal.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QPushButton" name="pushButton_do_narah">
+              <property name="text">
+               <string>Здійсн.нарах.</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/calculating.png</normaloff>:/pictures/pictures/calculating.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="pushButton_print_rahunok">
+              <property name="text">
+               <string>Друк рах.</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/Kpilot_Notes.png</normaloff>:/pictures/pictures/Kpilot_Notes.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QPushButton" name="pushButton_save_narah_pidrozdily">
+              <property name="text">
+               <string>Зберегти 3.-5.</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../tkeAbonent/tke/tke_rc">
+                <normaloff>:/pictures/pictures/floppy.png</normaloff>:/pictures/pictures/floppy.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>12</width>
+                <height>12</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="Line" name="line_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>260</width>
+              <height>51</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>16</width>
+            <height>461</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1191</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>Щомісячні таблиці</string>
+    </property>
+    <addaction name="action_dni_opalennya"/>
+    <addaction name="action_pokaz_lich_table"/>
+    <addaction name="action_pokaz_lich_gar_voda"/>
+    <addaction name="action_meteor_table"/>
+    <addaction name="separator"/>
+    <addaction name="action_oplata"/>
+   </widget>
+   <widget class="QMenu" name="menu_vyhidni_tablyci">
+    <property name="tearOffEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string>Вихідні таблиці</string>
+    </property>
+    <addaction name="action_taryf_table"/>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>Операції</string>
+    </property>
+    <addaction name="action_calc_tepl_navantaj"/>
+    <addaction name="separator"/>
+    <addaction name="action_narah_opal"/>
+    <addaction name="action_narah_gar_voda"/>
+    <addaction name="separator"/>
+    <addaction name="action_calc_saldo_spec_rahunkiv"/>
+    <addaction name="action_pererahunok_saldo_usih_spec_rahunkiv"/>
+    <addaction name="separator"/>
+    <addaction name="action_pererah_vhidnogo_saldo_potochnoi_ugody"/>
+    <addaction name="action_pererah_vhidnyh_saldo_usih_ugod"/>
+    <addaction name="separator"/>
+    <addaction name="action_saveDatabase"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>Друк</string>
+    </property>
+    <addaction name="action_print_vidomist_oplaty_za_CO"/>
+    <addaction name="action_print_narah_gar_voda"/>
+    <addaction name="action_print_vidomist_narahuvannya_i_postuplennya_dohodiv"/>
+    <addaction name="action_print_nakopychuvalna_vvidomist_narahuvannya"/>
+    <addaction name="action_print_vidomist_realizacii"/>
+    <addaction name="separator"/>
+    <addaction name="action_print_rahunok"/>
+    <addaction name="action_print_act_vykon_robit"/>
+    <addaction name="separator"/>
+    <addaction name="action_print_vidomist_borjnykiv_organiz"/>
+    <addaction name="action_print_podatkova_nakladna"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Програма</string>
+    </property>
+    <addaction name="action_registracion"/>
+    <addaction name="action_close_login"/>
+    <addaction name="separator"/>
+    <addaction name="action_debuger"/>
+    <addaction name="action_sqlBrowser"/>
+    <addaction name="separator"/>
+    <addaction name="action_close_program"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>Інфо</string>
+    </property>
+    <addaction name="action_assistent"/>
+    <addaction name="separator"/>
+    <addaction name="action_about"/>
+   </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>Налаштування</string>
+    </property>
+    <addaction name="action_Options"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_6"/>
+   <addaction name="menu_vyhidni_tablyci"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_5"/>
+   <addaction name="menu_4"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_registracion"/>
+   <addaction name="action_close_login"/>
+   <addaction name="separator"/>
+   <addaction name="action_sqlBrowser"/>
+   <addaction name="action_debuger"/>
+   <addaction name="separator"/>
+   <addaction name="action_close_program"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_2">
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_taryf_table"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_taryf">
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>Таблиця НОРМАТИВНИЙ ТАРИФ</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_normat_taryf">
+    <layout class="QGridLayout">
+     <property name="horizontalSpacing">
+      <number>0</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>2</number>
+     </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <layout class="QVBoxLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QTableView" name="tableView_taryf">
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="statusTip">
+          <string>Таблиця НОРМАТИВНИЙ ТАРИФ</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_add_taryf">
+           <property name="focusPolicy">
+            <enum>Qt::ClickFocus</enum>
+           </property>
+           <property name="statusTip">
+            <string>Додати новий запис</string>
+           </property>
+           <property name="text">
+            <string>Додати</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../tkeAbonent/tke/tke_rc">
+             <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>12</width>
+             <height>12</height>
+            </size>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_del_taryf">
+           <property name="focusPolicy">
+            <enum>Qt::ClickFocus</enum>
+           </property>
+           <property name="statusTip">
+            <string>Видалити позначений запис</string>
+           </property>
+           <property name="text">
+            <string>Видалити</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../tkeAbonent/tke/tke_rc">
+             <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>12</width>
+             <height>12</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_pokaz_lich_table">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>Таблиця ПОКАЗНИКИ ЛІЧИЛЬНИКІВ (ОПАЛ.)</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <layout class="QGridLayout">
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <property name="spacing">
+      <number>2</number>
+     </property>
+     <item row="0" column="0">
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_month_diuch_taryf">
+         <property name="text">
+          <string>Місяць</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_month_pokaz_lich">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>35</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>12</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_year_diuch_taryf">
+         <property name="text">
+          <string>Рік</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_year_pokaz_lich">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>2006</number>
+         </property>
+         <property name="maximum">
+          <number>2100</number>
+         </property>
+         <property name="value">
+          <number>2006</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_6">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="pokaz_lich_label_norm_taryf_gkal">
+         <property name="text">
+          <string>ГКал.:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QTableWidget" name="tableWidget_pokaz_lich">
+       <property name="statusTip">
+        <string>Таблиця ДІЮЧИЙ ТАРИФ</string>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+       </property>
+       <property name="showDropIndicator" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <column>
+        <property name="text">
+         <string>id</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Осн.к-сть.тепла</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Дод.к-сть.тепла</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>pidrozdil_ID</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_pokaz_lich_save">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="statusTip">
+          <string>Зберегти діючі тарифи</string>
+         </property>
+         <property name="text">
+          <string>Зберегти</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../tkeAbonent/tke/tke_rc">
+           <normaloff>:/pictures/pictures/floppy.png</normaloff>:/pictures/pictures/floppy.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>12</width>
+           <height>12</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBar_shchomisyachni_tablyci">
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_dni_opalennya"/>
+   <addaction name="action_pokaz_lich_table"/>
+   <addaction name="action_pokaz_lich_gar_voda"/>
+   <addaction name="action_meteor_table"/>
+   <addaction name="separator"/>
+   <addaction name="action_oplata"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_meteor_table">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>Таблиця МЕТЕОРОЛОГІЧНІ ПОКАЗНИКИ</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QGridLayout">
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <property name="spacing">
+      <number>2</number>
+     </property>
+     <item row="0" column="0">
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_month_meteor_table">
+         <property name="text">
+          <string>Місяць</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_month_meteor_table">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>35</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>12</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_year_meteor_table">
+         <property name="text">
+          <string>Рік</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_year_meteor_table">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>2006</number>
+         </property>
+         <property name="maximum">
+          <number>2100</number>
+         </property>
+         <property name="value">
+          <number>2006</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QTableWidget" name="tableWidget_meteor">
+       <property name="statusTip">
+        <string>Таблиця ДІЮЧИЙ ТАРИФ</string>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+       </property>
+       <property name="showDropIndicator" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+       <column>
+        <property name="text">
+         <string>id</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Температура</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_meteor_table_save">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="statusTip">
+          <string>Зберегти діючі тарифи</string>
+         </property>
+         <property name="text">
+          <string>Зберегти</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../tkeAbonent/tke/tke_rc">
+           <normaloff>:/pictures/pictures/floppy.png</normaloff>:/pictures/pictures/floppy.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>12</width>
+           <height>12</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_dni_opal">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>Таблиця ДНІ ОПАЛЕННЯ</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_dni_opal">
+    <layout class="QGridLayout">
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <property name="spacing">
+      <number>2</number>
+     </property>
+     <item row="1" column="0">
+      <widget class="QTableView" name="tableView_dni_opal">
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="tabKeyNavigation">
+        <bool>true</bool>
+       </property>
+       <property name="textElideMode">
+        <enum>Qt::ElideMiddle</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_month_dni_opal">
+         <property name="text">
+          <string>Місяць</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_month_dni_opal">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>35</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>12</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_year_dni_opal">
+         <property name="text">
+          <string>Рік</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_year_dni_opal">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>2006</number>
+         </property>
+         <property name="maximum">
+          <number>2100</number>
+         </property>
+         <property name="value">
+          <number>2006</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_oplata">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>Таблиця ОПЛАТА</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_dni_opal_2">
+    <layout class="QGridLayout">
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <property name="spacing">
+      <number>2</number>
+     </property>
+     <item row="0" column="0">
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_month_oplata">
+         <property name="text">
+          <string>Місяць</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_month_oplata">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>35</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>12</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_year_oplata">
+         <property name="text">
+          <string>Рік</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_year_oplata">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>2006</number>
+         </property>
+         <property name="maximum">
+          <number>2100</number>
+         </property>
+         <property name="value">
+          <number>2006</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QTableView" name="tableView_oplata">
+       <property name="editTriggers">
+        <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+       </property>
+       <property name="tabKeyNavigation">
+        <bool>true</bool>
+       </property>
+       <property name="textElideMode">
+        <enum>Qt::ElideMiddle</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_add_oplata">
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="statusTip">
+          <string>Додати новий запис</string>
+         </property>
+         <property name="text">
+          <string>Додати (Ctrl+A)</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../tkeAbonent/tke/tke_rc">
+           <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>12</width>
+           <height>12</height>
+          </size>
+         </property>
+         <property name="shortcut">
+          <string>Ctrl+A</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_del_oplata">
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="statusTip">
+          <string>Видалити позначений запис</string>
+         </property>
+         <property name="text">
+          <string>Видалити</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../tkeAbonent/tke/tke_rc">
+           <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>12</width>
+           <height>12</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_pokaz_lich_gar_voda_table">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>Таблиця ПОКАЗНИКИ ЛІЧИЛЬНИКІВ (ГВ)</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QGridLayout">
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <property name="spacing">
+      <number>2</number>
+     </property>
+     <item row="0" column="0">
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_month_diuch_taryf_gar_voda">
+         <property name="text">
+          <string>Місяць</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_month_pokaz_lich_gar_voda">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>35</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>12</number>
+         </property>
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_year_diuch_taryf_gar_voda">
+         <property name="text">
+          <string>Рік</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="spinBox_year_pokaz_lich_gar_voda">
+         <property name="minimumSize">
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="minimum">
+          <number>2006</number>
+         </property>
+         <property name="maximum">
+          <number>2100</number>
+         </property>
+         <property name="value">
+          <number>2006</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_7">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="pokaz_lich_label_norm_taryf_gkal_gar_voda">
+         <property name="text">
+          <string>ГКал.:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QTableWidget" name="tableWidget_pokaz_lich_gar_voda">
+       <property name="statusTip">
+        <string>Таблиця ДІЮЧИЙ ТАРИФ</string>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
+       </property>
+       <property name="showDropIndicator" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <column>
+        <property name="text">
+         <string>id</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>ГКАЛ.Поч.пок.</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>ГКАЛ.Кінц.пок.</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>К-сть білизни</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>pidrozdil_ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>КУБ.Поч.показн.</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>КУБ.Кінс.показн</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_pokaz_lich_gar_voda_save">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::ClickFocus</enum>
+         </property>
+         <property name="statusTip">
+          <string>Зберегти діючі тарифи</string>
+         </property>
+         <property name="text">
+          <string>Зберегти</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../tkeAbonent/tke/tke_rc">
+           <normaloff>:/pictures/pictures/floppy.png</normaloff>:/pictures/pictures/floppy.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>12</width>
+           <height>12</height>
+          </size>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="action_registracion">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/passwd-mdk_128.png</normaloff>:/pictures/pictures/passwd-mdk_128.png</iconset>
+   </property>
+   <property name="text">
+    <string>Зареєструватись</string>
+   </property>
+  </action>
+  <action name="action_close_login">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/draksec-mdk.png</normaloff>:/pictures/pictures/draksec-mdk.png</iconset>
+   </property>
+   <property name="text">
+    <string>Закрити сеанс</string>
+   </property>
+  </action>
+  <action name="action_close_program">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/button_cancel.png</normaloff>:/pictures/pictures/button_cancel.png</iconset>
+   </property>
+   <property name="text">
+    <string>Вихід</string>
+   </property>
+  </action>
+  <action name="actionEditPidrozdil">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/ark_options.png</normaloff>:/pictures/pictures/ark_options.png</iconset>
+   </property>
+   <property name="text">
+    <string>Редагувати підрозділ</string>
+   </property>
+  </action>
+  <action name="actionAddPidrozdil">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
+   </property>
+   <property name="text">
+    <string>Додати підрозділ</string>
+   </property>
+  </action>
+  <action name="actionDelPidrozdil">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
+   </property>
+   <property name="text">
+    <string>Видалити підрозділ</string>
+   </property>
+  </action>
+  <action name="action_taryf_table">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/kcmdf.png</normaloff>:/pictures/pictures/kcmdf.png</iconset>
+   </property>
+   <property name="text">
+    <string>Тарифи</string>
+   </property>
+  </action>
+  <action name="action_pokaz_lich_table">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/iph.png</normaloff>:/pictures/pictures/iph.png</iconset>
+   </property>
+   <property name="text">
+    <string>Показники лічильника по ЦО</string>
+   </property>
+  </action>
+  <action name="action_meteor_table">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/i_view_week.png</normaloff>:/pictures/pictures/i_view_week.png</iconset>
+   </property>
+   <property name="text">
+    <string>Метеорологічні показники</string>
+   </property>
+   <property name="iconText">
+    <string>Метеорологічні показники</string>
+   </property>
+   <property name="toolTip">
+    <string>Метеорологічні показники</string>
+   </property>
+  </action>
+  <action name="action_debuger">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/debugger.png</normaloff>:/pictures/pictures/debugger.png</iconset>
+   </property>
+   <property name="text">
+    <string>Програмні повідомлення</string>
+   </property>
+   <property name="statusTip">
+    <string>Програмні повідомленні помилок і попереджень</string>
+   </property>
+  </action>
+  <action name="action_dni_opalennya">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/spreadsheet.png</normaloff>:/pictures/pictures/spreadsheet.png</iconset>
+   </property>
+   <property name="text">
+    <string>Дні опалення</string>
+   </property>
+  </action>
+  <action name="action_calc_tepl_navantaj">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/calculating.png</normaloff>:/pictures/pictures/calculating.png</iconset>
+   </property>
+   <property name="text">
+    <string>Розрахунок теплових навантажень</string>
+   </property>
+  </action>
+  <action name="action_narah_opal">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/calculating.png</normaloff>:/pictures/pictures/calculating.png</iconset>
+   </property>
+   <property name="text">
+    <string>Нарахування за опалення</string>
+   </property>
+  </action>
+  <action name="action_oplata">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/emblem-money.png</normaloff>:/pictures/pictures/emblem-money.png</iconset>
+   </property>
+   <property name="text">
+    <string>Оплата</string>
+   </property>
+  </action>
+  <action name="action_sqlBrowser">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/presentation_section.png</normaloff>:/pictures/pictures/presentation_section.png</iconset>
+   </property>
+   <property name="text">
+    <string>SQL оглядач</string>
+   </property>
+   <property name="iconText">
+    <string>SQL оглядач</string>
+   </property>
+   <property name="toolTip">
+    <string>SQL оглядач</string>
+   </property>
+  </action>
+  <action name="action_print_narah_gar_voda">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/documents.png</normaloff>:/pictures/pictures/documents.png</iconset>
+   </property>
+   <property name="text">
+    <string>Відомість нарахування оплати за гарячу воду</string>
+   </property>
+  </action>
+  <action name="action_calc_saldo_spec_rahunkiv">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/calculating.png</normaloff>:/pictures/pictures/calculating.png</iconset>
+   </property>
+   <property name="text">
+    <string>Обрахунок САЛЬДО спеціальних рахунків</string>
+   </property>
+  </action>
+  <action name="action_pererahunok_saldo_usih_spec_rahunkiv">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/kwrite.png</normaloff>:/pictures/pictures/kwrite.png</iconset>
+   </property>
+   <property name="text">
+    <string>Перерахунок Вхідних сальдо усіх спец.рахунків</string>
+   </property>
+  </action>
+  <action name="action_print_vidomist_narahuvannya_i_postuplennya_dohodiv">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/education_mathematics.png</normaloff>:/pictures/pictures/education_mathematics.png</iconset>
+   </property>
+   <property name="text">
+    <string>Відомість нарахування і поступлення доходів</string>
+   </property>
+  </action>
+  <action name="action_print_vidomist_oplaty_za_CO">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/emblem-money.png</normaloff>:/pictures/pictures/emblem-money.png</iconset>
+   </property>
+   <property name="text">
+    <string>Відомість нарахування оплати за ЦО</string>
+   </property>
+  </action>
+  <action name="action_print_vidomist_realizacii">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/emblem-handshake.png</normaloff>:/pictures/pictures/emblem-handshake.png</iconset>
+   </property>
+   <property name="text">
+    <string>Відомість реалізації</string>
+   </property>
+  </action>
+  <action name="action_print_rahunok">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/editors_section.png</normaloff>:/pictures/pictures/editors_section.png</iconset>
+   </property>
+   <property name="text">
+    <string>РАХУНОК</string>
+   </property>
+  </action>
+  <action name="action_print_vidomist_borjnykiv_organiz">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/package_toys.png</normaloff>:/pictures/pictures/package_toys.png</iconset>
+   </property>
+   <property name="text">
+    <string>Відомість організацій-боржників</string>
+   </property>
+  </action>
+  <action name="action_pokaz_lich_gar_voda">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/iph.png</normaloff>:/pictures/pictures/iph.png</iconset>
+   </property>
+   <property name="text">
+    <string>Показники лічильника по гар.воді</string>
+   </property>
+  </action>
+  <action name="action_narah_gar_voda">
+   <property name="text">
+    <string>Нарахування за гарячу воду</string>
+   </property>
+  </action>
+  <action name="action_print_nakopychuvalna_vvidomist_narahuvannya">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/education_mathematics.png</normaloff>:/pictures/pictures/education_mathematics.png</iconset>
+   </property>
+   <property name="text">
+    <string>Накопичувальна відомість нарах. і поступл. доходів</string>
+   </property>
+  </action>
+  <action name="action_pererah_vhidnogo_saldo_potochnoi_ugody">
+   <property name="text">
+    <string>Перерахунок Вхідних сальдо поточної угоди</string>
+   </property>
+  </action>
+  <action name="action_pererah_vhidnyh_saldo_usih_ugod">
+   <property name="text">
+    <string>Перерахунок Вхідних сальдо усіх угод</string>
+   </property>
+  </action>
+  <action name="action_assistent">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/doc-icon.png</normaloff>:/pictures/pictures/doc-icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Модератор</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/cube.png</normaloff>:/pictures/pictures/cube.png</iconset>
+   </property>
+   <property name="text">
+    <string>Про ПК &quot;ТКЕнерго менеджер&quot;</string>
+   </property>
+  </action>
+  <action name="action_Options">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/control-center2.png</normaloff>:/pictures/pictures/control-center2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Опції</string>
+   </property>
+  </action>
+  <action name="action_saveDatabase">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/ark.png</normaloff>:/pictures/pictures/ark.png</iconset>
+   </property>
+   <property name="text">
+    <string>Зберегти базу даних в архів</string>
+   </property>
+  </action>
+  <action name="action_print_podatkova_nakladna">
+   <property name="text">
+    <string>Податкова накладна</string>
+   </property>
+  </action>
+  <action name="action_print_act_vykon_robit">
+   <property name="icon">
+    <iconset resource="../tkeAbonent/tke/tke_rc">
+     <normaloff>:/pictures/pictures/editors_section.png</normaloff>:/pictures/pictures/editors_section.png</iconset>
+   </property>
+   <property name="text">
+    <string>Акт виконаних робіт</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="2" margin="2"/>
+ <resources>
+  <include location="../tkeAbonent/tke/tke_rc"/>
+ </resources>
+ <connections/>
+</ui>

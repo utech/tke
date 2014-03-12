@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/pictures" >
+        <file>Demo.png</file>
+        <file>Full.png</file>
+        <file>button_cancel.png</file>
+        <file>cube.png</file>
+        <file>emblem-handshake.png</file>
+        <file>utech.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,13 @@
+<!DOCTYPE DCF>
+<DCF ref="./index.html" icon="./cubeHelp.png" imagedir="./" title="Модератор ТКЕнерго менеджер">
+	<section ref="./index.html" title="Головні теми Модератора">
+	</section>
+	<section ref="./vstup.html" title="Вступ">
+	</section>
+	<section ref="./tke_assistent.html" title="Робота з Модератором">
+	</section>
+	<section ref="./sql_zapyty.html" title="SQL запити">
+	</section>
+	<section ref="./kontacts.html" title="Контакти">
+	</section>
+</DCF>
