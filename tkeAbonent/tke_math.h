@@ -15,7 +15,19 @@
 
 #include <UMath>
 
-// Srtuctures
+
+typedef enum UOrgFinanceType_
+{
+	FinaceTypeAny = 0,
+	FinanceMiskBudget = 1, // Міський бюджет
+	FinanceRyonBudget = 2, // Районний бюджет
+	FinanceOblBudjget = 3, // Обласний бюджет
+	FinanceStateBudget = 4, // Державний бюджет
+	FinanceGosprozrah = 5, // Госпрозрахункові споживачі
+	FinanceNasel = 6 // Населення
+} UOrgFinanceType;
+
+
 struct UNarah_data
 {
 	int				rah;	//рахунок
@@ -85,7 +97,8 @@ struct UNasTaryfInfo
 struct UOrgTaryfInfo
 {
 	UOrgTaryfInfo(){
-		vart_g_kal = 0;
+		m_vart_g_kal = 0;
+		m_vart_g_kal_gosp_rozrah = 0;
 		vart_g_kal_gar_vody = 0;
 		vart_kvadr_CO = 0;
 		vart_kuba_GV = 0;
@@ -94,34 +107,21 @@ struct UOrgTaryfInfo
 	UOrgTaryfInfo(int year, int month){
 		valid = populate(year, month);
 	};
-	bool populate(int year, int month){
-		bool doneOk=true;
-		QSqlQuery query("SELECT vart_g_kal, vart_g_kal_gar_vody, vart_kvadr_CO, vart_kuba_GV FROM normat_taryf_organiz \
-								WHERE (year="+QVariant(year).toString()+" and month<="+QVariant(month).toString()+") \
-										or (year<"+QVariant(year).toString()+") \
-								ORDER BY year DESC, month DESC");
-		if (query.seek(0)){
-			vart_g_kal = query.value(0).toDouble();
-			vart_g_kal_gar_vody = query.value(1).toDouble();
-			vart_kvadr_CO = query.value(2).toDouble();
-			vart_kuba_GV = query.value(3).toDouble();
-			doneOk=true;
-		}
-		else{
-			vart_g_kal = 0;
-			vart_g_kal_gar_vody = 0;
-			vart_kvadr_CO = 0;
-			vart_kuba_GV = 0;
-			doneOk=false;
-		}
-		return doneOk;
+	UOrgTaryfInfo(QDate dt){
+		valid = populate(dt.year(), dt.month());
 	};
+	bool populate(int year, int month);
+	bool isValid() {
+		return valid;
+	}
+	double vart_g_kal(UOrgFinanceType eFinaceType);
   public:
-	double vart_g_kal;
-	double vart_g_kal_gar_vody;
+    double vart_g_kal_gar_vody;
 	double vart_kvadr_CO;
 	double vart_kuba_GV;
   private:
+    double m_vart_g_kal;
+	double m_vart_g_kal_gosp_rozrah;
 	bool valid;
 };
 

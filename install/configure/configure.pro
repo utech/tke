@@ -1,7 +1,7 @@
 CONFIG		+= release
 CONFIG		-= debug debug_and_release debug_and_release_target
 
-include(d:\devel\UtechLib\UtechLib.pri)
+include(../../../UtechLib/UtechLib.pri)
 
 TEMPLATE = app
 TARGET = 

@@ -40,5 +40,7 @@ QString encrypt(QString str);
 QString decrypt(QString str);
 QString saveDataBase(bool wait=false);
 void castControls(QObject *obj, bool isAct);
+UOrgFinanceType financeTypeForPidrozdil(int iPidrozdilID);
+UOrgFinanceType financeTypeForOrganiz(int iUgodaNum);
 //-----------------------------------
 #endif

@@ -114,5 +114,6 @@ INPUT(
 ./..\..\tmp\demo\moc_tke_form_printCustomKvyt.o
 ./..\..\tmp\demo\moc_tke_form_recalc_obsyag_gazu.o
 ./..\..\tmp\demo\moc_tke_dialog_budynok_or_abonent.o
+./..\..\tmp\demo\qrc_UImgLib.o
 ./..\..\tmp\demo\qrc_tke_rc.o
 );

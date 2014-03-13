@@ -739,3 +739,38 @@ UAbonObPlSubs oplataZgidnoNarahSubs(int rah, short year, short month)
 	return UAbonObPlSubs(vhSaldo);
 }
 //------------------------------------------------------------
+bool UOrgTaryfInfo::populate(int year, int month)
+{
+	bool doneOk=true;
+	QSqlQuery query("SELECT TOP 1 vart_g_kal, vart_g_kal_gar_vody, vart_kvadr_CO, vart_kuba_GV, vart_g_kal_gosp_rozrah \
+					FROM normat_taryf_organiz \
+					WHERE (year="+QVariant(year).toString()+" and month<="+QVariant(month).toString()+") \
+						or (year<"+QVariant(year).toString()+") \
+					ORDER BY year DESC, month DESC");
+	if (query.next()){
+		m_vart_g_kal = query.value(0).toDouble();
+		vart_g_kal_gar_vody = query.value(1).toDouble();
+		vart_kvadr_CO = query.value(2).toDouble();
+		vart_kuba_GV = query.value(3).toDouble();
+		m_vart_g_kal_gosp_rozrah = query.value(4).toDouble();
+		doneOk=true;
+	}
+	else{
+		m_vart_g_kal = 0;
+		vart_g_kal_gar_vody = 0;
+		vart_kvadr_CO = 0;
+		vart_kuba_GV = 0;
+		m_vart_g_kal_gosp_rozrah = 0;
+		doneOk=false;
+	}
+	
+	return doneOk;
+}
+//------------------------------------------------------------
+double UOrgTaryfInfo::vart_g_kal(UOrgFinanceType eFinaceType)
+{
+	if (eFinaceType == FinanceGosprozrah)
+		return m_vart_g_kal_gosp_rozrah;
+	
+	return m_vart_g_kal;
+}

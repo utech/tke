@@ -494,11 +494,11 @@ void UPrintDocsOrganiz::print_podatkova_nakladna(int cur_year, int cur_month, in
 	
 	QDate naklDate(cur_year, cur_month, 1);
 	
-	UOrgTaryfInfo taryf(cur_year, cur_month);
+	UOrgTaryfInfo orgTaryf(cur_year, cur_month);
 	double pdv = OrganizPdv();
 	
-	double taryfCO = taryf.vart_g_kal*100/(100+pdv);
-	double taryfGV = taryf.vart_kuba_GV*100/(100+pdv);
+	double taryfCO = orgTaryf.vart_g_kal(financeTypeForOrganiz(ugodaNum))*100/(100+pdv);
+	double taryfGV = orgTaryf.vart_kuba_GV*100/(100+pdv);
 	double sumNoPdvCO = sumCO*100/(100+pdv);
 	double sumNoPdvGV = sumGV*100/(100+pdv);
 	
@@ -646,18 +646,13 @@ void UPrintDocsOrganiz::print_act_vykon_robit(QDate dt, int ugodaNum)
         hash.insert(QString("PoslugyYear"), dt.toString("yyyy"));
 
         // Тариф
-        query.exec("SELECT vart_g_kal, vart_g_kal_gar_vody FROM normat_taryf_organiz \
-                   WHERE (year="+QVariant(dt.year()).toString()+" and month<="+QVariant(dt.month()).toString()+") \
-                   or (year<"+QVariant(dt.year()).toString()+") \
-                                ORDER BY year DESC, month DESC");
-        query.next();
         UNasTaryfInfo taryfNas = nasTaryf(dt.year(), dt.month());
-        double gKalOpal=query.value(0).toDouble();
-        //double gKalVoda=query.value(1).toDouble();
+		UOrgTaryfInfo orgTaryf(dt);
+        double gKalOpal = orgTaryf.vart_g_kal(financeTypeForOrganiz(ugodaNum));
 
         if (taryfNas.vart_g_kal == 0) {
             QMessageBox::critical(0,"Помилка тарифу","Нульовий тариф за ЦО для населення");
-            taryfNas.vart_g_kal = 0.01;
+            taryfNas.vart_g_kal = 0.1;
         }
         if (gKalOpal == 0) {
             QMessageBox::critical(0,"Помилка тарифу","Нульовий тариф за ЦО для організацій");

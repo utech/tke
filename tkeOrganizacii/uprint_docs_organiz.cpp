@@ -2662,20 +2662,14 @@ void UPrintDocsOrganiz::print_rahunok_1(int cur_year, int cur_month, int ugodaNu
 		cellCursor.setBlockFormat( blockFormat );
 		cellCursor.insertText(codec->toUnicode("	в.т.ч.ПДВ"), textCharFormat);
 
-		
-		query->exec("SELECT vart_g_kal, vart_g_kal_gar_vody FROM normat_taryf_organiz \
-								WHERE (year="+QVariant(cur_year).toString()+" and month<="+QVariant(cur_month).toString()+") \
-										or (year<"+QVariant(cur_year).toString()+") \
-								ORDER BY year DESC, month DESC");
-		query->seek(0);
-		//qDebug() << query->lastQuery();
 		UNasTaryfInfo taryfNas = nasTaryf(cur_year, cur_month);
-		double gKalOpal=query->value(0).toDouble();
-		double gKalVoda=query->value(1).toDouble();
+		UOrgTaryfInfo orgTaryf(cur_year, cur_month);
+		double gKalOpal=orgTaryf.vart_g_kal(financeTypeForOrganiz(ugodaNum));
+		double gKalVoda=orgTaryf.vart_g_kal_gar_vody;
 		
 		if (taryfNas.vart_g_kal == 0) {
 			QMessageBox::critical(0,"Помилка тарифу","Нульовий тариф за ЦО для населення");
-			taryfNas.vart_g_kal = 0.01;
+			taryfNas.vart_g_kal = 0.1;
 		}
 		if (gKalOpal == 0) {
 			QMessageBox::critical(0,"Помилка тарифу","Нульовий тариф за ЦО для організацій");
@@ -2959,18 +2953,15 @@ void UPrintDocsOrganiz::print_rahunok_2(int cur_year, int cur_month, int ugodaNu
 							+QVariant(cur_year).toString()+codec->toUnicode(" року"), textCharFormat_bold);
 		
 		cursor.insertBlock(blockFormat);
-		query->exec("SELECT vart_g_kal, vart_kvadr_CO, vart_g_kal_gar_vody, vart_kuba_GV FROM normat_taryf_organiz \
-								WHERE (year="+QVariant(cur_year).toString()+" and month<="+QVariant(cur_month).toString()+") \
-										or (year<"+QVariant(cur_year).toString()+") \
-								ORDER BY year DESC, month DESC");
-		query->seek(0);
-		cursor.insertText("	Тариф:	за 1 Гкал. ЦО: "+uMToStr2(query->value(0).toDouble()), textCharFormat);
+		
+		UOrgTaryfInfo orgTaryf(cur_year, cur_month);
+		cursor.insertText("	Тариф:	за 1 Гкал. ЦО: "+uMToStr2(orgTaryf.vart_g_kal(financeTypeForOrganiz(ugodaNum))), textCharFormat);
 		cursor.insertBlock(blockFormat);
-		cursor.insertText("		за 1 м.кв.  ЦО: "+uMToStr2(query->value(1).toDouble()), textCharFormat);
+		cursor.insertText("		за 1 м.кв.  ЦО: "+uMToStr2(orgTaryf.vart_kvadr_CO), textCharFormat);
 		cursor.insertBlock(blockFormat);
-		cursor.insertText("		за 1 Гкал.  ГВ: "+uMToStr2(query->value(2).toDouble()), textCharFormat);
+		cursor.insertText("		за 1 Гкал.  ГВ: "+uMToStr2(orgTaryf.vart_g_kal_gar_vody), textCharFormat);
 		cursor.insertBlock(blockFormat);
-		cursor.insertText("		за 1 м.куб. ГВ: "+uMToStr2(query->value(3).toDouble()), textCharFormat);
+		cursor.insertText("		за 1 м.куб. ГВ: "+uMToStr2(orgTaryf.vart_kuba_GV), textCharFormat);
 		
 		QTextTable *table = cursor.insertTable(7, 4, tableFormat);
 		

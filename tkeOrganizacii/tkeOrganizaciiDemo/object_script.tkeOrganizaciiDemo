@@ -52,5 +52,6 @@ INPUT(
 ./..\..\tmp\demo\moc_tke_Dialog_saveDataBase.o
 ./..\..\tmp\demo\moc_tke_dialog_print_nakladna.o
 ./..\..\tmp\demo\moc_tke_form_struct_GV_organiz.o
+./..\..\tmp\demo\qrc_UImgLib.o
 ./..\..\tmp\demo\qrc_tke_rc.o
 );

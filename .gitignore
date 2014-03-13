@@ -1,0 +1,6 @@
+bin/configure.exe
+bin/tkeAbonent.exe
+bin/tkeOrganizacii.exe
+bin/tkeQtSqlBrowser.exe
+dst/*.exe
+tmp/

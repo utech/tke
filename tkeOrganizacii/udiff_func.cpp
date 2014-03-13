@@ -15,12 +15,12 @@
 //------------------------------------------------------------
 QString TkeProgramVersion()
 {
-    return "2.4.47";
+    return "2.4.48";
 }
 //------------------------------------------------------------
 int TkeDbVersion()
 {
-	return 22;
+	return 23;
 }
 //------------------------------------------------------------
 QString PrizvIB(int posadaId)
@@ -283,3 +283,47 @@ void castControls(QObject *obj, bool isAct)
 	}
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+UOrgFinanceType financeTypeForPidrozdil(int iPidrozdilID)
+{
+	QSqlQuery query("SELECT TOP 1 Finans FROM organizacii \
+					 RIGHT JOIN pidrozdily \
+						ON organizacii.Ugoda = pidrozdily.Ugoda\
+					 WHERE pidrozdily.id = " + QVariant(iPidrozdilID).toString());
+	
+	if (!query.next())
+		return FinaceTypeAny;
+	
+	switch (query.value(0).toInt())
+	{
+	case FinanceMiskBudget:
+	case FinanceRyonBudget:
+	case FinanceOblBudjget:
+	case FinanceStateBudget:
+	case FinanceGosprozrah:
+	case FinanceNasel:
+		return (UOrgFinanceType) query.value(0).toInt();
+	default:
+		return FinaceTypeAny;
+	}
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+UOrgFinanceType financeTypeForOrganiz(int iUgodaNum)
+{
+	QSqlQuery query("SELECT TOP 1 Finans FROM organizacii WHERE Ugoda = " + QVariant(iUgodaNum).toString());
+	
+	if (!query.next())
+		return FinaceTypeAny;
+	
+	switch (query.value(0).toInt())
+	{
+	case FinanceMiskBudget:
+	case FinanceRyonBudget:
+	case FinanceOblBudjget:
+	case FinanceStateBudget:
+	case FinanceGosprozrah:
+	case FinanceNasel:
+		return (UOrgFinanceType) query.value(0).toInt();
+	default:
+		return FinaceTypeAny;
+	}
+}

@@ -36,6 +36,7 @@ private:
 		int durationColumn_4;
 		int durationColumn_5;
 		int durationColumn_6;
+		int durationColumn_7;
 };      
 //-----------------------------------
 #endif

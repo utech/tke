@@ -139,6 +139,7 @@ tke_MainWindow_org::tke_MainWindow_org(QWidget *parent)
 	model_taryf->setHeaderData(4, Qt::Horizontal, codec->toUnicode("Варт.Гкал.Гар.В.") );
 	model_taryf->setHeaderData(5, Qt::Horizontal, codec->toUnicode("Варт.квадр.ЦО") );
 	model_taryf->setHeaderData(6, Qt::Horizontal, codec->toUnicode("Варт.куба.Гар.В.") );
+	model_taryf->setHeaderData(7, Qt::Horizontal, codec->toUnicode("Варт.Гкал.ЦО госп.") );
 	model_taryf->select();
 	ui.tableView_taryf->setModel(model_taryf);
 	ui.tableView_taryf->setColumnHidden(0, true);
@@ -1339,12 +1340,9 @@ void tke_MainWindow_org::populateNarahPidrozdilyForm(int pidrozdilId, QDate curD
 		ui.doubleSpinBox_dodatkova_kilkist_tepla->setValue(query->value(1).toDouble());
 	}
 	//Тариф по ЦО
-	query->exec("SELECT vart_g_kal FROM normat_taryf_organiz \
-								WHERE (year="+QVariant(curDate.year()).toString()+" and month<="+QVariant(curDate.month()).toString()+") \
-										or (year<"+QVariant(curDate.year()).toString()+") \
-								ORDER BY year DESC, month DESC");
-	if (query->seek(0))
-		ui.doubleSpinBox_taryf_za_CO_narah_pidrozdily->setValue(query->value(0).toDouble());
+	UOrgTaryfInfo orgTaryf(curDate);
+	double iGKalTaryf = orgTaryf.isValid() ? orgTaryf.vart_g_kal(financeTypeForPidrozdil(pidrozdilId)) : 0;
+	ui.doubleSpinBox_taryf_za_CO_narah_pidrozdily->setValue(iGKalTaryf);
 	
 	populateTableKilkistDnivOpal();
 	
@@ -1363,14 +1361,8 @@ void tke_MainWindow_org::populateNarahPidrozdilyForm(int pidrozdilId, QDate curD
 	}
 	
 	//Тариф за гарячу воду
-	query->exec("SELECT vart_g_kal_gar_vody, vart_kuba_GV FROM normat_taryf_organiz \
-								WHERE (year="+QVariant(curDate.year()).toString()+" and month<="+QVariant(curDate.month()).toString()+") \
-										or (year<"+QVariant(curDate.year()).toString()+") \
-								ORDER BY year DESC, month DESC");
-	if (query->seek(0)){
-		ui.doubleSpinBox_taryf_za_gar_vodu_narah_pidrozdily->setValue(query->value(0).toDouble());
-		ui.doubleSpinBox_taryf_za_gar_vodu_kub_narah_pidrozdily->setValue(query->value(1).toDouble());
-	}
+	ui.doubleSpinBox_taryf_za_gar_vodu_narah_pidrozdily->setValue(orgTaryf.isValid() ? orgTaryf.vart_g_kal_gar_vody : 0);
+	ui.doubleSpinBox_taryf_za_gar_vodu_kub_narah_pidrozdily->setValue(orgTaryf.isValid() ? orgTaryf.vart_kuba_GV : 0);
 	
 	//Нараховані суми
 	query->exec("SELECT Narah_opal, Kilkist_tepla_opal, Narah_voda, Kilkist_tepla_gar_voda \
@@ -1548,17 +1540,14 @@ void tke_MainWindow_org::narahNarahPidrozdily()
 		monthTemper[narahTempQuery->value(0).toInt()-1] = narahTempQuery->value(1).toDouble();
 	
 	numDaysOpalNoLich = ui.tableWidget_dni_opal_narah_pidrozdily->item(0,1)->text().toInt();
-	narahTempQuery->exec("SELECT vart_kvadr_CO FROM normat_taryf_organiz \
-								WHERE (year="+QVariant(year).toString()+" and month<="+QVariant(month).toString()+") \
-										or (year<"+QVariant(year).toString()+") \
-								ORDER BY year DESC, month DESC");
-	narahTempQuery->seek(0);
-	double taryfCOKvadr = narahTempQuery->value(0).toDouble();
+	
+	UOrgTaryfInfo orgTaryf(year, month);
+	
 	narahTempQuery->exec("SELECT * FROM pidrozdily WHERE id="+ui.tableWidget_pidrozdily_narah_pidrozdily->
 								item(ui.tableWidget_pidrozdily_narah_pidrozdily->currentRow(),0)->text());
 	if (numDaysOpalNoLich>0 && narahTempQuery->seek(0)){
 		if (narahTempQuery->value(13).toInt() == 0){
-			narahNoLich = narahTempQuery->value(5).toDouble() * taryfCOKvadr * numDaysOpalNoLich / QDate(year,month,1).daysInMonth();
+			narahNoLich = narahTempQuery->value(5).toDouble() * orgTaryf.vart_kvadr_CO * numDaysOpalNoLich / QDate(year,month,1).daysInMonth();
 		}
 		else if (narahTempQuery->value(13).toInt() == 1){
 			tSum=0;
@@ -1923,7 +1912,7 @@ void tke_MainWindow_org::action_narah_opal_activated()
 	//Створення і інціалізація змінних, які використовуються в нарахуванні
 	double *monthTemper = new double[31];
 	double kilkistTeplaLich=0, kilkistTeplaNoLich=0, zagalnKilkistTepla=0;
-	double taryf, taryfCOKvadr, teplNavantaj, tVnutr, tp0, narahLich, narahNoLich, zagalnNarah, tSum;
+	double teplNavantaj, tVnutr, tp0, narahLich, narahNoLich, zagalnNarah, tSum;
 	int numDaysOpalLich, numDaysOpalNolich;
 		//ініціалізація метеорологічних показників обраного місяця
 	for (int i=0; i<31; i++)
@@ -1934,16 +1923,9 @@ void tke_MainWindow_org::action_narah_opal_activated()
 	narahTempQuery->seek(-1);
 	while (narahTempQuery->next())
 		monthTemper[narahTempQuery->value(0).toInt()-1] = narahTempQuery->value(1).toDouble();
-		//ініціалізація тарифу
-	narahTempQuery->exec("SELECT vart_g_kal, vart_kvadr_CO FROM normat_taryf_organiz \
-								WHERE (year="+QVariant(year).toString()+" and month<="+QVariant(month).toString()+") \
-										or (year<"+QVariant(year).toString()+") \
-								ORDER BY year DESC, month DESC");
 	
-	narahTempQuery->seek(0);
-	taryf = narahTempQuery->value(0).toDouble();
-	taryfCOKvadr = narahTempQuery->value(1).toDouble();
-	qDebug() << "Taryf = " + uMToStr2(taryf);
+	UOrgTaryfInfo orgTaryf(year, month);
+	qDebug() << "Taryf = " + uMToStr2(orgTaryf.vart_g_kal(FinaceTypeAny));
 	
 	narahPidrozdilyQuery->exec("SELECT * FROM pidrozdily WHERE Opal=1");
 	narahPidrozdilyQuery->seek(-1);
@@ -1971,7 +1953,7 @@ void tke_MainWindow_org::action_narah_opal_activated()
 		//Розрахунок (при потребі) нарахування по метеорологічних показниках (без лічильника)
 		if (numDaysOpalNolich>0){
 			if (narahPidrozdilyQuery->value(13).toInt() == 0){
-				narahNoLich = narahPidrozdilyQuery->value(5).toDouble() * taryfCOKvadr * numDaysOpalNolich / QDate(year,month,1).daysInMonth();
+				narahNoLich = narahPidrozdilyQuery->value(5).toDouble() * orgTaryf.vart_kvadr_CO * numDaysOpalNolich / QDate(year,month,1).daysInMonth();
 			}
 			else if (narahPidrozdilyQuery->value(13).toInt() == 1){
 				tSum=0;
@@ -2000,7 +1982,7 @@ void tke_MainWindow_org::action_narah_opal_activated()
 			
 				//Обчислення нарахування (без лічильника)
 				kilkistTeplaNoLich = teplNavantaj * (tVnutr-tp0) * numDaysOpalNolich * 24 / (tVnutr-Tcp);
-				narahNoLich = kilkistTeplaNoLich * taryf;
+				narahNoLich = kilkistTeplaNoLich * orgTaryf.vart_g_kal(financeTypeForOrganiz(narahPidrozdilyQuery->value(1).toInt())); 
 				//  . . . .  . . . . . . . . . . . . . . . . . . . . . . . . . .
 			}
 			else{
@@ -2028,7 +2010,7 @@ void tke_MainWindow_org::action_narah_opal_activated()
 			koefPereved = narahPidrozdilyQuery->value(12).toDouble();
 			//Обчислення нарахування (по лічильника)
 			kilkistTeplaNoLich = osnKilkTepla + dodKilkTepla;
-			narahLich = kilkistTeplaNoLich * taryf;
+			narahLich = kilkistTeplaNoLich * orgTaryf.vart_g_kal(financeTypeForOrganiz(narahPidrozdilyQuery->value(1).toInt()));
 			if (narahLich<0)
 				narahLich=0;
 			//  . . . .  . . . . . . . . . . . . . . . . . . . . . . . . . .
@@ -2107,15 +2089,7 @@ void tke_MainWindow_org::action_narah_gar_voda_activated()
 	UPostupForm *postupForm = new UPostupForm(0, narahPidrozdilyQuery->value(0).toInt());
 	postupForm->show();
 	
-		//ініціалізація тарифу
-	query->exec("SELECT vart_g_kal_gar_vody, vart_kuba_GV FROM normat_taryf_organiz \
-								WHERE (year="+QVariant(year).toString()+" and month<="+QVariant(month).toString()+") \
-										or (year<"+QVariant(year).toString()+") \
-								ORDER BY year DESC, month DESC");
-	
-	query->seek(0);
-	double taryfGarVoda = query->value(0).toDouble();
-	double taryfGarVodaKub = query->value(1).toDouble();
+	UOrgTaryfInfo orgTaryf(year, month);
 	double narahGarVoda, kilkistTeplaGarVoda;
 	
 	narahPidrozdilyQuery->exec("SELECT id FROM pidrozdily WHERE Gar_voda=true");
@@ -2129,10 +2103,10 @@ void tke_MainWindow_org::action_narah_gar_voda_activated()
 		if (query->seek(0)){
 			kilkistTeplaGarVoda=(query->value(1).toDouble()-query->value(0).toDouble())*0.05+ //по лічильнику
 							query->value(2).toDouble()*2.375;	//по кількості білизни
-			narahGarVoda = d_to_m(kilkistTeplaGarVoda * taryfGarVoda);
+			narahGarVoda = d_to_m(kilkistTeplaGarVoda * orgTaryf.vart_g_kal_gar_vody);
 			if (narahGarVoda<0)
 				narahGarVoda=0;
-			double narahGarVodaKub = (query->value(4).toDouble()-query->value(3).toDouble()) * taryfGarVodaKub;
+			double narahGarVodaKub = (query->value(4).toDouble()-query->value(3).toDouble()) * orgTaryf.vart_kuba_GV;
 			if (narahGarVodaKub>0)
 				narahGarVoda += narahGarVodaKub;
 		}
@@ -2742,14 +2716,8 @@ void tke_MainWindow_org::pokazLichDateChanged()
 	month = ui.spinBox_month_pokaz_lich->value();
 	year = ui.spinBox_year_pokaz_lich->value();
 	
-	QSqlQuery * tQuery = new QSqlQuery();
-	tQuery->exec("SELECT vart_g_kal FROM normat_taryf_organiz \
-								WHERE (year="+QVariant(year).toString()+" and month<="+QVariant(month).toString()+") \
-										or (year<"+QVariant(year).toString()+") \
-								ORDER BY year DESC, month DESC" );
-	tQuery->seek(0);
-	ui.pokaz_lich_label_norm_taryf_gkal->setText ( codec->toUnicode("ГКал.:") + uMToStr2(tQuery->value(0).toDouble()) );
-	delete tQuery;
+	UOrgTaryfInfo orgTaryf(year, month);
+	ui.pokaz_lich_label_norm_taryf_gkal->setText ( codec->toUnicode("ГКал.:") + uMToStr2(orgTaryf.vart_g_kal(FinaceTypeAny)) );
 }
 //------------------------------------------------------------
 void tke_MainWindow_org::pokazLichGarVodaDateChanged()
@@ -2772,14 +2740,8 @@ void tke_MainWindow_org::pokazLichGarVodaDateChanged()
 	month = ui.spinBox_month_pokaz_lich_gar_voda->value();
 	year = ui.spinBox_year_pokaz_lich_gar_voda->value();
 	
-	QSqlQuery * tQuery = new QSqlQuery();
-	tQuery->exec("SELECT vart_g_kal_gar_vody, vart_kuba_GV FROM normat_taryf_organiz \
-								WHERE (year="+QVariant(year).toString()+" and month<="+QVariant(month).toString()+") \
-										or (year<"+QVariant(year).toString()+") \
-								ORDER BY year DESC, month DESC" );
-	tQuery->seek(0);
-	ui.pokaz_lich_label_norm_taryf_gkal_gar_voda->setText ( "ГКал.:" + uMToStr2(tQuery->value(0).toDouble())+"; Куб.ГВ:"+uMToStr2(tQuery->value(1).toDouble()) );
-	delete tQuery;
+	UOrgTaryfInfo orgTaryf(year, month);
+	ui.pokaz_lich_label_norm_taryf_gkal_gar_voda->setText( "ГКал.:" + uMToStr2(orgTaryf.vart_g_kal_gar_vody)+"; Куб.ГВ:"+uMToStr2(orgTaryf.vart_kuba_GV) );
 }
 //------------------------------------------------------------
 void tke_MainWindow_org::meteorDateChanged()

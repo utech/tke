@@ -16,13 +16,18 @@ UTaryf_Delegate::UTaryf_Delegate(QObject *parent)
 	durationColumn_4 = 4;
 	durationColumn_5 = 5;
 	durationColumn_6 = 6;
+	durationColumn_7 = 7;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void UTaryf_Delegate::paint(QPainter *painter,
                           const QStyleOptionViewItem &option,
                           const QModelIndex &index) const
 {
-    if ( (index.column() == durationColumn_3) || (index.column() == durationColumn_4) || (index.column() == durationColumn_5) || (index.column() == durationColumn_6)){
+    if ( (index.column() == durationColumn_3) 
+		|| (index.column() == durationColumn_4) 
+		|| (index.column() == durationColumn_5) 
+		|| (index.column() == durationColumn_6)
+		|| (index.column() == durationColumn_7)){
         double number = index.model()->data(index, Qt::DisplayRole).toDouble();
         QString text = uMToStr2(number);
         QStyleOptionViewItem myOption = option;
@@ -57,7 +62,11 @@ QWidget *UTaryf_Delegate::createEditor(QWidget *parent,
         return spinbox;
     }
 	//taryfy part -- dlya dvoh vydiv cin
-	else if ( (index.column() == durationColumn_3) || (index.column() == durationColumn_4) || (index.column() == durationColumn_5) || (index.column() == durationColumn_6) ) {
+	else if ( (index.column() == durationColumn_3) 
+				|| (index.column() == durationColumn_4) 
+				|| (index.column() == durationColumn_5) 
+				|| (index.column() == durationColumn_6)
+				|| (index.column() == durationColumn_7)) {
         QDoubleSpinBox *double_spinbox = new QDoubleSpinBox(parent);
         double_spinbox->setMaximum ( 1000 );
 		double_spinbox->setMinimum ( 0 );
@@ -89,7 +98,11 @@ void UTaryf_Delegate::setEditorData(QWidget *editor,
 		spinbox->selectAll();
     }
 	//taryfy part -- dlya dvoh vydiv cin
-	else if ((index.column() == durationColumn_3) || (index.column() == durationColumn_4) || (index.column() == durationColumn_5) || (index.column() == durationColumn_6)) {
+	else if ((index.column() == durationColumn_3) 
+				|| (index.column() == durationColumn_4) 
+				|| (index.column() == durationColumn_5) 
+				|| (index.column() == durationColumn_6)
+				|| (index.column() == durationColumn_7)) {
         double value = index.model()->data(index, Qt::DisplayRole).toDouble();
         QDoubleSpinBox *double_spinbox = qobject_cast<QDoubleSpinBox *>(editor);
         double_spinbox->setValue(value);
@@ -118,7 +131,11 @@ void UTaryf_Delegate::setModelData(QWidget *editor,
         model->setData(index, month);
     }
 	//taryfy part -- dlya dvoh vydiv cin
-	else if ((index.column() == durationColumn_3) || (index.column() == durationColumn_4) || (index.column() == durationColumn_5) || (index.column() == durationColumn_6)) {
+	else if ((index.column() == durationColumn_3) 
+			|| (index.column() == durationColumn_4) 
+			|| (index.column() == durationColumn_5) 
+			|| (index.column() == durationColumn_6)
+			|| (index.column() == durationColumn_7)) {
         QDoubleSpinBox *double_spinbox = qobject_cast<QDoubleSpinBox *>(editor);
 		double value= double_spinbox->value();
         model->setData(index, value);
