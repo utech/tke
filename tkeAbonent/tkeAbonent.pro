@@ -1,5 +1,5 @@
-CONFIG		+= release
-CONFIG		-= debug debug_and_release debug_and_release_target
+#CONFIG		+= release
+#CONFIG		-= debug debug_and_release debug_and_release_target
 
 include(../../UtechLib/UtechLib.pri)
 
@@ -15,7 +15,7 @@ DEPENDPATH += . ../tkeOrganizacii \
 				../src_other/UPopulateTableCells \
 				../
 INCLUDEPATH +=   . ../
-QT +=   sql script
+QT +=   sql script network
 CONFIG += assistant
 HEADERS +=   db_own.h \
   tke_dialog_change_password.h \

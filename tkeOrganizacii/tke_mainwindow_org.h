@@ -18,7 +18,7 @@
 #include <QMessageBox>
 #include <QSqlError>
 #include <QHash>
-#include <QAssistantClient>
+//#include <QAssistantClient>
 
 #include "ui_tke_mainwindow_org.h"
 #include "tke_dialog_edit_pidrozdil.h"
@@ -206,7 +206,7 @@ class Browser;
 		QPushButton *calculatorButton;
 		QHash<int, QObject *> *controlObjectsHash;
 		
-		QAssistantClient *assistant;
+        //QAssistantClient *assistant;
 		
 		Browser* browser;
 		bool IRC;

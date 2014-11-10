@@ -2491,7 +2491,8 @@ void tke_MainWindow_org::action_saveDatabase_activated()
 //------------------------------------------------------------
 void tke_MainWindow_org::action_assistent_activated()
 {
-	QStringList list;
+    /*
+    QStringList list;
 	list << "-profile" << "../docs/tkeAssistant.adp";
 	if (assistant == NULL){
 		assistant = new QAssistantClient("./", this);
@@ -2499,6 +2500,9 @@ void tke_MainWindow_org::action_assistent_activated()
 		connect(this, SIGNAL(mainWindowClosed()), assistant, SLOT(closeAssistant()));
 	}
 	assistant->openAssistant();
+    */
+
+    QMessageBox::information(this, "Not implemented", "Functionality not implemeted");
 }
 //------------------------------------------------------------
 void tke_MainWindow_org::action_about_activated()

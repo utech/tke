@@ -690,7 +690,7 @@ void tke_MainWindow::action_print_rahunok_abonenta_activated()
 	blockFormat.setAlignment( Qt::AlignRight );
 	cursor.setBlockFormat( blockFormat );
 	textCharFormat.setFontPointSize( 7 );
-	cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"УТЕХ\". веб: www.utech.in.ua). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
+	cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"АбонПро\". веб: www.abonpro.com). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
 	cursor.insertBlock(blockFormat);
 	cursor.insertBlock(blockFormat);
 	blockFormat.setAlignment( Qt::AlignLeft );

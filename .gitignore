@@ -4,3 +4,11 @@ bin/tkeOrganizacii.exe
 bin/tkeQtSqlBrowser.exe
 dst/*.exe
 tmp/
+
+Makefile
+*.pro.user
+*.Debug
+*.Release
+*.exe
+
+bin/tkeDBUpdateResults.tkeDB

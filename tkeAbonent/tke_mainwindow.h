@@ -34,7 +34,7 @@
 #include <QTextCharFormat>
 #include <QList>
 #include <QFileDialog>
-#include <QAssistantClient>
+//#include <QAssistantClient>
 #include <QSqlError>
 #include <QSettings>
 #include <QProcess>
@@ -335,7 +335,7 @@ class Browser;
 		
 		bool IRC;
 		
-		QAssistantClient *assistant;
+        //QAssistantClient *assistant;
 		
 		QSqlQuery *abonent_select_query;
 		QSqlQuery *abonent_temp_query;

@@ -3602,7 +3602,7 @@ void UPrintDocs::print_zvit_forma_n_2_pilga_2007(int year, int month)
 			firstHeader = false;
 			
 			textCharFormat.setFontPointSize( 8 );
-			cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (автор Компанія \"УТЕХ\". веб: www.utech.in.ua). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
+            cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"АбонПро\". веб: www.abonpro.com). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
 			cursor.insertBlock(blockFormat);
 			cursor.insertBlock(blockFormat);
 			//Затверджено
@@ -4364,7 +4364,7 @@ void UPrintDocs::print_vidnoshennya_pro_vidshkoduvannya_pilg_CO(int year, int mo
 	blockFormat.setAlignment( Qt::AlignRight );
 	cursor.setBlockFormat( blockFormat );
 	textCharFormat.setFontPointSize( 8 );
-	cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (автор Компанія \"УТЕХ\". веб: www.utech.in.ua). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
+    cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"АбонПро\". веб: www.abonpro.com). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
 	cursor.insertBlock(blockFormat);
 	cursor.insertBlock(blockFormat);
 	//Затверджено
@@ -4993,7 +4993,7 @@ void UPrintDocs::print_vidomist_pererahunku_pilg_CO(int year, int month)
 	blockFormat.setAlignment( Qt::AlignRight );
 	cursor.setBlockFormat( blockFormat );
 	textCharFormat.setFontPointSize( 8 );
-	cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (автор Компанія \"УТЕХ\". веб: www.utech.in.ua). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
+    cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"АбонПро\". веб: www.abonpro.com). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
 	cursor.insertBlock(blockFormat);
 	blockFormat.setAlignment( Qt::AlignCenter );
 	cursor.insertBlock(blockFormat);
@@ -5459,7 +5459,7 @@ void UPrintDocs::print_vidnoshennya_pro_vidshkoduvannya_pilg_GV(int year, int mo
 	blockFormat.setAlignment( Qt::AlignRight );
 	cursor.setBlockFormat( blockFormat );
 	textCharFormat.setFontPointSize( 8 );
-	cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (автор Компанія \"УТЕХ\". веб: www.utech.in.ua). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
+    cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"АбонПро\". веб: www.abonpro.com). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
 	cursor.insertBlock(blockFormat);
 	cursor.insertBlock(blockFormat);
 	cursor.insertBlock(blockFormat);
@@ -5883,7 +5883,7 @@ void UPrintDocs::print_vidomist_pererahunku_pilg_GV(int year, int month)
 	blockFormat.setAlignment( Qt::AlignRight );
 	cursor.setBlockFormat( blockFormat );
 	textCharFormat.setFontPointSize( 8 );
-	cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (автор Компанія \"УТЕХ\". веб: www.utech.in.ua). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
+    cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"АбонПро\". веб: www.abonpro.com). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
 	cursor.insertBlock(blockFormat);
 	blockFormat.setAlignment( Qt::AlignCenter );
 	cursor.insertBlock(blockFormat);
@@ -6341,7 +6341,7 @@ void UPrintDocs::print_dovidka_u_viddil_subs(int rahunok, int year, int month, d
 	textCharFormat.setFontPointSize( 7 );
 	
 	//cursor.insertBlock(blockFormat);
-	cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"УТЕХ\". веб: www.utech.in.ua). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р.      _" , textCharFormat);
+    cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"АбонПро\". веб: www.abonpro.com). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р.      _" , textCharFormat);
 	blockFormat.setAlignment( Qt::AlignLeft );
 	cursor.insertBlock(blockFormat);
 	QSqlQuery *query = new QSqlQuery;
@@ -6445,7 +6445,7 @@ void UPrintDocs::print_dovidka_u_viddil_subs_2(int rahunok, int year, int month,
 	textCharFormat.setFontPointSize( 7 );
 	
 	//cursor.insertBlock(blockFormat);
-	cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"УТЕХ\". веб: www.utech.in.ua). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р.      _" , textCharFormat);
+    cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"АбонПро\". веб: www.abonpro.com). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р.      _" , textCharFormat);
 	cursor.insertBlock(blockFormat);
 	blockFormat.setAlignment( Qt::AlignLeft );
 	QSqlQuery *query = new QSqlQuery;
@@ -6666,7 +6666,7 @@ void UPrintDocs::print_zagalna_vidomist_narahuvannya_i_postuplennya(int year, in
 	blockFormat.setAlignment( Qt::AlignRight );
 	cursor.setBlockFormat( blockFormat );
 	textCharFormat.setFontPointSize( 7 );
-	cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"УТЕХ\". веб: www.utech.in.ua). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
+    cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"АбонПро\". веб: www.abonpro.com). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
 	blockFormat.setAlignment( Qt::AlignLeft );
 	cursor.insertBlock(blockFormat);
 	textCharFormat.setFontPointSize( 3 );
@@ -8370,7 +8370,7 @@ void UPrintDocs::print_vidomost_narahuvannya_dlya_abon_z_lich(short year, short 
 	blockFormat.setAlignment( Qt::AlignRight );
 	cursor.setBlockFormat( blockFormat );
 	textCharFormat.setFontPointSize( 7 );
-	cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"УТЕХ\". веб: www.utech.in.ua). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
+    cursor.insertText("Сформовано ПК \"ТКЕнерго менеджер\" (супровід Компанія \"АбонПро\". веб: www.abonpro.com). Час формування: "+QDateTime::currentDateTime().toString("hh:mm dd.MM.yyyy")+"р." , textCharFormat);
 	blockFormat.setAlignment( Qt::AlignLeft );
 	cursor.insertBlock(blockFormat);
 	cursor.insertText(" ",textCharFormat);

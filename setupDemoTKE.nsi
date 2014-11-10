@@ -3,9 +3,9 @@
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "ТКЕнерго менеджер (Демо)"
 !define PRODUCT_VERSION "2.4.48"
-!define PRODUCT_PUBLISHER "Компанія УТЕХ"
-!define PRODUCT_WEB_SITE "http://tke.utech.in.ua"
-!define PRODUCT_UNINST_KEY "Software\UTech\tke\Uninstall\${PRODUCT_NAME}"
+!define PRODUCT_PUBLISHER "Компанія АбонПро"
+!define PRODUCT_WEB_SITE "http://abonpro.com"
+!define PRODUCT_UNINST_KEY "Software\AbonPro\tke\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 !define PRODUCT_STARTMENU_REGVAL "NSIS:StartMenuDir"
 

@@ -46,7 +46,7 @@ tke_MainWindow::tke_MainWindow(QWidget *parent)
 	
 	loadGUISettingsFromIni();
 	
-	assistant = NULL;
+    //assistant = NULL;
 	
 	setSettingsFromIni();
 	curDateChanged();
