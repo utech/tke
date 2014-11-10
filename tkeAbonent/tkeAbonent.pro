@@ -4,7 +4,7 @@
 include(../../UtechLib/UtechLib.pri)
 
 TEMPLATE =   app
-TARGET = 
+TARGET = tkeAbonent
 DEPENDPATH += . ../tkeOrganizacii \
 				../tkeSqlBrowser/src \
 				../tkeSqlBrowser/ui \
@@ -16,6 +16,12 @@ DEPENDPATH += . ../tkeOrganizacii \
 				../
 INCLUDEPATH +=   . ../
 QT +=   sql script network
+
+CONFIG(debug, debug|release) {
+    win32: TARGET = $$join(TARGET,,,d)
+    unix: TARGET = $$join(TARGET,,,_debug)
+}
+
 CONFIG += assistant
 HEADERS +=   db_own.h \
   tke_dialog_change_password.h \
@@ -182,8 +188,17 @@ DESTDIR =   ../bin
 
 #CONFIG +=console
 
-OBJECTS_DIR = ../tmp
-MOC_DIR = ../tmp
-UI_HEADERS_DIR = ../tmp
-UI_SOURCES_DIR = ../tmp
-RCC_DIR = ../tmp
+CONFIG(debug, debug|release) {
+    OBJECTS_DIR = ../tmpd
+    MOC_DIR = ../tmpd
+    UI_HEADERS_DIR = ../tmpd
+    UI_SOURCES_DIR = ../tmpd
+    RCC_DIR = ../tmpd
+}
+else {
+    OBJECTS_DIR = ../tmp
+    MOC_DIR = ../tmp
+    UI_HEADERS_DIR = ../tmp
+    UI_SOURCES_DIR = ../tmp
+    RCC_DIR = ../tmp
+}

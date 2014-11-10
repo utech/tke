@@ -1,13 +1,19 @@
-CONFIG		+= release
-CONFIG		-= debug debug_and_release debug_and_release_target
+#CONFIG		+= release
+#CONFIG		-= debug debug_and_release debug_and_release_target
 
 include(../../../UtechLib/UtechLib.pri)
 
 TEMPLATE = app
-TARGET = 
+TARGET = configure
 DEPENDPATH += . ../../tkeAbonent ../../tkeOrganizacii
 INCLUDEPATH += .
 QT += sql
+
+CONFIG(debug, debug|release) {
+    win32: TARGET = $$join(TARGET,,,d)
+    unix: TARGET = $$join(TARGET,,,_debug)
+}
+
 # Input
 HEADERS += qtwizard.h \
 			usettings.h \
@@ -27,8 +33,18 @@ RESOURCES +=   tke/tke_rc
 
 RC_FILE +=   prog_icon_conf.rc
 
-OBJECTS_DIR = ../../tmp
-MOC_DIR = ../../tmp
-UI_HEADERS_DIR = ../../tmp
-UI_SOURCES_DIR = ../../tmp
-RCC_DIR = ../../tmp
+CONFIG(debug, debug|release) {
+    OBJECTS_DIR = ../../tmpd/configure
+    MOC_DIR = ../../tmpd/configure
+    UI_HEADERS_DIR = ../../tmpd/configure
+    UI_SOURCES_DIR = ../../tmpd/configure
+    RCC_DIR = ../../tmpd/configure
+}
+else {
+    OBJECTS_DIR = ../../tmp/configure
+    MOC_DIR = ../../tmp/configure
+    UI_HEADERS_DIR = ../../tmp/configure
+    UI_SOURCES_DIR = ../../tmp/configure
+    RCC_DIR = ../../tmp/configure
+}
+

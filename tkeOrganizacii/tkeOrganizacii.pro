@@ -1,10 +1,10 @@
-CONFIG		+= release
-CONFIG		-= debug debug_and_release debug_and_release_target
+#CONFIG		+= release
+#CONFIG		-= debug debug_and_release debug_and_release_target
 
 include(../../UtechLib/UtechLib.pri)
 
 TEMPLATE =   app
-TARGET = 
+TARGET = tkeOrganizacii
 DEPENDPATH += . ../tkeAbonent \
 				../tkeSqlBrowser/src \
 				../tkeSqlBrowser/ui \
@@ -15,6 +15,11 @@ INCLUDEPATH +=   . \
                 ../src_other/replaceStrings
 QT +=   sql
 CONFIG += assistant
+
+CONFIG(debug, debug|release) {
+    win32: TARGET = $$join(TARGET,,,d)
+    unix: TARGET = $$join(TARGET,,,_debug)
+}
 
 HEADERS +=   db_own.h \
   tke_mainwindow_org.h \
@@ -94,8 +99,17 @@ RESOURCES +=   tke_rc
 RC_FILE =   prog_icon_org.rc
 DESTDIR =   ../bin
 
-OBJECTS_DIR = ../tmp
-MOC_DIR = ../tmp
-UI_HEADERS_DIR = ../tmp
-UI_SOURCES_DIR = ../tmp
-RCC_DIR = ../tmp
+CONFIG(debug, debug|release) {
+    OBJECTS_DIR = ../tmpd
+    MOC_DIR = ../tmpd
+    UI_HEADERS_DIR = ../tmpd
+    UI_SOURCES_DIR = ../tmpd
+    RCC_DIR = ../tmpd
+}
+else {
+    OBJECTS_DIR = ../tmp
+    MOC_DIR = ../tmp
+    UI_HEADERS_DIR = ../tmp
+    UI_SOURCES_DIR = ../tmp
+    RCC_DIR = ../tmp
+}

@@ -12,3 +12,4 @@ Makefile
 *.exe
 
 bin/tkeDBUpdateResults.tkeDB
+*.ldb
