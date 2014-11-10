@@ -2,6 +2,8 @@ DEFINES += TKE_DEMO
 
 include(../tkeOrganizacii.pro)
 
+TARGET = tkeOrganizaciiDemo
+
 DEPENDPATH += . ../ \
 				../../tkeAbonent \
 				../../tkeSqlBrowser/src \

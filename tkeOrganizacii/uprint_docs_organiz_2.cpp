@@ -8,7 +8,7 @@
 #include <UPopulateTextTableCells>
 #include <USqlAccessible>
 
-#include "UReplaceStringsParser.h"
+#include "../src_other/replaceStrings/UReplaceStringsParser.h"
 
 //------------------------------------------------------------
 void UPrintDocsOrganiz::print_podatkova_nakladna(int cur_year, int cur_month, int ugodaNum, double sumCO, double sumGV)
