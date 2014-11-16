@@ -9,6 +9,7 @@
 #include "tke_mainwindow_org.h"
 #include "../tkeSqlBrowser/src/browser.h"
 #include "tke_dialog_print_nakladna.h"
+#include "tke_dialog_edit_bank_rahunky.h"
 
 //------------------------------------------------------------
 tke_MainWindow_org::tke_MainWindow_org(QWidget *parent)
@@ -332,6 +333,8 @@ tke_MainWindow_org::tke_MainWindow_org(QWidget *parent)
 	connect(ui.action_pererah_vhidnyh_saldo_usih_ugod, SIGNAL(activated()), this, SLOT(action_pererah_vhidnyh_saldo_usih_ugod_activated()));  
 	
 	connect(ui.action_Options, SIGNAL(activated()), this, SLOT(action_Options_activated()));
+    connect(ui.action_bank_rahunky, SIGNAL(activated()), this, SLOT(action_bank_rahunky_activated()));
+
 	connect(ui.action_saveDatabase, SIGNAL(activated()), this, SLOT(action_saveDatabase_activated()));
 	connect(ui.action_assistent,SIGNAL(activated()),this,SLOT(action_assistent_activated()));
 	connect(ui.action_about,SIGNAL(activated()),this,SLOT(action_about_activated()));
@@ -2482,6 +2485,15 @@ void tke_MainWindow_org::action_Options_activated()
 	connect(dOptions, SIGNAL(requestReloadIniSettings()), this, SLOT(loadGUISettingsFromIni()));
 	dOptions->exec();
 	delete dOptions;
+}
+//------------------------------------------------------------
+void tke_MainWindow_org::action_bank_rahunky_activated()
+{
+    tke_dialog_edit_bank_rahunky* d = new tke_dialog_edit_bank_rahunky();
+    connect(this, SIGNAL(closeLoginSignal()), d, SLOT(close()));
+    connect(this, SIGNAL(mainWindowClosed()), d, SLOT(close()));
+    d->exec();
+    delete d;
 }
 //------------------------------------------------------------
 void tke_MainWindow_org::action_saveDatabase_activated()

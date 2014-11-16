@@ -81,7 +81,8 @@ HEADERS +=   db_own.h \
   UForm_fillSubsDbfSpojyvannyaCO.h \
   tke_form_printCustomKvyt.h \
   tke_form_recalc_obsyag_gazu.h \
-  tke_dialog_budynok_or_abonent.h
+  tke_dialog_budynok_or_abonent.h \
+  tke_form_fill_subs_narah.h
 FORMS +=   tke_dialog_change_password.ui \
   tke_form_posada.ui \
   tke_dialog_login.ui \
@@ -116,7 +117,8 @@ FORMS +=   tke_dialog_change_password.ui \
   UForm_fillSubsDbfSpojyvannyaCO.ui \
   tke_form_printCustomKvyt.ui \
   tke_form_recalc_obsyag_gazu.ui \
-  tke_dialog_budynok_or_abonent.ui
+  tke_dialog_budynok_or_abonent.ui \
+  tke_form_fill_subs_narah.ui
 SOURCES +=   db_own.cpp \
   mainA.cpp \
   tke_dialog_change_password.cpp \
@@ -181,7 +183,8 @@ SOURCES +=   db_own.cpp \
   UForm_fillSubsDbfSpojyvannyaCO.cpp \
   tke_form_printCustomKvyt.cpp \
   tke_form_recalc_obsyag_gazu.cpp \
-  tke_dialog_budynok_or_abonent.cpp
+  tke_dialog_budynok_or_abonent.cpp \
+  tke_form_fill_subs_narah.cpp
 RESOURCES +=   tke_rc
 RC_FILE =   prog_icon_abon.rc
 DESTDIR =   ../bin

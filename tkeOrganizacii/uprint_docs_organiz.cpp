@@ -6,6 +6,7 @@
 
 #include "uprint_docs_organiz.h"
 #include <UPopulateTextTableCells>
+#include <USqlAccessible>
 
 //------------------------------------------------------------
 UPrintDocsOrganiz::UPrintDocsOrganiz()
@@ -2509,6 +2510,38 @@ void UPrintDocsOrganiz::print_rahunok_1(int cur_year, int cur_month, int ugodaNu
 		}
 	}
 	
+    query->exec("SELECT organizacii.Nazva, organizacii.Date_ugody, banky.Nazva, banky.Mfo, \
+                    organizacii.Rozr_rah, organizacii.Edrpou, organizacii.Finans \
+                FROM organizacii \
+                LEFT JOIN banky \
+                    ON banky.id=organizacii.Bank_ID \
+                WHERE organizacii.Ugoda="+QVariant(ugodaNum).toString());
+    query->next();
+
+    int iFinansType = query->value(6).toInt();
+    int iRahunokTypeID = 0;
+
+    switch (iFinansType)
+    {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+        iRahunokTypeID = 1;
+        break;
+    case 5:
+        iRahunokTypeID = 2;
+        break;
+    case 6:
+    default:
+        iRahunokTypeID = 3;
+        break;
+    }
+
+    QSqlQuery bankRahQuery;
+    bankRahQuery.exec("SELECT BankName, Rahunok, Mfo FROM bankRahunky WHERE RahTypeId="+sqlStr(iRahunokTypeID));
+    bankRahQuery.next();
+
 	//Частина постачальника
 	cursor.insertText(codec->toUnicode(" "), textCharFormat_small);
 	cursor.insertHtml("<hr>");
@@ -2525,9 +2558,11 @@ void UPrintDocsOrganiz::print_rahunok_1(int cur_year, int cur_month, int ugodaNu
 	cursor.insertText(OrganizEMail(), textCharFormat);
 	cursor.insertBlock(blockFormat);
 	cursor.insertText(codec->toUnicode("		Банк: "), textCharFormat_italic);
-	cursor.insertText(OrganizBank(), textCharFormat);
+    cursor.insertText(bankRahQuery.value(0).toString(), textCharFormat);
+    cursor.insertText(codec->toUnicode(", МФО: "), textCharFormat_italic);
+    cursor.insertText(bankRahQuery.value(2).toString(), textCharFormat);
 	cursor.insertText(codec->toUnicode(", р/р:"), textCharFormat_italic);
-	cursor.insertText(OrganizRozrahRahunok(), textCharFormat);
+    cursor.insertText(bankRahQuery.value(1).toString(), textCharFormat);
 	cursor.insertBlock(blockFormat);
 	cursor.insertText(codec->toUnicode("		ЄДРПОУ: "), textCharFormat_italic);
 	cursor.insertText(OrganizEDRPOU(), textCharFormat);
@@ -2546,13 +2581,6 @@ void UPrintDocsOrganiz::print_rahunok_1(int cur_year, int cur_month, int ugodaNu
 	cursor.insertBlock(blockFormat);
 	
 	//Частина замовника
-	query->exec("SELECT organizacii.Nazva, organizacii.Date_ugody, banky.Nazva, banky.Mfo, \
-					organizacii.Rozr_rah, organizacii.Edrpou, organizacii.Finans \
-				FROM organizacii \
-				LEFT JOIN banky \
-					ON banky.id=organizacii.Bank_ID \
-				WHERE organizacii.Ugoda="+QVariant(ugodaNum).toString());
-	query->seek(0);
 	bool isNasel = false;
 	if (query->value(6).toInt() == 6)
 		isNasel = true;
@@ -2723,11 +2751,16 @@ void UPrintDocsOrganiz::print_rahunok_1(int cur_year, int cur_month, int ugodaNu
 		cellCursor = cell.firstCursorPosition();
 		blockFormat.setAlignment( Qt::AlignCenter );
 		cellCursor.setBlockFormat( blockFormat );
-		cellCursor.insertText('\n'+uMToStr2(narahOpal/(isNasel ? taryfNas.vart_g_kal : gKalOpal)), textCharFormat);
-		if (isGV)
-			cellCursor.insertText('\n'+uMToStr2(narahVoda/gKalVoda), textCharFormat);
+
+        double dKstTeplaOpal = narahOpal/(isNasel ? taryfNas.vart_g_kal : gKalOpal);
+        cellCursor.insertText('\n'+QString::number(dKstTeplaOpal, 'f', 4), textCharFormat);
+
+        if (isGV)
+        {
+            double dKstTeplaGV = narahVoda != 0 ? narahVoda/gKalVoda : 0;
+            cellCursor.insertText('\n'+QString::number(dKstTeplaGV, 'f', 4), textCharFormat);
+        }
 		//qDebug() << "narahOpal: " << narahOpal<< " gKalOpal: " << gKalOpal<< " narahVoda: " << narahVoda<< " gKalVoda: " << gKalVoda;
-		
 		
 		//Оплата за місяць
 		query->exec("SELECT sum(oplata.Suma) \
@@ -2865,6 +2898,38 @@ void UPrintDocsOrganiz::print_rahunok_2(int cur_year, int cur_month, int ugodaNu
 			isGV = isGV || query->value(0).toBool();
 		}
 	}
+
+    query->exec("SELECT organizacii.Nazva, organizacii.Date_ugody, banky.Nazva, banky.Mfo, \
+                    organizacii.Rozr_rah, organizacii.Edrpou, organizacii.Finans \
+                FROM organizacii \
+                LEFT JOIN banky \
+                    ON banky.id=organizacii.Bank_ID \
+                WHERE organizacii.Ugoda="+QVariant(ugodaNum).toString());
+    query->next();
+
+    int iFinansType = query->value(6).toInt();
+    int iRahunokTypeID = 0;
+
+    switch (iFinansType)
+    {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+        iRahunokTypeID = 1;
+        break;
+    case 5:
+        iRahunokTypeID = 2;
+        break;
+    case 6:
+    default:
+        iRahunokTypeID = 3;
+        break;
+    }
+
+    QSqlQuery bankRahQuery;
+    bankRahQuery.exec("SELECT BankName, Rahunok, Mfo FROM bankRahunky WHERE RahTypeId="+sqlStr(iRahunokTypeID));
+    bankRahQuery.next();
 	
 	//Частина постачальника
 	cursor.insertText(codec->toUnicode(" "), textCharFormat_small);
@@ -2881,10 +2946,12 @@ void UPrintDocsOrganiz::print_rahunok_2(int cur_year, int cur_month, int ugodaNu
 	cursor.insertText(codec->toUnicode("   Е-пошта: "), textCharFormat_italic);
 	cursor.insertText(OrganizEMail(), textCharFormat);
 	cursor.insertBlock(blockFormat);
-	cursor.insertText(codec->toUnicode("		Банк: "), textCharFormat_italic);
-	cursor.insertText(OrganizBank(), textCharFormat);
-	cursor.insertText(codec->toUnicode(", р/р:"), textCharFormat_italic);
-	cursor.insertText(OrganizRozrahRahunok(), textCharFormat);
+    cursor.insertText(codec->toUnicode("		Банк: "), textCharFormat_italic);
+    cursor.insertText(bankRahQuery.value(0).toString(), textCharFormat);
+    cursor.insertText(codec->toUnicode(", МФО: "), textCharFormat_italic);
+    cursor.insertText(bankRahQuery.value(2).toString(), textCharFormat);
+    cursor.insertText(codec->toUnicode(", р/р:"), textCharFormat_italic);
+    cursor.insertText(bankRahQuery.value(1).toString(), textCharFormat);
 	cursor.insertBlock(blockFormat);
 	cursor.insertText(codec->toUnicode("		ЄДРПОУ: "), textCharFormat_italic);
 	cursor.insertText(OrganizEDRPOU(), textCharFormat);
@@ -2903,13 +2970,6 @@ void UPrintDocsOrganiz::print_rahunok_2(int cur_year, int cur_month, int ugodaNu
 	cursor.insertBlock(blockFormat);
 	
 	//Частина замовника
-	query->exec("SELECT organizacii.Nazva, organizacii.Date_ugody, banky.Nazva, banky.Mfo, \
-					organizacii.Rozr_rah, organizacii.Edrpou \
-				FROM organizacii \
-				LEFT JOIN banky \
-					ON banky.id=organizacii.Bank_ID \
-				WHERE organizacii.Ugoda="+QVariant(ugodaNum).toString());
-	query->seek(0);
 	cursor.insertHtml("<hr>");
 	blockFormat.setAlignment( Qt::AlignLeft );
 	cursor.insertBlock(blockFormat);

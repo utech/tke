@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1478</width>
-    <height>2070</height>
+    <height>2075</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -2427,6 +2427,7 @@
     <addaction name="action_open_insert_donarah_subs_form"/>
     <addaction name="action_open_insert_kvyt_form"/>
     <addaction name="action_clear_vidomosti_pro_zdani_dokumenty_napilgy"/>
+    <addaction name="action_fill_zapyt_subs"/>
     <addaction name="separator"/>
     <addaction name="action_save_data_base_toArchive"/>
     <addaction name="separator"/>
@@ -6369,6 +6370,11 @@
   <action name="action_print_zaborg_za_periody">
    <property name="text">
     <string>Відомість заборгованості в розрізі давності боргу</string>
+   </property>
+  </action>
+  <action name="action_fill_zapyt_subs">
+   <property name="text">
+    <string>Заповнити запит по субсидіях</string>
    </property>
   </action>
  </widget>

@@ -163,6 +163,8 @@ class Browser;
 		void action_print_podatkova_nakladna_activated();
 		
 		void action_Options_activated();
+        void action_bank_rahunky_activated();
+
 		void action_saveDatabase_activated();
 		void action_assistent_activated();
 		void action_about_activated();

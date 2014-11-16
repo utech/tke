@@ -255,9 +255,10 @@ tke_MainWindow::tke_MainWindow(QWidget *parent)
 				//ui.tableWidget_diuch_taryf->setItemDelegate (new UDiuch_taryf_Delegate(ui.tableWidget_diuch_taryf) );
 				
 				ui.tableWidget_diuch_taryf->setItemDelegateForColumn(2, new USpinBoxDelegate(0,31,ui.tableWidget_diuch_taryf));
-				ui.tableWidget_diuch_taryf->setItemDelegateForColumn(3, new UDoubleSpinBoxDelegate(0,100000,3,ui.tableWidget_diuch_taryf));
-				ui.tableWidget_diuch_taryf->setItemDelegateForColumn(4, new UDoubleSpinBoxDelegate(0,100000,3,ui.tableWidget_diuch_taryf));
-				ui.tableWidget_diuch_taryf->setItemDelegateForColumn(7, new UDoubleSpinBoxDelegate(0,100000,3,ui.tableWidget_diuch_taryf));
+                ui.tableWidget_diuch_taryf->setItemDelegateForColumn(3, new UDoubleSpinBoxDelegate(0,999999,3,ui.tableWidget_diuch_taryf));
+                ui.tableWidget_diuch_taryf->setItemDelegateForColumn(4, new UDoubleSpinBoxDelegate(0,999999,3,ui.tableWidget_diuch_taryf));
+                ui.tableWidget_diuch_taryf->setItemDelegateForColumn(5, new UDoubleSpinBoxDelegate(0,999999,2,ui.tableWidget_diuch_taryf));
+                ui.tableWidget_diuch_taryf->setItemDelegateForColumn(7, new UDoubleSpinBoxDelegate(0,999999,3,ui.tableWidget_diuch_taryf));
 				
 				ui.tableWidget_diuch_taryf->resizeColumnsToContents();
 				if (ui.tableWidget_diuch_taryf->columnWidth(5) < 60)
@@ -304,12 +305,13 @@ tke_MainWindow::tke_MainWindow(QWidget *parent)
 		connect(ui.action_subs, SIGNAL(toggled(bool)), this, SLOT(action_subs_activated())); // vvimk-vymk ui.dockWidget_subs
 		connect(ui.action_kvytancii, SIGNAL(toggled(bool)), this, SLOT(action_kvytancii_activated())); // vvimk-vymk ui.dockWidget_kvytancii
 		connect(ui.action_spravy_subs, SIGNAL(toggled(bool)), this, SLOT(action_spravy_subs_activated())); // vvimk-vymk ui.dockWidget_spravy_subs
-		connect(ui.action_zaborg, SIGNAL(toggled(bool)), this, SLOT(action_zaborg_activated())); // vvimk-vymk ui.dockWidget_splata_zaborg
+        connect(ui.action_zaborg, SIGNAL(toggled(bool)), this, SLOT(action_zaborg_activated())); // vvimk-vymk ui.dockWidget_splata_zaborg
 		connect(ui.action_kotelni, SIGNAL(toggled(bool)), this, SLOT(action_kotelni_activated())); // vvimk-vymk ui.dockWidget_kotelni
 		connect(ui.action_pilgovyky, SIGNAL(toggled(bool)), this, SLOT(action_pilgovyky_activated())); // vvimk-vymk ui.dockWidget_kotelni
 		connect(ui.action_opSubs, SIGNAL(toggled(bool)), this, SLOT(action_opSubs_activated()));
 		connect(ui.action_narahPereved, SIGNAL(toggled(bool)), this, SLOT(action_narahPereved_activated()));
-		
+        connect(ui.action_fill_zapyt_subs, SIGNAL(activated()), this, SLOT(action_fill_zapyt_subs_activated()));
+
 		connect(ui.action_print_vidomist_narah, SIGNAL(activated()), this, SLOT(action_print_vidomist_narah_activated())); // друк відомості нарахування за центральне опалення
 		connect(ui.action_print_dovidka_oderj_subs, SIGNAL(activated()), this, SLOT(action_print_dovidka_oderj_subs_activated())); // друк довідки про суму одержаних субсидій
 		connect(ui.action_print_kvytancii, SIGNAL(activated()), this, SLOT(action_print_kvytancii_activated())); // друк квитанцій

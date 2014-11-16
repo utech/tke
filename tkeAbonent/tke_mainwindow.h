@@ -231,6 +231,7 @@ class Browser;
 		void action_fillSubsDbfSpojyvannyaCO_activated();
 		
 		void action_calcDebitorskaZaborgVhSaldo_activated();
+        void action_fill_zapyt_subs_activated();
 		
 		void calculatorButton_clicked();
 		

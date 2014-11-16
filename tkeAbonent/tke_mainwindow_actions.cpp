@@ -50,6 +50,7 @@
 #include "tke_form_printCustomKvyt.h"
 #include "tke_form_recalc_obsyag_gazu.h"
 #include "tke_dialog_budynok_or_abonent.h"
+#include "tke_form_fill_subs_narah.h"
 
 //------------------------------------------------------------
 void tke_MainWindow::action_registracion_activated()
@@ -1931,5 +1932,13 @@ void tke_MainWindow::action_fillSubsDbfSpojyvannyaCO_activated()
 	connect(this, SIGNAL(closeLoginSignal()), f, SLOT(close()));
 	connect(this, SIGNAL(mainWindowClosed()), f, SLOT(close()));
 	f->show();
+}
+//------------------------------------------------------------
+void tke_MainWindow::action_fill_zapyt_subs_activated()
+{
+    tke_form_fill_subs_narah *f = new tke_form_fill_subs_narah();
+    connect(this, SIGNAL(closeLoginSignal()), f, SLOT(close()));
+    connect(this, SIGNAL(mainWindowClosed()), f, SLOT(close()));
+    f->show();
 }
 //------------------------------------------------------------

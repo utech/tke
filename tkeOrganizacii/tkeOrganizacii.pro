@@ -48,7 +48,8 @@ HEADERS +=   db_own.h \
   tke_Dialog_saveDataBase.h \
   UDbUpdaterFunctions.h \
   tke_dialog_print_nakladna.h \
-  tke_form_struct_GV_organiz.h
+  tke_form_struct_GV_organiz.h \
+  tke_dialog_edit_bank_rahunky.h
 FORMS +=   tke_dialog_edit_pidrozdil.ui \
   tke_mainwindow_org.ui \
   tke_form_days_opal.ui \
@@ -63,7 +64,8 @@ FORMS +=   tke_dialog_edit_pidrozdil.ui \
   tke_dialog_options.ui \
   tke_Dialog_saveDataBase.ui \
   tke_dialog_print_nakladna.ui \
-  tke_form_struct_GV_organiz.ui
+  tke_form_struct_GV_organiz.ui \
+  tke_dialog_edit_bank_rahunky.ui
 SOURCES +=  db_own.cpp \
   mainO.cpp \
   tke_mainwindow_org.cpp \
@@ -93,7 +95,8 @@ SOURCES +=  db_own.cpp \
   tke_Dialog_saveDataBase.cpp \
   UDbUpdaterFunctions.cpp \
   tke_dialog_print_nakladna.cpp \
-  tke_form_struct_GV_organiz.cpp
+  tke_form_struct_GV_organiz.cpp \
+  tke_dialog_edit_bank_rahunky.cpp
 
 RESOURCES +=   tke_rc
 RC_FILE =   prog_icon_org.rc

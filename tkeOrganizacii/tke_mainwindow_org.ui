@@ -2405,7 +2405,7 @@
      <x>0</x>
      <y>0</y>
      <width>1191</width>
-     <height>18</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_2">
@@ -2486,6 +2486,7 @@
      <string>Налаштування</string>
     </property>
     <addaction name="action_Options"/>
+    <addaction name="action_bank_rahunky"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_6"/>
@@ -3999,6 +4000,11 @@
    </property>
    <property name="text">
     <string>Акт виконаних робіт</string>
+   </property>
+  </action>
+  <action name="action_bank_rahunky">
+   <property name="text">
+    <string>Банківські рахунки</string>
    </property>
   </action>
  </widget>

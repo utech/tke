@@ -7,9 +7,12 @@ tmp/
 
 Makefile
 *.pro.user
+*.pro.user.*
 *.Debug
 *.Release
 *.exe
 
 bin/tkeDBUpdateResults.tkeDB
 *.ldb
+
+save_db/*
