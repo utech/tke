@@ -68,7 +68,7 @@ QWidget *UTaryf_Delegate::createEditor(QWidget *parent,
 				|| (index.column() == durationColumn_6)
 				|| (index.column() == durationColumn_7)) {
         QDoubleSpinBox *double_spinbox = new QDoubleSpinBox(parent);
-        double_spinbox->setMaximum ( 1000 );
+        double_spinbox->setMaximum ( 9999999 );
 		double_spinbox->setMinimum ( 0 );
         connect(double_spinbox, SIGNAL(editingFinished()),
                 this, SLOT(commitAndCloseEditor()));

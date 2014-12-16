@@ -19,6 +19,7 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+	QLocale::setDefault(QLocale::Ukrainian);
 	QDir::setCurrent(QCoreApplication::applicationDirPath());
 	QSplashScreen *splash = new QSplashScreen(QPixmap(":/pictures/pictures/organizLogo.png"));
     splash->show();

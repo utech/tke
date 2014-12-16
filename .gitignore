@@ -4,6 +4,7 @@ bin/tkeOrganizacii.exe
 bin/tkeQtSqlBrowser.exe
 dst/*.exe
 tmp/
+tmpd/
 
 Makefile
 *.pro.user
@@ -11,6 +12,8 @@ Makefile
 *.Debug
 *.Release
 *.exe
+
+*.o
 
 bin/tkeDBUpdateResults.tkeDB
 *.ldb

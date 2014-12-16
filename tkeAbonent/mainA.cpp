@@ -21,6 +21,7 @@
 int main(int argc, char *argv[])
 {
 	QApplication app(argc, argv);
+	QLocale::setDefault(QLocale::Ukrainian);
 	QDir::setCurrent(QCoreApplication::applicationDirPath());
 	QTextCodec::setCodecForCStrings(QTextCodec::codecForName("cp1251"));
     QSplashScreen *splash = new QSplashScreen(QPixmap(":/pictures/pictures/abonentLogo.png"));
