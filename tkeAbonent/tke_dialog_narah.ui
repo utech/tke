@@ -192,7 +192,7 @@
          <number>2004</number>
         </property>
         <property name="maximum">
-         <number>2015</number>
+         <number>2100</number>
         </property>
         <property name="singleStep">
          <number>1</number>

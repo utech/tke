@@ -61,7 +61,7 @@ QWidget *UKvyt_Delegate::createEditor(QWidget *parent,
 	else if ((index.column() == durationColumn_3) || (index.column() == durationColumn_4)){
         QDateEdit * dateEdit = new QDateEdit(parent);
 		QDate date;
-		date.setYMD( 2020, 12, 30 );
+		date.setYMD( 2100, 12, 30 );
         dateEdit->setMaximumDate( date );
 		date.setYMD( 2004, 1, 1 );
 		dateEdit->setMinimumDate( date );

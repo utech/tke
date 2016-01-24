@@ -1,5 +1,5 @@
-#CONFIG		+= release
-#CONFIG		-= debug debug_and_release debug_and_release_target
+CONFIG		+= release
+CONFIG		-= debug debug_and_release debug_and_release_target
 
 CONFIG(debug, debug|release) {
     win32: TARGET = $$join(TARGET,,,d)

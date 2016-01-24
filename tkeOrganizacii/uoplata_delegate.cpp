@@ -59,7 +59,7 @@ QWidget *UOplata_Delegate::createEditor(QWidget *parent,
 	else if (index.column() == durationColumn_2){
         QDateEdit * dateEdit = new QDateEdit(parent);
 		QDate date;
-		date.setYMD( 2020, 12, 30 );
+		date.setYMD( 2100, 12, 30 );
         dateEdit->setMaximumDate( date );
 		date.setYMD( 2004, 1, 1 );
 		dateEdit->setMinimumDate( date );

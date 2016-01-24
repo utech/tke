@@ -64,6 +64,7 @@ INPUT(
 ./..\tmp\tke_form_printCustomKvyt.o
 ./..\tmp\tke_form_recalc_obsyag_gazu.o
 ./..\tmp\tke_dialog_budynok_or_abonent.o
+./..\tmp\tke_form_fill_subs_narah.o
 ./..\tmp\moc_tke_dialog_change_password.o
 ./..\tmp\moc_tke_dialog_login.o
 ./..\tmp\moc_tke_dialog_narah.o
@@ -114,6 +115,7 @@ INPUT(
 ./..\tmp\moc_tke_form_printCustomKvyt.o
 ./..\tmp\moc_tke_form_recalc_obsyag_gazu.o
 ./..\tmp\moc_tke_dialog_budynok_or_abonent.o
+./..\tmp\moc_tke_form_fill_subs_narah.o
 ./..\tmp\qrc_UImgLib.o
 ./..\tmp\qrc_tke_rc.o
 );

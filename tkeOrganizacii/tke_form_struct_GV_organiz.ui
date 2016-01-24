@@ -244,6 +244,20 @@
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
+           <property name="maximumDate">
+            <date>
+             <year>2100</year>
+             <month>12</month>
+             <day>31</day>
+            </date>
+           </property>
+           <property name="minimumDate">
+            <date>
+             <year>2000</year>
+             <month>9</month>
+             <day>14</day>
+            </date>
+           </property>
            <property name="displayFormat">
             <string>MM.yyyy</string>
            </property>
@@ -481,6 +495,20 @@
           <widget class="QDateEdit" name="dateEdit_pokaznLichPidrozd">
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+           <property name="maximumDate">
+            <date>
+             <year>2100</year>
+             <month>12</month>
+             <day>31</day>
+            </date>
+           </property>
+           <property name="minimumDate">
+            <date>
+             <year>2000</year>
+             <month>9</month>
+             <day>14</day>
+            </date>
            </property>
            <property name="displayFormat">
             <string>MM.yyyy</string>

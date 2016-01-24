@@ -41,7 +41,7 @@ QWidget *UNormat_taryf_Delegate::createEditor(QWidget *parent,
     //year_part
     if (index.column() == durationColumn_1) {
         spinbox = new QSpinBox(parent);
-        spinbox->setMaximum ( 2050 );
+        spinbox->setMaximum ( 2100 );
 		spinbox->setMinimum ( 2006 );
         connect(spinbox, SIGNAL(editingFinished()),
                 this, SLOT(commitAndCloseEditor()));

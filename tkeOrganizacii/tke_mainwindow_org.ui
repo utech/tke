@@ -535,7 +535,7 @@
                 </property>
                 <property name="maximumDate">
                  <date>
-                  <year>2050</year>
+                  <year>2100</year>
                   <month>12</month>
                   <day>31</day>
                  </date>

@@ -1,5 +1,5 @@
-#CONFIG		+= release
-#CONFIG		-= debug debug_and_release debug_and_release_target
+CONFIG		+= release
+CONFIG		-= debug debug_and_release debug_and_release_target
 
 include(../../../UtechLib/UtechLib.pri)
 

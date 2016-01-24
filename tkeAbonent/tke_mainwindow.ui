@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1478</width>
-    <height>2075</height>
+    <height>2077</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -1471,6 +1471,16 @@
                  <property name="specialValueText">
                   <string/>
                  </property>
+                 <property name="maximumDateTime">
+                  <datetime>
+                   <hour>23</hour>
+                   <minute>59</minute>
+                   <second>59</second>
+                   <year>2100</year>
+                   <month>12</month>
+                   <day>31</day>
+                  </datetime>
+                 </property>
                  <property name="displayFormat">
                   <string>dd.MM.yyyy</string>
                  </property>
@@ -1489,25 +1499,6 @@
                  </property>
                 </widget>
                </item>
-               <item row="0" column="3">
-                <widget class="QDateEdit" name="dateEdit_PilgaEndDate">
-                 <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                 </property>
-                 <property name="specialValueText">
-                  <string/>
-                 </property>
-                 <property name="displayFormat">
-                  <string>dd.MM.yyyy</string>
-                 </property>
-                 <property name="calendarPopup">
-                  <bool>true</bool>
-                 </property>
-                 <property name="currentSectionIndex">
-                  <number>0</number>
-                 </property>
-                </widget>
-               </item>
                <item row="1" column="0">
                 <widget class="QLabel" name="label_pilga_2LimitInfo">
                  <property name="text">
@@ -1522,6 +1513,16 @@
                  </property>
                  <property name="specialValueText">
                   <string/>
+                 </property>
+                 <property name="maximumDateTime">
+                  <datetime>
+                   <hour>23</hour>
+                   <minute>59</minute>
+                   <second>59</second>
+                   <year>2100</year>
+                   <month>12</month>
+                   <day>31</day>
+                  </datetime>
                  </property>
                  <property name="displayFormat">
                   <string>dd.MM.yyyy</string>
@@ -1548,6 +1549,45 @@
                  </property>
                  <property name="specialValueText">
                   <string/>
+                 </property>
+                 <property name="maximumDateTime">
+                  <datetime>
+                   <hour>23</hour>
+                   <minute>59</minute>
+                   <second>59</second>
+                   <year>2100</year>
+                   <month>12</month>
+                   <day>31</day>
+                  </datetime>
+                 </property>
+                 <property name="displayFormat">
+                  <string>dd.MM.yyyy</string>
+                 </property>
+                 <property name="calendarPopup">
+                  <bool>true</bool>
+                 </property>
+                 <property name="currentSectionIndex">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QDateEdit" name="dateEdit_PilgaEndDate">
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="specialValueText">
+                  <string/>
+                 </property>
+                 <property name="maximumDateTime">
+                  <datetime>
+                   <hour>23</hour>
+                   <minute>59</minute>
+                   <second>59</second>
+                   <year>2100</year>
+                   <month>12</month>
+                   <day>31</day>
+                  </datetime>
                  </property>
                  <property name="displayFormat">
                   <string>dd.MM.yyyy</string>
@@ -3087,7 +3127,7 @@
           <number>2006</number>
          </property>
          <property name="maximum">
-          <number>2015</number>
+          <number>2100</number>
          </property>
          <property name="value">
           <number>2006</number>
@@ -3400,7 +3440,7 @@
             <number>2003</number>
            </property>
            <property name="maximum">
-            <number>2015</number>
+            <number>2100</number>
            </property>
            <property name="value">
             <number>2006</number>
@@ -3729,7 +3769,7 @@
           <number>2003</number>
          </property>
          <property name="maximum">
-          <number>2015</number>
+          <number>2100</number>
          </property>
          <property name="value">
           <number>2006</number>
@@ -4001,7 +4041,7 @@
                  <number>2003</number>
                 </property>
                 <property name="maximum">
-                 <number>2015</number>
+                 <number>2100</number>
                 </property>
                 <property name="value">
                  <number>2006</number>
@@ -4121,7 +4161,7 @@
                  <number>2003</number>
                 </property>
                 <property name="maximum">
-                 <number>2015</number>
+                 <number>2100</number>
                 </property>
                 <property name="value">
                  <number>2006</number>
@@ -5074,7 +5114,7 @@
             <number>2003</number>
            </property>
            <property name="maximum">
-            <number>2015</number>
+            <number>2100</number>
            </property>
            <property name="value">
             <number>2006</number>

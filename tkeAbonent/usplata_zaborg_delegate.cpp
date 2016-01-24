@@ -66,7 +66,7 @@ QWidget *USplata_zaborg_Delegate::createEditor(QWidget *parent,
     }
 	else if ((index.column() == durationColumn_4) || (index.column() == durationColumn_6)) {
         spinbox = new QSpinBox(parent);
-        spinbox->setMaximum ( 2020 );
+        spinbox->setMaximum ( 2100 );
 		spinbox->setMinimum ( 2004 );
         connect(spinbox, SIGNAL(editingFinished()),
                 this, SLOT(commitAndCloseEditor()));

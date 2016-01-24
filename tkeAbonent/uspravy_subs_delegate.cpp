@@ -41,7 +41,7 @@ QWidget *USpravy_subs_Delegate::createEditor(QWidget *parent,
     }
 	else if ((index.column() == durationColumn_3) || (index.column() == durationColumn_5)) {
         spinbox = new QSpinBox(parent);
-        spinbox->setMaximum ( 2020 );
+        spinbox->setMaximum ( 2100 );
 		spinbox->setMinimum ( 2004 );
         connect(spinbox, SIGNAL(editingFinished()),
                 this, SLOT(commitAndCloseEditor()));

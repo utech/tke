@@ -29,6 +29,7 @@ INPUT(
 ./..\tmp\UDbUpdaterFunctions.o
 ./..\tmp\tke_dialog_print_nakladna.o
 ./..\tmp\tke_form_struct_GV_organiz.o
+./..\tmp\tke_dialog_edit_bank_rahunky.o
 ./..\tmp\moc_tke_mainwindow_org.o
 ./..\tmp\moc_tke_dialog_edit_pidrozdil.o
 ./..\tmp\moc_utaryf_delegate.o
@@ -52,6 +53,7 @@ INPUT(
 ./..\tmp\moc_tke_Dialog_saveDataBase.o
 ./..\tmp\moc_tke_dialog_print_nakladna.o
 ./..\tmp\moc_tke_form_struct_GV_organiz.o
+./..\tmp\moc_tke_dialog_edit_bank_rahunky.o
 ./..\tmp\qrc_UImgLib.o
 ./..\tmp\qrc_tke_rc.o
 );
