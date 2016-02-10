@@ -104,9 +104,15 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 	query->exec("SELECT strTemplate FROM slujb_znach WHERE id=9");
 	query->seek(0);
 	bool optionNeedPrintZeroNegativKvyt = query->value(0).toBool();
+
+    enum ObovyazkPlataSubsType {
+        Ignore = 0,
+        AutoCalcSubs = 1,
+        UseObovyazkPlata = 2
+    };
 	query->exec("SELECT strTemplate FROM slujb_znach WHERE id=10");
 	query->seek(0);
-	bool optionNeedAutoCalcSubs = query->value(0).toBool();
+    int obovyazkPlataSubsType = query->value(0).toInt();
 	
 	//читання інформації про необхідність додавання до сальдо дебіторської заборгованості
 	query->exec("SELECT strTemplate FROM slujb_znach WHERE id=18");
@@ -260,11 +266,30 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 		
 		double sumOp = 0;
 		bool useOp = false;
-		if (optionNeedAutoCalcSubs){
-			UAbonObPlSubs obPlSubs = oplataZgidnoNarahSubs(query->value(0).toInt(), prev_year, prev_month);
-			useOp = obPlSubs.need;
-			sumOp = obPlSubs.suma;
-		}
+
+        switch (obovyazkPlataSubsType) {
+        case AutoCalcSubs: {
+            UAbonObPlSubs obPlSubs = oplataZgidnoNarahSubs(query->value(0).toInt(), prev_year, prev_month);
+            useOp = obPlSubs.need;
+            sumOp = obPlSubs.suma;
+            break;
+        }
+        case UseObovyazkPlata: {
+            QSqlQuery obPlataSubsQuery;
+            obPlataSubsQuery.exec("SELECT Plata_CO, Plata_GV FROM plataZgidnoSubs \
+                                    WHERE Rahunok_id="+sqlStr(query->value(0).toInt())+" \
+                                        and Year="+sqlStr(prev_year)+" \
+                                        and Month="+sqlStr(prev_month));
+            if (obPlataSubsQuery.next()) {
+                useOp = true;
+                sumOp = obPlataSubsQuery.value(0).toDouble() + obPlataSubsQuery.value(1).toDouble();
+            }
+            else {
+                obovyazkPlataSubsType = Ignore;
+            }
+            break;
+        }
+        }
 		
 		bool neadPrintKvyt = false;
 		if ( optionNeedPrintZeroNegativKvyt && (oplata < 0.009) )
@@ -495,9 +520,14 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
 			if (!useOp)
-				cellCursor.insertText( codec->toUnicode("До опл. згідно угоди"), curTextCharFormat );
-			else
-				cellCursor.insertText( codec->toUnicode("До опл.згідно субсидії"), curTextCharFormat );
+                cellCursor.insertText( "До опл. згідно угоди", curTextCharFormat );
+            else {
+                if (obovyazkPlataSubsType == UseObovyazkPlata)
+                    cellCursor.insertText( "Обов'язк. опл. по субс.", curTextCharFormat );
+                else
+                    cellCursor.insertText( "До опл.згідно субсидії", curTextCharFormat );
+            }
+
 			cell = table->cellAt(7, 1);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
@@ -588,8 +618,12 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor.setBlockFormat( blockFormat );
 			if (!useOp)
 				cellCursor.insertText( codec->toUnicode("До опл. згідно угоди"), curTextCharFormat );
-			else
-				cellCursor.insertText( codec->toUnicode("До опл.згідно субсидії"), curTextCharFormat );
+            else {
+                if (obovyazkPlataSubsType == UseObovyazkPlata)
+                    cellCursor.insertText( "Обов'язк. опл. згідно субс.", curTextCharFormat );
+                else
+                    cellCursor.insertText( "До опл.згідно субсидії", curTextCharFormat );
+            }
 			cell = table->cellAt(5, 5);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );

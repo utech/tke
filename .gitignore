@@ -19,3 +19,5 @@ bin/tkeDBUpdateResults.tkeDB
 *.ldb
 
 save_db/*
+*.DBF
+*object_script.*

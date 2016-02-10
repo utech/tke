@@ -29,6 +29,11 @@ tke_dialog_options::tke_dialog_options(QWidget *parent)
 	ui.lineEdit_infoText3Str->setMaxLength(75);
 	ui.lineEdit_infoText4Str->setMaxLength(75);
 	
+    // Обов'язкова плата по субсидії
+    ui.comboBox_obovPlataSubs->addItem("Не використовувати обов'язкової оплати по субсидії"); // 0
+    ui.comboBox_obovPlataSubs->addItem("Використовувати автоматичний розрахунок субсидії"); // 1
+    ui.comboBox_obovPlataSubs->addItem("Друкувати в оплаті значення Об.пл. по субс."); // 2
+
 	populateOptions();
 		//Connectors
 	connect(ui.pushButton_accept, SIGNAL(clicked()), this, SLOT(pushButton_accept_clicked()));
@@ -66,8 +71,8 @@ void tke_dialog_options::connectEditres()
 	connect(ui.checkBox_saveInformationOnNarahCO, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	connect(ui.spinBox_tochnistDiuchTaryf, SIGNAL(valueChanged(int)), this, SLOT(optionsEdited()));
 	connect(ui.checkBox_printZeroNegativeKvyt, SIGNAL(clicked()), this, SLOT(optionsEdited()));
-	connect(ui.checkBox_useAutomaticSubsCulc, SIGNAL(clicked()), this, SLOT(optionsEdited()));
-	connect(ui.checkBox_checkObovyazkPlataPoSubsAndNarah, SIGNAL(clicked()), this, SLOT(optionsEdited()));
+    connect(ui.comboBox_obovPlataSubs, SIGNAL(currentIndexChanged(int)), this, SLOT(optionsEdited()));
+    connect(ui.checkBox_checkObovyazkPlataPoSubsAndNarah, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	connect(ui.checkBox_printBankWiringInstructions, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	connect(ui.plainTextEdit_bankWiringInstructions, SIGNAL(textChanged()), this, SLOT(optionsEdited()));
 	connect(ui.spinBox_numberToAddToRahunok, SIGNAL(valueChanged(int)), this, SLOT(optionsEdited()));
@@ -106,9 +111,9 @@ void tke_dialog_options::disconnectEditres()
 	disconnect(ui.checkBox_saveInformationOnNarahCO, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	disconnect(ui.spinBox_tochnistDiuchTaryf, SIGNAL(valueChanged(int)), this, SLOT(optionsEdited()));
 	disconnect(ui.checkBox_printZeroNegativeKvyt, SIGNAL(clicked()), this, SLOT(optionsEdited()));
-	disconnect(ui.checkBox_useAutomaticSubsCulc, SIGNAL(clicked()), this, SLOT(optionsEdited()));
-	disconnect(ui.checkBox_checkObovyazkPlataPoSubsAndNarah, SIGNAL(clicked()), this, SLOT(optionsEdited()));
-	disconnect(ui.checkBox_printBankWiringInstructions, SIGNAL(clicked()), this, SLOT(optionsEdited()));
+    disconnect(ui.comboBox_obovPlataSubs, SIGNAL(currentIndexChanged(int)), this, SLOT(optionsEdited()));
+    disconnect(ui.checkBox_checkObovyazkPlataPoSubsAndNarah, SIGNAL(clicked()), this, SLOT(optionsEdited()));
+    disconnect(ui.checkBox_printBankWiringInstructions, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	disconnect(ui.plainTextEdit_bankWiringInstructions, SIGNAL(textChanged()), this, SLOT(optionsEdited()));
 	disconnect(ui.spinBox_numberToAddToRahunok, SIGNAL(valueChanged(int)), this, SLOT(optionsEdited()));
 	disconnect(ui.lineEdit_postDovidnykEMail, SIGNAL(textChanged(const QString &)), this, SLOT(optionsEdited()));
@@ -211,17 +216,18 @@ void tke_dialog_options::populateOptions()
 	query->seek(0);
 	ui.checkBox_printZeroNegativeKvyt->setChecked(query->value(0).toBool());
 	
-	query->exec("SELECT strTemplate FROM slujb_znach WHERE id=10");
+    query->exec("SELECT strTemplate FROM slujb_znach WHERE id=10");
+    query->seek(0);
+    int comboBoxIndex = query->value(0).toInt();
+    ui.comboBox_obovPlataSubs->setCurrentIndex(comboBoxIndex > ui.comboBox_obovPlataSubs->count() - 1 ? 0 : comboBoxIndex);
+
+    query->exec("SELECT strTemplate FROM slujb_znach WHERE id=22");
 	query->seek(0);
-	ui.checkBox_useAutomaticSubsCulc->setChecked(query->value(0).toBool());
+    ui.checkBox_checkObovyazkPlataPoSubsAndNarah->setChecked(query->value(0).toBool());
 	
 	query->exec("SELECT strTemplate FROM slujb_znach WHERE id=18");
 	query->seek(0);
 	ui.checkBox_addBeznadiynaDebZaborgVGolovnKvyt->setChecked(query->value(0).toBool());
-	
-	query->exec("SELECT strTemplate FROM slujb_znach WHERE id=22");
-	query->seek(0);
-	ui.checkBox_checkObovyazkPlataPoSubsAndNarah->setChecked(query->value(0).toBool());
 	
 	query->exec("SELECT strTemplate FROM slujb_znach WHERE id=24");
 	query->seek(0);
@@ -350,9 +356,9 @@ void tke_dialog_options::saveOptions()
 	query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_printPokaznBudLichCO->isChecked())+"' WHERE id=6");
 	query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_printPokaznykOfType->isChecked())+"' WHERE id=20");
 	query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_printZeroNegativeKvyt->isChecked())+"' WHERE id=9");
-	query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_useAutomaticSubsCulc->isChecked())+"' WHERE id=10");
+    query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.comboBox_obovPlataSubs->currentIndex())+"' WHERE id=10");
+    query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_checkObovyazkPlataPoSubsAndNarah->isChecked())+"' WHERE id=22");
 	query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_addBeznadiynaDebZaborgVGolovnKvyt->isChecked())+"' WHERE id=18");
-	query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_checkObovyazkPlataPoSubsAndNarah->isChecked())+"' WHERE id=22");
 	query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_printBankWiringInstructions->isChecked())+"' WHERE id=24");
 	query->exec("UPDATE slujb_znach SET strTemplate="+sqlStr(ui.plainTextEdit_bankWiringInstructions->toPlainText().replace('\'',"\'\'"))+" WHERE id=25");
 	

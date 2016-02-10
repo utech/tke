@@ -20,7 +20,7 @@ QString TkeProgramVersion()
 //------------------------------------------------------------
 int TkeDbVersion()
 {
-    return 24;
+    return 25;
 }
 //------------------------------------------------------------
 QString PrizvIB(int posadaId)
