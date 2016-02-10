@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "ТКЕнерго менеджер"
-!define PRODUCT_VERSION "2.5.0"
+!define PRODUCT_VERSION "2.5.1"
 !define PRODUCT_PUBLISHER "Компанія АбонПро"
 !define PRODUCT_WEB_SITE "http://abonpro.com"
 !define PRODUCT_UNINST_KEY "Software\AbonPro\tke\Uninstall\${PRODUCT_NAME}"
