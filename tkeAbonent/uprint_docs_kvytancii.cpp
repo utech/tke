@@ -462,12 +462,12 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText( codec->toUnicode("Ѕорг на початок м≥с€ц€"), textCharFormat );
+			cellCursor.insertText( (saldo < 0) ? codec->toUnicode("ѕереплата") : codec->toUnicode("Ѕорг на початок м≥с€ц€"), textCharFormat ); qDebug()<<"saldo"<<saldo;
 			cell = table->cellAt(3, 1);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
 			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText( uMToStr2(saldo), textCharFormat );
+			cellCursor.insertText( uMToStr2((saldo < 0) ? saldo*-1 : saldo), textCharFormat );
 			
 			cell = table->cellAt(4, 0);
 			cellCursor = cell.firstCursorPosition();
@@ -507,12 +507,13 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cell = table->cellAt(6, 1);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
-			cellCursor.setBlockFormat( blockFormat );
-			if ((oplata > 0.009) && (!useOp))
-				cellCursor.insertText( uMToStr2(oplata), curTextCharFormat );
+			cellCursor.setBlockFormat( blockFormat ); qDebug()<<"oplata"<<oplata;
+			if ((oplata > 0.009) && (!useOp)) {
+				cellCursor.insertText(uMToStr2(oplata), curTextCharFormat ); 
+				qDebug()<<"((oplata > 0.009) && (!useOp))";}
 			
-			if (oplata_po_zaborg>0.00999 || useOp)
-				curTextCharFormat = textCharFormat_bold;
+			if (oplata_po_zaborg>0.00999 || useOp){
+				curTextCharFormat = textCharFormat_bold; qDebug()<<"oplata_po_zaborg>0.00999 || useOp)";}
 			else
 				curTextCharFormat = textCharFormat;
 			cell = table->cellAt(7, 0);
