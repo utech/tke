@@ -508,7 +508,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
 			cellCursor.setBlockFormat( blockFormat );
-			if ((oplata > 0.009) && (!useOp))
+            if ((oplata > 0.009) && (!useOp || obovyazkPlataSubsType == UseObovyazkPlata))
 				cellCursor.insertText( uMToStr2(oplata), curTextCharFormat );
 			
 			if (oplata_po_zaborg>0.00999 || useOp)
@@ -605,7 +605,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
 			cellCursor.setBlockFormat( blockFormat );
-			if ((oplata > 0.009) && (!useOp))
+            if ((oplata > 0.009) && (!useOp || obovyazkPlataSubsType == UseObovyazkPlata))
 				cellCursor.insertText( uMToStr2(oplata), curTextCharFormat );
 			
 			if (oplata_po_zaborg>0.00999 || useOp)
