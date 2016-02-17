@@ -120,7 +120,8 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 	const bool needAddBeznDebit = query->value(0).toBool();
 	
 	//Читання необхідності створення друку нормативного тарифу (false) або діючого тарифу (true)
-	query->exec("SELECT strTemplate FROM slujb_znach WHERE id=20");
+	//query->exec("SELECT strTemplate FROM slujb_znach WHERE id=20");
+	query->exec("SELECT Lichylnyk FROM budynky WHERE id ="+sqlStr(budynokId));
 	query->seek(0);
 	const bool printTaryfTypeCO = query->value(0).toBool();
 	double diuchTaryfBud = diuchTaryfInMonth(budynokId, prev_year, prev_month);
@@ -462,7 +463,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText( (saldo < 0) ? codec->toUnicode("Переплата") : codec->toUnicode("Борг на початок місяця"), textCharFormat ); qDebug()<<"saldo"<<saldo;
+			cellCursor.insertText( (saldo < 0) ? "Переплата" : "Борг на початок місяця", textCharFormat );
 			cell = table->cellAt(3, 1);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
@@ -510,11 +511,12 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor.setBlockFormat( blockFormat );
             if ((oplata > 0.009) && (!useOp || obovyazkPlataSubsType == UseObovyazkPlata))
 				cellCursor.insertText( uMToStr2(oplata), curTextCharFormat );
-			
-			if (oplata_po_zaborg>0.00999 || useOp){
-				curTextCharFormat = textCharFormat_bold; qDebug()<<"oplata_po_zaborg>0.00999 || useOp)";}
+			if (oplata < 0)
+			    cellCursor.insertText( "0.00", curTextCharFormat );
+			if (oplata_po_zaborg>0.00999 || useOp)
+				curTextCharFormat = textCharFormat_bold; 
 			else
-				curTextCharFormat = textCharFormat;
+			curTextCharFormat = textCharFormat;
 			cell = table->cellAt(7, 0);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
@@ -551,9 +553,9 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
 			if (needCO && !needGV)
-				cellCursor.insertText( "Борг на початок місяця\nНараховано за місяць", textCharFormat );
+				cellCursor.insertText( (saldo < 0) ? "Переплата\nНараховано за місяць" : "Борг на початок місяця\Нараховано за місяць", textCharFormat );
 			else{
-				cellCursor.insertText("Борг на початок місяця\nНараховано за", textCharFormat );
+				cellCursor.insertText((saldo < 0) ? "Переплата\nНараховано за" : "Борг на початок місяця\nНараховано за", textCharFormat );
 				if (needCO)
 					cellCursor.insertText(" ЦО /", textCharFormat );
 				if (needGV)
@@ -563,7 +565,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
 			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText( uMToStr2(saldo)+"\n", textCharFormat );
+			cellCursor.insertText( uMToStr2((saldo < 0) ? saldo*-1 : saldo)+"\n", textCharFormat );
 			if (needCO)
 				cellCursor.insertText( uMToStr2(narah), textCharFormat );
 			if (needCO && needGV)
@@ -707,7 +709,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			
 			if (needCO && (query->value(22).toBool() || query->value(24).toBool())){
 				cellCursor.insertText( codec->toUnicode("Тариф ЦО: - ")
-														+uMToStr2(printTaryfTypeCO ? diuchTaryfBud : taryfInfo.normat_taryf_kvadr)
+														+uMToStr2(printTaryfTypeCO ? taryfInfo.normat_taryf_kvadr : diuchTaryfBud)
 														+codec->toUnicode(" грн. за кв.м.\n")+
 										"                  - " + uMToStr2(taryfInfo.vart_g_kal)
 										+codec->toUnicode(" грн. за ГКал\n"), textCharFormatAI );
