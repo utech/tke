@@ -609,7 +609,8 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor.setBlockFormat( blockFormat );
             if ((oplata > 0.009) && (!useOp || obovyazkPlataSubsType == UseObovyazkPlata))
 				cellCursor.insertText( uMToStr2(oplata), curTextCharFormat );
-			
+			if (oplata < 0)
+			    cellCursor.insertText( "0.00", curTextCharFormat );
 			if (oplata_po_zaborg>0.00999 || useOp)
 				curTextCharFormat = textCharFormat_bold;
 			else
