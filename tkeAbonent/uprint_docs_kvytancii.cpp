@@ -364,12 +364,12 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			else
 				tableFormat.setPageBreakPolicy(QTextFormat::PageBreak_Auto);
 				//створення і налаштування таблиці
-			QTextTable *table = cursor.insertTable(9, 6, tableFormat);
+            QTextTable *table = cursor.insertTable(10, 6, tableFormat);
 			table->mergeCells ( 0, 0, 3, 2 );
 			table->mergeCells ( 0, 3, 1, 3 );
-			table->mergeCells ( 1, 3, 6, 1 );
-			table->mergeCells ( 7, 3, 2, 3 );
-			table->mergeCells ( 0, 2, 9, 1 );
+            table->mergeCells ( 1, 3, 7, 1 );
+            table->mergeCells ( 8, 3, 2, 3 );
+            table->mergeCells ( 0, 2, 10, 1 );
 			//Заповнення колонок квитанції
 				// Шапка
 			QString str_month;
@@ -511,13 +511,23 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor.setBlockFormat( blockFormat );
             if ((oplata > 0.009) && (!useOp || obovyazkPlataSubsType == UseObovyazkPlata))
 				cellCursor.insertText( uMToStr2(oplata), curTextCharFormat );
-			if (oplata < 0)
+            if (oplata <= 0)
 			    cellCursor.insertText( "0.00", curTextCharFormat );
 			if (oplata_po_zaborg>0.00999 || useOp)
 				curTextCharFormat = textCharFormat_bold; 
 			else
 			curTextCharFormat = textCharFormat;
-			cell = table->cellAt(7, 0);
+            cell = table->cellAt(7, 0);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignLeft );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText( (oplata < 0) ? "Переплата на кін. місяця" : "Борг на кінець місяця", textCharFormat );
+            cell = table->cellAt(7, 1);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignRight );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText( (oplata < 0) ? uMToStr2(oplata*-1) : uMToStr2(oplata), textCharFormat );
+            cell = table->cellAt(8, 0);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
@@ -530,7 +540,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
                     cellCursor.insertText( "До опл.згідно субсидії", curTextCharFormat );
             }
 
-			cell = table->cellAt(7, 1);
+            cell = table->cellAt(8, 1);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
 			cellCursor.setBlockFormat( blockFormat );
@@ -541,7 +551,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			else
 				cellCursor.insertText( "---", curTextCharFormat );
 			
-			cell = table->cellAt(8, 0);
+            cell = table->cellAt(9, 0);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
@@ -609,13 +619,23 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor.setBlockFormat( blockFormat );
             if ((oplata > 0.009) && (!useOp || obovyazkPlataSubsType == UseObovyazkPlata))
 				cellCursor.insertText( uMToStr2(oplata), curTextCharFormat );
-			if (oplata < 0)
+            if (oplata <= 0)
 			    cellCursor.insertText( "0.00", curTextCharFormat );
 			if (oplata_po_zaborg>0.00999 || useOp)
 				curTextCharFormat = textCharFormat_bold;
 			else
 				curTextCharFormat = textCharFormat;
-			cell = table->cellAt(5, 4);
+            cell = table->cellAt(5, 4);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignLeft );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText( (oplata < 0) ? "Переплата на кін. місяця" : "Борг на кінець місяця", textCharFormat );
+            cell = table->cellAt(5, 5);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignRight );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText( (oplata < 0) ? uMToStr2(oplata*-1) : uMToStr2(oplata), textCharFormat );
+            cell = table->cellAt(6, 4);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
@@ -627,7 +647,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
                 else
                     cellCursor.insertText( "До опл.згідно субсидії", curTextCharFormat );
             }
-			cell = table->cellAt(5, 5);
+            cell = table->cellAt(6, 5);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
 			cellCursor.setBlockFormat( blockFormat );
@@ -638,7 +658,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			else
 				cellCursor.insertText( "---", curTextCharFormat );
 			
-			cell = table->cellAt(6, 4);
+            cell = table->cellAt(7, 4);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
@@ -710,7 +730,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			
 			if (needCO && (query->value(22).toBool() || query->value(24).toBool())){
 				cellCursor.insertText( codec->toUnicode("Тариф ЦО: - ")
-														+uMToStr2(printTaryfTypeCO ? taryfInfo.normat_taryf_kvadr : diuchTaryfBud)
+                                                        +uMToStr2(/*printTaryfTypeCO ? taryfInfo.normat_taryf_kvadr :*/ diuchTaryfBud)
 														+codec->toUnicode(" грн. за кв.м.\n")+
 										"                  - " + uMToStr2(taryfInfo.vart_g_kal)
 										+codec->toUnicode(" грн. за ГКал\n"), textCharFormatAI );
@@ -759,7 +779,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor.deletePreviousChar(); //Видалення останнього переносу
 			
 						//Повідомлення для абонента
-			cell = table->cellAt(7, 3);
+            cell = table->cellAt(8, 3);
 			cellCursor = cell.firstCursorPosition();
 			textCharFormat.setVerticalAlignment(QTextCharFormat::AlignMiddle);
 			cell.setFormat(textCharFormat);
