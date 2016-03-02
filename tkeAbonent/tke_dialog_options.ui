@@ -1002,6 +1002,13 @@
               </property>
              </widget>
             </item>
+            <item>
+             <widget class="QCheckBox" name="checkBox_addPereplataBorgNaKiMis">
+              <property name="text">
+               <string>Друкувати переплату/борг на кінець місяця</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>

@@ -57,6 +57,7 @@ void tke_dialog_options::connectEditres()
 	connect(ui.checkBox_showPerevedZaborg, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	connect(ui.checkBox_showBeznadDebitZaborg, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	connect(ui.checkBox_addBeznadiynaDebZaborgVGolovnKvyt, SIGNAL(clicked()), this, SLOT(optionsEdited()));
+    connect(ui.checkBox_addPereplataBorgNaKiMis, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	connect(ui.spinBox_recomendedSplataDate, SIGNAL(valueChanged(int)), this, SLOT(optionsEdited()));
 	connect(ui.lineEdit_infoText2Str, SIGNAL(textEdited(const QString &)), this, SLOT(optionsEdited()));
 	connect(ui.lineEdit_infoText3Str, SIGNAL(textEdited(const QString &)), this, SLOT(optionsEdited()));
@@ -97,7 +98,8 @@ void tke_dialog_options::disconnectEditres()
 	disconnect(ui.checkBox_showNarahST, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	disconnect(ui.checkBox_showPerevedZaborg, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	disconnect(ui.checkBox_showBeznadDebitZaborg, SIGNAL(clicked()), this, SLOT(optionsEdited()));
-	disconnect(ui.checkBox_addBeznadiynaDebZaborgVGolovnKvyt, SIGNAL(clicked()), this, SLOT(optionsEdited()));
+    disconnect(ui.checkBox_addBeznadiynaDebZaborgVGolovnKvyt, SIGNAL(clicked()), this, SLOT(optionsEdited()));
+    disconnect(ui.checkBox_addPereplataBorgNaKiMis, SIGNAL(clicked()), this, SLOT(optionsEdited()));
 	disconnect(ui.spinBox_recomendedSplataDate, SIGNAL(valueChanged(int)), this, SLOT(optionsEdited()));
 	disconnect(ui.lineEdit_infoText2Str, SIGNAL(textEdited(const QString &)), this, SLOT(optionsEdited()));
 	disconnect(ui.lineEdit_infoText3Str, SIGNAL(textEdited(const QString &)), this, SLOT(optionsEdited()));
@@ -236,6 +238,10 @@ void tke_dialog_options::populateOptions()
 	query->exec("SELECT strTemplate FROM slujb_znach WHERE id=25");
 	query->seek(0);
 	ui.plainTextEdit_bankWiringInstructions->setPlainText(query->value(0).toString());
+
+    query->exec("SELECT strTemplate FROM slujb_znach WHERE id=26");
+    query->seek(0);
+    ui.checkBox_addPereplataBorgNaKiMis->setChecked(query->value(0).toBool());
 	
 	//Розділ шляхів до файлів скриптів
 	ui.lineEdit_importKvyt->setText(settings->value("Script/KvytScriptFilePath").toString());
@@ -355,6 +361,7 @@ void tke_dialog_options::saveOptions()
 	query->exec("UPDATE slujb_znach SET strTemplate='"+ui.lineEdit_infoText4Str->text()+"' WHERE id=23");
 	query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_printPokaznBudLichCO->isChecked())+"' WHERE id=6");
 	query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_printPokaznykOfType->isChecked())+"' WHERE id=20");
+    query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_addPereplataBorgNaKiMis->isChecked())+"' WHERE id=26");
 	query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_printZeroNegativeKvyt->isChecked())+"' WHERE id=9");
     query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.comboBox_obovPlataSubs->currentIndex())+"' WHERE id=10");
     query->exec("UPDATE slujb_znach SET strTemplate='"+sqlStr(ui.checkBox_checkObovyazkPlataPoSubsAndNarah->isChecked())+"' WHERE id=22");

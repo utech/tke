@@ -125,7 +125,35 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 	query->seek(0);
 	const bool printTaryfTypeCO = query->value(0).toBool();
 	double diuchTaryfBud = diuchTaryfInMonth(budynokId, prev_year, prev_month);
-	
+
+    //Читання необхідності друку переплати/заборгованості на кінець місяця
+    query->exec("SELECT strTemplate FROM slujb_znach WHERE id=26");
+    query->seek(0);
+    const bool printPereplataBorg = query->value(0).toBool();
+    //Створення змінних для формування розмітки таблиці взалежності чи потрібно формувати стрічки з переплатою/боргом на кін місяця
+    int tableRowCount, merge1, merge2, merge3, cell1, cell2, cell3, cell4, cell5;
+    if (printPereplataBorg){
+        tableRowCount = 10;
+        merge1 = 7;
+        merge2 = 8;
+        merge3 = 10;
+        cell1 = 8;
+        cell2 = 9;
+        cell3 = 6;
+        cell4 = 7;
+        cell5 = 8;
+    }
+    else{
+        tableRowCount = 9;
+        merge1 = 6;
+        merge2 = 7;
+        merge3 = 9;
+        cell1 = 7;
+        cell2 = 8;
+        cell3 = 5;
+        cell4 = 6;
+        cell5 = 7;
+    }
 	
 	//Читання неохідності друку банківських реквізитів, та при потребі самих реквізитів
 	query->exec("SELECT strTemplate FROM slujb_znach WHERE id=24");
@@ -364,12 +392,12 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			else
 				tableFormat.setPageBreakPolicy(QTextFormat::PageBreak_Auto);
 				//створення і налаштування таблиці
-            QTextTable *table = cursor.insertTable(10, 6, tableFormat);
+            QTextTable *table = cursor.insertTable(tableRowCount, 6, tableFormat);
 			table->mergeCells ( 0, 0, 3, 2 );
 			table->mergeCells ( 0, 3, 1, 3 );
-            table->mergeCells ( 1, 3, 7, 1 );
-            table->mergeCells ( 8, 3, 2, 3 );
-            table->mergeCells ( 0, 2, 10, 1 );
+            table->mergeCells ( 1, 3, merge1, 1 );
+            table->mergeCells ( merge2, 3, 2, 3 );
+            table->mergeCells ( 0, 2, merge3, 1 );
 			//Заповнення колонок квитанції
 				// Шапка
 			QString str_month;
@@ -518,6 +546,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			else
 			curTextCharFormat = textCharFormat;
             cell = table->cellAt(7, 0);
+            if (printPereplataBorg) {
             cellCursor = cell.firstCursorPosition();
             blockFormat.setAlignment( Qt::AlignLeft );
             cellCursor.setBlockFormat( blockFormat );
@@ -528,6 +557,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
             cellCursor.setBlockFormat( blockFormat );
             cellCursor.insertText( (oplata < 0) ? uMToStr2(oplata*-1) : uMToStr2(oplata), textCharFormat );
             cell = table->cellAt(8, 0);
+            }
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
@@ -540,7 +570,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
                     cellCursor.insertText( "До опл.згідно субсидії", curTextCharFormat );
             }
 
-            cell = table->cellAt(8, 1);
+            cell = table->cellAt(cell1, 1);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
 			cellCursor.setBlockFormat( blockFormat );
@@ -551,7 +581,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			else
 				cellCursor.insertText( "---", curTextCharFormat );
 			
-            cell = table->cellAt(9, 0);
+            cell = table->cellAt(cell2, 0);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
@@ -563,7 +593,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
 			if (needCO && !needGV)
-				cellCursor.insertText( (saldo < 0) ? "Переплата\nНараховано за місяць" : "Борг на початок місяця\Нараховано за місяць", textCharFormat );
+                cellCursor.insertText( (saldo < 0) ? "Переплата\nНараховано за місяць" : "Борг на початок місяця\nНараховано за місяць", textCharFormat );
 			else{
 				cellCursor.insertText((saldo < 0) ? "Переплата\nНараховано за" : "Борг на початок місяця\nНараховано за", textCharFormat );
 				if (needCO)
@@ -626,6 +656,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			else
 				curTextCharFormat = textCharFormat;
             cell = table->cellAt(5, 4);
+            if (printPereplataBorg){
             cellCursor = cell.firstCursorPosition();
             blockFormat.setAlignment( Qt::AlignLeft );
             cellCursor.setBlockFormat( blockFormat );
@@ -636,6 +667,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
             cellCursor.setBlockFormat( blockFormat );
             cellCursor.insertText( (oplata < 0) ? uMToStr2(oplata*-1) : uMToStr2(oplata), textCharFormat );
             cell = table->cellAt(6, 4);
+            }
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
@@ -647,7 +679,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
                 else
                     cellCursor.insertText( "До опл.згідно субсидії", curTextCharFormat );
             }
-            cell = table->cellAt(6, 5);
+            cell = table->cellAt(cell3, 5);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignRight );
 			cellCursor.setBlockFormat( blockFormat );
@@ -658,7 +690,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			else
 				cellCursor.insertText( "---", curTextCharFormat );
 			
-            cell = table->cellAt(7, 4);
+            cell = table->cellAt(cell4, 4);
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
@@ -779,7 +811,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor.deletePreviousChar(); //Видалення останнього переносу
 			
 						//Повідомлення для абонента
-            cell = table->cellAt(8, 3);
+            cell = table->cellAt(cell5, 3);
 			cellCursor = cell.firstCursorPosition();
 			textCharFormat.setVerticalAlignment(QTextCharFormat::AlignMiddle);
 			cell.setFormat(textCharFormat);
