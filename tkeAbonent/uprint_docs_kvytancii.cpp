@@ -177,13 +177,13 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 		//Налаштування формату майбутніх таблиць
 	QTextTableFormat tableFormat;
 	QVector<QTextLength> constraints;
-	constraints << QTextLength(QTextLength::FixedLength, 155);
-	constraints << QTextLength(QTextLength::FixedLength, 60);
-	constraints << QTextLength(QTextLength::FixedLength, 5);
-	constraints << QTextLength(QTextLength::FixedLength, 220);
-	constraints << QTextLength(QTextLength::FixedLength, 175); // 175
-	constraints << QTextLength(QTextLength::FixedLength, 60);  // 100
-	tableFormat.setColumnWidthConstraints(constraints);
+    constraints << QTextLength(QTextLength::FixedLength, 155);
+    constraints << QTextLength(QTextLength::FixedLength, 60);
+    constraints << QTextLength(QTextLength::FixedLength, 5);
+    constraints << QTextLength(QTextLength::FixedLength, 220);
+    constraints << QTextLength(QTextLength::FixedLength, 175); // 175
+    constraints << QTextLength(QTextLength::FixedLength, 60);  // 100
+    tableFormat.setColumnWidthConstraints(constraints);
 	tableFormat.setCellSpacing(0);
 	tableFormat.setCellPadding(2);
 		//Створення стрічки для фільтрування по абоненту
@@ -407,8 +407,8 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			str_month += QVariant(month).toString();
 				//Частина підприємства
 			cell = table->cellAt(0, 0);
-			textCharFormat.setFontPointSize( 9 );
-			textCharFormat_bold.setFontPointSize( 8 );
+            textCharFormat.setFontPointSize( 9 );
+            textCharFormat_bold.setFontPointSize( 8 );
 			QFont font = textCharFormat_bold.font();
 			font.setBold( true );
 			textCharFormat_bold.setFont(font);
@@ -529,7 +529,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText( codec->toUnicode("Сума до оплати\n"), curTextCharFormat );
+            cellCursor.insertText( codec->toUnicode("Сума до оплати"), curTextCharFormat );
 			// додає два переноси на наступний рядок у випадку друку без банківських реквізитів
 			if (!needPrintBankRekvizyty)
 				cellCursor.insertText("\n\n\n", curTextCharFormat);
@@ -585,7 +585,7 @@ void UPrintDocs::print_kvytancii(int prev_month, int prev_year, bool one_kvyt, i
 			cellCursor = cell.firstCursorPosition();
 			blockFormat.setAlignment( Qt::AlignLeft );
 			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText( codec->toUnicode("Оплачено абонентом \n\n"), textCharFormat );
+            cellCursor.insertText( codec->toUnicode("Оплачено абонентом"), textCharFormat );
 			
 				//Частина абонента
 			cell = table->cellAt(1, 4);
