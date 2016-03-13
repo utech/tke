@@ -325,7 +325,8 @@ tke_MainWindow::tke_MainWindow(QWidget *parent)
 		connect(ui.action_insert_dbf_kvyt_oshchadbank, SIGNAL(activated()), this, SLOT(action_insert_dbf_kvyt_oshchadbank_activated())); // втягування квитанцій з dbf-ок Ощадбанку 
 		connect(ui.action_set_data_sources, SIGNAL(activated()), this, SLOT(action_set_data_sources_activated())); // налаштування джерел даних програми 
 		connect(ui.action_print_borjnyky, SIGNAL(activated()), this, SLOT(action_print_borjnyky_activated())); // налаштування джерел даних програми 
-		connect(ui.action_debuger_form, SIGNAL(activated()), this, SLOT(action_debuger_form_activated())); // налаштування джерел даних програми 
+        connect(ui.action_print_pereplata, SIGNAL(activated()), this, SLOT(action_print_pereplata_activated())); // налаштування джерел даних програми
+        connect(ui.action_debuger_form, SIGNAL(activated()), this, SLOT(action_debuger_form_activated())); // налаштування джерел даних програми
 		connect(ui.action_sqlBrowser,SIGNAL(activated()),this,SLOT(action_sqlBrowser_activated()));
 		connect(ui.actionPosada,SIGNAL(activated()),this,SLOT(action_posada_activated()));
 		connect(ui.action_assistent,SIGNAL(activated()),this,SLOT(action_assistent_activated()));

@@ -8,11 +8,13 @@
 #include "tke_dialog_filtr_borjnykiv.h"
 
 //------------------------------------------------------------
-tke_Dialog_filtr_borjnykiv::tke_Dialog_filtr_borjnykiv(QWidget *parent)
+tke_Dialog_filtr_borjnykiv::tke_Dialog_filtr_borjnykiv(QString lblBorg, QString windowTitle, QWidget *parent)
         : QDialog(parent)
 {
     ui.setupUi(this);
-	QSqlQuery *query = new QSqlQuery();
+    ui.label_borg->setText(lblBorg);
+    setWindowTitle(windowTitle);
+    QSqlQuery *query = new QSqlQuery();
 	
 	query->exec("SELECT id, Vulycia & ' ' & Bud_num FROM budynky ORDER BY Vulycia & ' ' & Bud_num");
 	ui.comboBox_budynok->clear();

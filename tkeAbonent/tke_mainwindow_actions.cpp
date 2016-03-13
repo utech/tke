@@ -1109,7 +1109,7 @@ void tke_MainWindow::action_set_data_sources_activated()
 //------------------------------------------------------------
 void tke_MainWindow::action_print_borjnyky_activated()
 {
-	tke_Dialog_filtr_borjnykiv * filtrBorjnykiv = new tke_Dialog_filtr_borjnykiv();
+    tke_Dialog_filtr_borjnykiv * filtrBorjnykiv = new tke_Dialog_filtr_borjnykiv("Борг більший від", "Фільтр боржників");
 	QSqlQuery *query = new QSqlQuery();
 	query->exec("SELECT max(year), max(month) \
 					FROM (SELECT year, month FROM narahuvannya WHERE year=(SELECT max(year) FROM narahuvannya))");
@@ -1122,13 +1122,37 @@ void tke_MainWindow::action_print_borjnyky_activated()
 	delete query;
 	if (filtrBorjnykiv->exec() == 1){
 		UPrintDocs * printDocs = new UPrintDocs();
-		printDocs->print_vidomist_borjnykiv(filtrBorjnykiv->getPochDate(), filtrBorjnykiv->getKincDate(), 
-					filtrBorjnykiv->minBorg(), filtrBorjnykiv->get_Bud_id(), filtrBorjnykiv->abonType());
+        printDocs->print_vidomist_borjnykiv(filtrBorjnykiv->getPochDate(), filtrBorjnykiv->getKincDate(),
+                    filtrBorjnykiv->minBorg(), filtrBorjnykiv->get_Bud_id(), filtrBorjnykiv->abonType(), false);
 		connect(this, SIGNAL(closeLoginSignal()), printDocs->printform, SLOT(close()));
 		connect(this, SIGNAL(mainWindowClosed()), printDocs->printform, SLOT(close()));
 		delete printDocs;
 	}
 	delete filtrBorjnykiv;
+}
+//------------------------------------------------------------
+void tke_MainWindow::action_print_pereplata_activated()
+{
+    tke_Dialog_filtr_borjnykiv * filtrBorjnykiv = new tke_Dialog_filtr_borjnykiv("Переплата більша від", "Фільтр переплати");
+    QSqlQuery *query = new QSqlQuery();
+    query->exec("SELECT max(year), max(month) \
+                    FROM (SELECT year, month FROM narahuvannya WHERE year=(SELECT max(year) FROM narahuvannya))");
+    query->seek(0);
+    filtrBorjnykiv->setKincDate(QDate(query->value(0).toInt(),query->value(1).toInt(),1));
+    query->exec("SELECT min(year), min(month) \
+                    FROM (SELECT year, month FROM narahuvannya WHERE year=(SELECT min(year) FROM narahuvannya))");
+    query->seek(0);
+    filtrBorjnykiv->setPochDate(QDate(query->value(0).toInt(),query->value(1).toInt(),1));
+    delete query;
+    if (filtrBorjnykiv->exec() == 1){
+        UPrintDocs * printDocs = new UPrintDocs();
+        printDocs->print_vidomist_borjnykiv(filtrBorjnykiv->getPochDate(), filtrBorjnykiv->getKincDate(),
+                    filtrBorjnykiv->minBorg(), filtrBorjnykiv->get_Bud_id(), filtrBorjnykiv->abonType(), true);
+        connect(this, SIGNAL(closeLoginSignal()), printDocs->printform, SLOT(close()));
+        connect(this, SIGNAL(mainWindowClosed()), printDocs->printform, SLOT(close()));
+        delete printDocs;
+    }
+    delete filtrBorjnykiv;
 }
 //------------------------------------------------------------
 void tke_MainWindow::action_debuger_form_activated()
@@ -1147,7 +1171,7 @@ void tke_MainWindow::action_archiv_vidomosti_kvytanciy_ob_activated()
 //------------------------------------------------------------
 void tke_MainWindow::action_print_vidomist_borjnykiv_riznyc_activated()
 {
-	tke_Dialog_filtr_borjnykiv * filtrBorjnykiv = new tke_Dialog_filtr_borjnykiv();
+    tke_Dialog_filtr_borjnykiv * filtrBorjnykiv = new tke_Dialog_filtr_borjnykiv("Борг більший від", "Фільтр боржників");
 	QSqlQuery *query = new QSqlQuery();
 	query->exec("SELECT max(year), max(month) \
 					FROM (SELECT year, month FROM narahuvannya WHERE year=(SELECT max(year) FROM narahuvannya))");

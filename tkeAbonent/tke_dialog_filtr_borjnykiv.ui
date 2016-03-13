@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Фільтр відомості пільговиків</string>
+   <string/>
   </property>
   <property name="windowIcon">
    <iconset resource="tke/tke_rc">

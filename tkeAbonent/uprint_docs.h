@@ -43,8 +43,8 @@ class UPrintDocs
 		void print_dovidka_oderj_subs(int cur_year, int cur_month);
 		void print_forma_akt_vytrat_teploenergii();
 		void print_diuch_taryf(int cur_year, int cur_month);
-		void print_vidomist_borjnykiv(QDate pochDate, QDate kincDate, double minBorg, int BudId, unsigned char abonType);
-		void print_vidomist_borjnykiv_riznyc(QDate pochDate, QDate kincDate, double minBorg, int BudId); //Різницева схема
+        void print_vidomist_borjnykiv(QDate pochDate, QDate kincDate, double minSum, int BudId, unsigned char abonType, bool isPereplata);
+        void print_vidomist_borjnykiv_riznyc(QDate pochDate, QDate kincDate, double minBorg, int BudId); //Різницева схема
 		void print_vidomist_wrong_subs(int cur_year, int cur_month);
 		void print_vidomist_narah_opl_za_CO_dlya_viddilu_subs(int cur_year, int cur_month);
 		void print_dovidnyk_abonentiv();

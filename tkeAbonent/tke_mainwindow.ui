@@ -539,7 +539,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -587,7 +596,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -626,7 +644,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -674,7 +701,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -722,7 +758,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -772,7 +817,16 @@
               <property name="spacing">
                <number>2</number>
               </property>
-              <property name="margin">
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
                <number>2</number>
               </property>
               <item>
@@ -780,7 +834,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -822,7 +885,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -853,7 +925,7 @@
                    </size>
                   </property>
                   <property name="inputMask">
-                   <string>9999999999; </string>
+                   <string>9999999999</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -881,7 +953,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -911,7 +992,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -966,7 +1056,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -1018,7 +1117,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -1061,7 +1169,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -1203,7 +1320,16 @@
                 <property name="spacing">
                  <number>0</number>
                 </property>
-                <property name="margin">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
                  <number>0</number>
                 </property>
                 <item>
@@ -2360,7 +2486,7 @@
      <x>0</x>
      <y>0</y>
      <width>1478</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_4">
@@ -2411,6 +2537,7 @@
     <addaction name="action_print_dovidka_u_subs"/>
     <addaction name="action_print_dovidka_u_subs_2"/>
     <addaction name="separator"/>
+    <addaction name="action_print_pereplata"/>
     <addaction name="action_print_borjnyky"/>
     <addaction name="action_print_vidomist_borjnykiv_riznyc"/>
     <addaction name="action_printVidomistBorjnykivOtrymSubs"/>
@@ -2616,8 +2743,8 @@
    </property>
    <property name="minimumSize">
     <size>
-     <width>164</width>
-     <height>117</height>
+     <width>235</width>
+     <height>126</height>
     </size>
    </property>
    <property name="mouseTracking">
@@ -2634,8 +2761,7 @@
    </property>
    <property name="windowIcon">
     <iconset>
-     <normaloff/>
-    </iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="statusTip">
     <string>Таблиця БУДИНКИ</string>
@@ -2657,44 +2783,71 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_budynky">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="0" column="0">
       <layout class="QVBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
         <number>2</number>
        </property>
-       <item>
-        <widget class="QTableView" name="tableView_budynky">
-         <property name="focusPolicy">
-          <enum>Qt::ClickFocus</enum>
-         </property>
-         <property name="statusTip">
-          <string>Таблиця БУДИНКИ</string>
-         </property>
-         <property name="sortingEnabled">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
+        <number>2</number>
+       </property>
        <item>
         <layout class="QHBoxLayout">
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
           <number>2</number>
          </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QTableView" name="tableView_budynky">
+           <property name="focusPolicy">
+            <enum>Qt::ClickFocus</enum>
+           </property>
+           <property name="statusTip">
+            <string>Таблиця БУДИНКИ</string>
+           </property>
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
          <item>
           <spacer name="horizontalSpacer_4">
            <property name="orientation">
@@ -2720,7 +2873,7 @@
             <string>Додати</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
            </property>
            <property name="iconSize">
@@ -2746,7 +2899,7 @@
             <string>Видалити</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/greminus.png</normaloff>:/pictures/pictures/greminus.png</iconset>
            </property>
            <property name="iconSize">
@@ -2776,21 +2929,39 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_pilgy">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="0" column="0">
       <layout class="QVBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -2811,7 +2982,16 @@
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
           <number>2</number>
          </property>
          <item>
@@ -2839,7 +3019,7 @@
             <string>Додати</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/bluplus.png</normaloff>:/pictures/pictures/bluplus.png</iconset>
            </property>
            <property name="iconSize">
@@ -2865,7 +3045,7 @@
             <string>Видалити</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/bluminus.png</normaloff>:/pictures/pictures/bluminus.png</iconset>
            </property>
            <property name="iconSize">
@@ -2898,21 +3078,39 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_normat_taryf">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="0" column="0">
       <layout class="QVBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -2933,7 +3131,16 @@
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
           <number>2</number>
          </property>
          <item>
@@ -2961,7 +3168,7 @@
             <string>Додати</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/redplus.png</normaloff>:/pictures/pictures/redplus.png</iconset>
            </property>
            <property name="iconSize">
@@ -2987,7 +3194,7 @@
             <string>Видалити</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
            </property>
            <property name="iconSize">
@@ -3047,21 +3254,39 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="0" column="0">
       <layout class="QHBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
         <number>2</number>
        </property>
        <item>
@@ -3247,7 +3472,16 @@
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
         <number>2</number>
        </property>
        <item>
@@ -3278,7 +3512,7 @@
           <string>Зберегти</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/floppy.png</normaloff>:/pictures/pictures/floppy.png</iconset>
          </property>
          <property name="iconSize">
@@ -3304,7 +3538,7 @@
           <string>Порах.тариф</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/calculating.png</normaloff>:/pictures/pictures/calculating.png</iconset>
          </property>
          <property name="iconSize">
@@ -3324,7 +3558,7 @@
           <string>Друк</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/printer.png</normaloff>:/pictures/pictures/printer.png</iconset>
          </property>
          <property name="iconSize">
@@ -3352,21 +3586,39 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_3">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="0" column="0">
       <layout class="QVBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -3374,7 +3626,16 @@
          <property name="spacing">
           <number>1</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>4</number>
+         </property>
+         <property name="topMargin">
+          <number>4</number>
+         </property>
+         <property name="rightMargin">
+          <number>4</number>
+         </property>
+         <property name="bottomMargin">
           <number>4</number>
          </property>
          <item>
@@ -3483,7 +3744,16 @@
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
           <number>2</number>
          </property>
          <item>
@@ -3511,7 +3781,7 @@
             <string>Додати</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/bluplus.png</normaloff>:/pictures/pictures/bluplus.png</iconset>
            </property>
            <property name="iconSize">
@@ -3537,7 +3807,7 @@
             <string>Видалити</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/bluminus.png</normaloff>:/pictures/pictures/bluminus.png</iconset>
            </property>
            <property name="iconSize">
@@ -3567,14 +3837,23 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_2">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
-     </property>
-     <property name="margin">
-      <number>0</number>
      </property>
      <item row="1" column="0">
       <widget class="QTableView" name="tableView_subs">
@@ -3594,7 +3873,16 @@
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
         <number>2</number>
        </property>
        <item>
@@ -3622,7 +3910,7 @@
           <string>Додати</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
          </property>
          <property name="iconSize">
@@ -3648,7 +3936,7 @@
           <string>Видалити</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/greminus.png</normaloff>:/pictures/pictures/greminus.png</iconset>
          </property>
          <property name="iconSize">
@@ -3668,7 +3956,7 @@
           <string>Вн. донарах.</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/korganizer.png</normaloff>:/pictures/pictures/korganizer.png</iconset>
          </property>
          <property name="iconSize">
@@ -3685,7 +3973,7 @@
           <string>Вн. нарах.</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/korganizer.png</normaloff>:/pictures/pictures/korganizer.png</iconset>
          </property>
          <property name="iconSize">
@@ -3703,7 +3991,16 @@
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
         <number>2</number>
        </property>
        <item>
@@ -3812,21 +4109,39 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_4">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="2" column="0">
       <layout class="QHBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
         <number>2</number>
        </property>
        <item>
@@ -3854,7 +4169,7 @@
           <string>Додати (Ctrl+A)</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/redplus.png</normaloff>:/pictures/pictures/redplus.png</iconset>
          </property>
          <property name="iconSize">
@@ -3883,7 +4198,7 @@
           <string>Видалити</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
          </property>
          <property name="iconSize">
@@ -3900,7 +4215,7 @@
           <string>Новий пакет</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/media-record.png</normaloff>:/pictures/pictures/media-record.png</iconset>
          </property>
          <property name="iconSize">
@@ -3917,7 +4232,7 @@
           <string>Вн. з форми</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/korganizer.png</normaloff>:/pictures/pictures/korganizer.png</iconset>
          </property>
          <property name="iconSize">
@@ -3935,7 +4250,16 @@
        <property name="spacing">
         <number>0</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -3943,7 +4267,16 @@
          <property name="spacing">
           <number>1</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>1</number>
+         </property>
+         <property name="topMargin">
+          <number>1</number>
+         </property>
+         <property name="rightMargin">
+          <number>1</number>
+         </property>
+         <property name="bottomMargin">
           <number>1</number>
          </property>
          <item>
@@ -3987,7 +4320,16 @@
               <property name="spacing">
                <number>2</number>
               </property>
-              <property name="margin">
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
                <number>2</number>
               </property>
               <item>
@@ -4107,7 +4449,16 @@
               <property name="spacing">
                <number>2</number>
               </property>
-              <property name="margin">
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
                <number>2</number>
               </property>
               <item>
@@ -4227,7 +4578,16 @@
               <property name="spacing">
                <number>2</number>
               </property>
-              <property name="margin">
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
                <number>2</number>
               </property>
               <item>
@@ -4332,21 +4692,39 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_5">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="0" column="0">
       <layout class="QVBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -4411,7 +4789,16 @@
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
           <number>2</number>
          </property>
          <item>
@@ -4439,7 +4826,7 @@
             <string>Додати</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/redplus.png</normaloff>:/pictures/pictures/redplus.png</iconset>
            </property>
            <property name="iconSize">
@@ -4465,7 +4852,7 @@
             <string>Видалити</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
            </property>
            <property name="iconSize">
@@ -4498,21 +4885,39 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_6">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="0" column="0">
       <layout class="QVBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
         <number>2</number>
        </property>
        <item>
@@ -4577,7 +4982,16 @@
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
           <number>2</number>
          </property>
          <item>
@@ -4605,7 +5019,7 @@
             <string>Додати</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/bluplus.png</normaloff>:/pictures/pictures/bluplus.png</iconset>
            </property>
            <property name="iconSize">
@@ -4631,7 +5045,7 @@
             <string>Видалити</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/bluminus.png</normaloff>:/pictures/pictures/bluminus.png</iconset>
            </property>
            <property name="iconSize">
@@ -4661,21 +5075,39 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_7">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="0" column="0">
       <layout class="QVBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -4696,7 +5128,16 @@
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
           <number>2</number>
          </property>
          <item>
@@ -4724,7 +5165,7 @@
             <string>Додати</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
            </property>
            <property name="iconSize">
@@ -4750,7 +5191,7 @@
             <string>Видалити</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/greminus.png</normaloff>:/pictures/pictures/greminus.png</iconset>
            </property>
            <property name="iconSize">
@@ -4780,21 +5221,39 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_8">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="2" column="0">
       <layout class="QHBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
         <number>2</number>
        </property>
        <item>
@@ -4822,7 +5281,7 @@
           <string>Додати</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/bluplus.png</normaloff>:/pictures/pictures/bluplus.png</iconset>
          </property>
          <property name="iconSize">
@@ -4848,7 +5307,7 @@
           <string>Видалити</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/bluminus.png</normaloff>:/pictures/pictures/bluminus.png</iconset>
          </property>
          <property name="iconSize">
@@ -4888,7 +5347,16 @@
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>2</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
         <number>2</number>
        </property>
        <item>
@@ -4896,7 +5364,16 @@
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
           <number>2</number>
          </property>
          <item>
@@ -4940,7 +5417,16 @@
               <property name="spacing">
                <number>6</number>
               </property>
-              <property name="margin">
+              <property name="leftMargin">
+               <number>4</number>
+              </property>
+              <property name="topMargin">
+               <number>4</number>
+              </property>
+              <property name="rightMargin">
+               <number>4</number>
+              </property>
+              <property name="bottomMargin">
                <number>4</number>
               </property>
               <item>
@@ -5026,21 +5512,39 @@
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_10">
     <layout class="QGridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <property name="horizontalSpacing">
       <number>0</number>
      </property>
      <property name="verticalSpacing">
       <number>2</number>
      </property>
-     <property name="margin">
-      <number>0</number>
-     </property>
      <item row="0" column="0">
       <layout class="QVBoxLayout">
        <property name="spacing">
         <number>2</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -5048,7 +5552,16 @@
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
           <number>2</number>
          </property>
          <item>
@@ -5154,7 +5667,16 @@
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>2</number>
+         </property>
+         <property name="topMargin">
+          <number>2</number>
+         </property>
+         <property name="rightMargin">
+          <number>2</number>
+         </property>
+         <property name="bottomMargin">
           <number>2</number>
          </property>
          <item>
@@ -5182,7 +5704,7 @@
             <string>Додати</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
            </property>
            <property name="iconSize">
@@ -5208,7 +5730,7 @@
             <string>Видалити</string>
            </property>
            <property name="icon">
-            <iconset resource="tke/tke_rc">
+            <iconset>
              <normaloff>:/pictures/pictures/greminus.png</normaloff>:/pictures/pictures/greminus.png</iconset>
            </property>
            <property name="iconSize">
@@ -5241,7 +5763,16 @@
      <property name="spacing">
       <number>0</number>
      </property>
-     <property name="margin">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
@@ -5312,7 +5843,7 @@
           <string>Перевантажити</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/redeal.png</normaloff>:/pictures/pictures/redeal.png</iconset>
          </property>
          <property name="iconSize">
@@ -5342,7 +5873,7 @@
           <string>Додати</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
          </property>
          <property name="iconSize">
@@ -5359,7 +5890,7 @@
           <string>Видалити</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
          </property>
          <property name="iconSize">
@@ -5387,7 +5918,16 @@
      <property name="spacing">
       <number>0</number>
      </property>
-     <property name="margin">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
@@ -5458,7 +5998,7 @@
           <string>Перевантажити</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/redeal.png</normaloff>:/pictures/pictures/redeal.png</iconset>
          </property>
          <property name="iconSize">
@@ -5488,7 +6028,7 @@
           <string>Додати</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/greplus.png</normaloff>:/pictures/pictures/greplus.png</iconset>
          </property>
          <property name="iconSize">
@@ -5505,7 +6045,7 @@
           <string>Видалити</string>
          </property>
          <property name="icon">
-          <iconset resource="tke/tke_rc">
+          <iconset>
            <normaloff>:/pictures/pictures/redminus.png</normaloff>:/pictures/pictures/redminus.png</iconset>
          </property>
          <property name="iconSize">
@@ -5523,7 +6063,7 @@
   </widget>
   <action name="action_close_program">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/button_cancel.png</normaloff>:/pictures/pictures/button_cancel.png</iconset>
    </property>
    <property name="text">
@@ -5541,7 +6081,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/home.png</normaloff>:/pictures/pictures/home.png</iconset>
    </property>
    <property name="text">
@@ -5559,7 +6099,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/cubnav.png</normaloff>:/pictures/pictures/cubnav.png</iconset>
    </property>
    <property name="text">
@@ -5577,7 +6117,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/kcmdf.png</normaloff>:/pictures/pictures/kcmdf.png</iconset>
    </property>
    <property name="text">
@@ -5595,7 +6135,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/emblem-personal.png</normaloff>:/pictures/pictures/emblem-personal.png</iconset>
    </property>
    <property name="text">
@@ -5613,7 +6153,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/editors_section.png</normaloff>:/pictures/pictures/editors_section.png</iconset>
    </property>
    <property name="text">
@@ -5634,7 +6174,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/gnome-color-browser.png</normaloff>:/pictures/pictures/gnome-color-browser.png</iconset>
    </property>
    <property name="text">
@@ -5652,7 +6192,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/Kpilot_Notes.png</normaloff>:/pictures/pictures/Kpilot_Notes.png</iconset>
    </property>
    <property name="text">
@@ -5667,7 +6207,7 @@
   </action>
   <action name="action_print_kvytancii">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/Kpilot_Notes.png</normaloff>:/pictures/pictures/Kpilot_Notes.png</iconset>
    </property>
    <property name="text">
@@ -5679,7 +6219,7 @@
   </action>
   <action name="action_assistent">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/doc-icon.png</normaloff>:/pictures/pictures/doc-icon.png</iconset>
    </property>
    <property name="text">
@@ -5694,7 +6234,7 @@
   </action>
   <action name="action_about">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/cube.png</normaloff>:/pictures/pictures/cube.png</iconset>
    </property>
    <property name="text">
@@ -5709,7 +6249,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/kcmdrkonqi.png</normaloff>:/pictures/pictures/kcmdrkonqi.png</iconset>
    </property>
    <property name="text">
@@ -5724,7 +6264,7 @@
   </action>
   <action name="action_narah">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/education_economy_section.png</normaloff>:/pictures/pictures/education_economy_section.png</iconset>
    </property>
    <property name="text">
@@ -5736,7 +6276,7 @@
   </action>
   <action name="action_vidomist_pilg">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/emblem-people.png</normaloff>:/pictures/pictures/emblem-people.png</iconset>
    </property>
    <property name="text">
@@ -5751,7 +6291,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/documents.png</normaloff>:/pictures/pictures/documents.png</iconset>
    </property>
    <property name="text">
@@ -5771,7 +6311,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/emblem-cool.png</normaloff>:/pictures/pictures/emblem-cool.png</iconset>
    </property>
    <property name="text">
@@ -5786,7 +6326,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/emblem-people.png</normaloff>:/pictures/pictures/emblem-people.png</iconset>
    </property>
    <property name="text">
@@ -5798,7 +6338,7 @@
   </action>
   <action name="action_print_vidomist_narah">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/calculating.png</normaloff>:/pictures/pictures/calculating.png</iconset>
    </property>
    <property name="text">
@@ -5807,7 +6347,7 @@
   </action>
   <action name="action_print_dovidka_oderj_subs">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/calculating.png</normaloff>:/pictures/pictures/calculating.png</iconset>
    </property>
    <property name="text">
@@ -5816,7 +6356,7 @@
   </action>
   <action name="action_registracion">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/passwd-mdk_128.png</normaloff>:/pictures/pictures/passwd-mdk_128.png</iconset>
    </property>
    <property name="text">
@@ -5825,7 +6365,7 @@
   </action>
   <action name="action_close_login">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/draksec-mdk.png</normaloff>:/pictures/pictures/draksec-mdk.png</iconset>
    </property>
    <property name="text">
@@ -5837,7 +6377,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/editors_section.png</normaloff>:/pictures/pictures/editors_section.png</iconset>
    </property>
    <property name="text">
@@ -5849,7 +6389,7 @@
   </action>
   <action name="action_pererahunok_saldo">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/i_view_day.png</normaloff>:/pictures/pictures/i_view_day.png</iconset>
    </property>
    <property name="text">
@@ -5858,7 +6398,7 @@
   </action>
   <action name="action_print_rahunok_abonenta">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/kdeprint_printer_users.png</normaloff>:/pictures/pictures/kdeprint_printer_users.png</iconset>
    </property>
    <property name="text">
@@ -5867,7 +6407,7 @@
   </action>
   <action name="action_print_forma_akt_vytrat_teploenergii">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/debugger.png</normaloff>:/pictures/pictures/debugger.png</iconset>
    </property>
    <property name="text">
@@ -5876,7 +6416,7 @@
   </action>
   <action name="action_print_kvytancii_for_abonent">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/personal.png</normaloff>:/pictures/pictures/personal.png</iconset>
    </property>
    <property name="text">
@@ -5896,7 +6436,7 @@
   </action>
   <action name="action_pererahunok_saldo_all">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/i_view_week.png</normaloff>:/pictures/pictures/i_view_week.png</iconset>
    </property>
    <property name="text">
@@ -5905,7 +6445,7 @@
   </action>
   <action name="action_zvit_pilg_kategor">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/iph.png</normaloff>:/pictures/pictures/iph.png</iconset>
    </property>
    <property name="text">
@@ -5914,7 +6454,7 @@
   </action>
   <action name="action_insert_dbf_kvyt_oshchadbank">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/Kpilot_Notes.png</normaloff>:/pictures/pictures/Kpilot_Notes.png</iconset>
    </property>
    <property name="text">
@@ -5923,7 +6463,7 @@
   </action>
   <action name="action_set_data_sources">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/control-center2.png</normaloff>:/pictures/pictures/control-center2.png</iconset>
    </property>
    <property name="text">
@@ -5932,7 +6472,7 @@
   </action>
   <action name="action_print_borjnyky">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/package_toys.png</normaloff>:/pictures/pictures/package_toys.png</iconset>
    </property>
    <property name="text">
@@ -5941,7 +6481,7 @@
   </action>
   <action name="action_archiv_vidomosti_kvytanciy_ob">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/ark.png</normaloff>:/pictures/pictures/ark.png</iconset>
    </property>
    <property name="text">
@@ -5950,7 +6490,7 @@
   </action>
   <action name="action_insert_subs_dbf">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/spreadsheet.png</normaloff>:/pictures/pictures/spreadsheet.png</iconset>
    </property>
    <property name="text">
@@ -5959,7 +6499,7 @@
   </action>
   <action name="action_print_vidomist_borjnykiv_riznyc">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/package_toys.png</normaloff>:/pictures/pictures/package_toys.png</iconset>
    </property>
    <property name="text">
@@ -5974,7 +6514,7 @@
   </action>
   <action name="action_print_wrong_subs">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/emblem-personal.png</normaloff>:/pictures/pictures/emblem-personal.png</iconset>
    </property>
    <property name="text">
@@ -5983,7 +6523,7 @@
   </action>
   <action name="action_debuger_form">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/debugger.png</normaloff>:/pictures/pictures/debugger.png</iconset>
    </property>
    <property name="text">
@@ -6002,7 +6542,7 @@
   </action>
   <action name="action_diuch_taryf_calc_taryf">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/calculating.png</normaloff>:/pictures/pictures/calculating.png</iconset>
    </property>
    <property name="text">
@@ -6011,7 +6551,7 @@
   </action>
   <action name="action_diuch_taryf_save_taryf">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/floppy.png</normaloff>:/pictures/pictures/floppy.png</iconset>
    </property>
    <property name="text">
@@ -6020,7 +6560,7 @@
   </action>
   <action name="action_sqlBrowser">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/presentation_section.png</normaloff>:/pictures/pictures/presentation_section.png</iconset>
    </property>
    <property name="text">
@@ -6032,7 +6572,7 @@
   </action>
   <action name="actionPosada">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/control-center2.png</normaloff>:/pictures/pictures/control-center2.png</iconset>
    </property>
    <property name="text">
@@ -6041,7 +6581,7 @@
   </action>
   <action name="action_edit_users">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/control-center2.png</normaloff>:/pictures/pictures/control-center2.png</iconset>
    </property>
    <property name="text">
@@ -6060,7 +6600,7 @@
   </action>
   <action name="action_print_dovidnyk_abonentiv">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/education_literature_section.png</normaloff>:/pictures/pictures/education_literature_section.png</iconset>
    </property>
    <property name="text">
@@ -6069,7 +6609,7 @@
   </action>
   <action name="action_open_insert_narah_subs_form">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/korganizer.png</normaloff>:/pictures/pictures/korganizer.png</iconset>
    </property>
    <property name="text">
@@ -6078,7 +6618,7 @@
   </action>
   <action name="action_open_insert_donarah_subs_form">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/korganizer.png</normaloff>:/pictures/pictures/korganizer.png</iconset>
    </property>
    <property name="text">
@@ -6102,7 +6642,7 @@
   </action>
   <action name="action_save_data_base_toArchive">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/ark.png</normaloff>:/pictures/pictures/ark.png</iconset>
    </property>
    <property name="text">
@@ -6111,7 +6651,7 @@
   </action>
   <action name="action_extSearch">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/kghostview.png</normaloff>:/pictures/pictures/kghostview.png</iconset>
    </property>
    <property name="text">
@@ -6125,7 +6665,7 @@
   </action>
   <action name="action_pokaz_lich_GV">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/iph.png</normaloff>:/pictures/pictures/iph.png</iconset>
    </property>
    <property name="text">
@@ -6134,7 +6674,7 @@
   </action>
   <action name="action_narah_GV">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/education_economy_section.png</normaloff>:/pictures/pictures/education_economy_section.png</iconset>
    </property>
    <property name="text">
@@ -6163,7 +6703,7 @@
   </action>
   <action name="action_Options">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/control-center2.png</normaloff>:/pictures/pictures/control-center2.png</iconset>
    </property>
    <property name="text">
@@ -6172,7 +6712,7 @@
   </action>
   <action name="action_insert_electronic_kvytancii_UNI">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/Kpilot_Notes.png</normaloff>:/pictures/pictures/Kpilot_Notes.png</iconset>
    </property>
    <property name="text">
@@ -6181,7 +6721,7 @@
   </action>
   <action name="action_insert_electronic_subs_UNI">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/spreadsheet.png</normaloff>:/pictures/pictures/spreadsheet.png</iconset>
    </property>
    <property name="text">
@@ -6190,7 +6730,7 @@
   </action>
   <action name="action_print_zvit_forma_n_2_pilga_2007">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/iph.png</normaloff>:/pictures/pictures/iph.png</iconset>
    </property>
    <property name="text">
@@ -6204,7 +6744,7 @@
   </action>
   <action name="action_open_insert_kvyt_form">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/korganizer.png</normaloff>:/pictures/pictures/korganizer.png</iconset>
    </property>
    <property name="text">
@@ -6213,7 +6753,7 @@
   </action>
   <action name="action_pokazn_opal_stoyak">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/wand_disabled.png</normaloff>:/pictures/pictures/wand_disabled.png</iconset>
    </property>
    <property name="text">
@@ -6222,7 +6762,7 @@
   </action>
   <action name="action_narah_ST">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/education_economy_section.png</normaloff>:/pictures/pictures/education_economy_section.png</iconset>
    </property>
    <property name="text">
@@ -6231,7 +6771,7 @@
   </action>
   <action name="action_export_f2_v2007">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/backup-mdk.png</normaloff>:/pictures/pictures/backup-mdk.png</iconset>
    </property>
    <property name="text">
@@ -6323,7 +6863,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/education_mathematics.png</normaloff>:/pictures/pictures/education_mathematics.png</iconset>
    </property>
    <property name="text">
@@ -6343,7 +6883,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/kolab-mdk.png</normaloff>:/pictures/pictures/kolab-mdk.png</iconset>
    </property>
    <property name="text">
@@ -6375,7 +6915,7 @@
   </action>
   <action name="action_printCustomKvyt">
    <property name="icon">
-    <iconset resource="tke/tke_rc">
+    <iconset>
      <normaloff>:/pictures/pictures/Kpilot_Notes.png</normaloff>:/pictures/pictures/Kpilot_Notes.png</iconset>
    </property>
    <property name="text">
@@ -6415,6 +6955,11 @@
   <action name="action_fill_zapyt_subs">
    <property name="text">
     <string>Заповнити запит по субсидіях</string>
+   </property>
+  </action>
+  <action name="action_print_pereplata">
+   <property name="text">
+    <string>Друк відомості переплати</string>
    </property>
   </action>
  </widget>
@@ -6494,7 +7039,6 @@
   <tabstop>pushButton_del_korektura_s</tabstop>
   <tabstop>pushButton_del_normat_taryf</tabstop>
   <tabstop>pushButton_del_budynky</tabstop>
-  <tabstop>tableView_budynky</tabstop>
   <tabstop>pushButton_add_budynky</tabstop>
   <tabstop>comboBox_Poshuk</tabstop>
   <tabstop>comboBox_Poshuk_rahunok</tabstop>
@@ -6511,8 +7055,6 @@
   <tabstop>groupBox_kvyt_pachka</tabstop>
   <tabstop>groupBox_filtr_kategor_pilgovyky</tabstop>
  </tabstops>
- <resources>
-  <include location="tke/tke_rc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

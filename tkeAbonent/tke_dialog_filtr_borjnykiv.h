@@ -21,7 +21,7 @@ class tke_Dialog_filtr_borjnykiv : public QDialog
         Q_OBJECT
 
     public:
-        tke_Dialog_filtr_borjnykiv(QWidget *parent = 0);
+        tke_Dialog_filtr_borjnykiv(QString, QString, QWidget *parent = 0);
 		
 		int get_Bud_id();
 		QDate getPochDate();

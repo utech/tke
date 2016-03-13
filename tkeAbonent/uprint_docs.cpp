@@ -1531,498 +1531,511 @@ void UPrintDocs::print_diuch_taryf(int cur_year, int cur_month)
 	printform->show();
 }
 //------------------------------------------------------------
-void UPrintDocs::print_vidomist_borjnykiv(QDate pochDate, QDate kincDate, double minBorg, int BudId, unsigned char abonType)
+void UPrintDocs::print_vidomist_borjnykiv(QDate pochDate, QDate kincDate, double minSum, int BudId, unsigned char abonType, bool isPereplata)
 {
-	pochDate.setYMD(pochDate.year(), pochDate.month(), 1);
-	kincDate.setYMD(kincDate.year(), kincDate.month(), kincDate.daysInMonth());
-	//Заголовок документа
-	printform = new UPrintForm(0,codec->toUnicode("Відомість боржників"));
-	QTextBlockFormat blockFormat;
-	QTextTableCell cell;
-	QTextCharFormat textCharFormat;
-	printform->document()->clear();
-	QTextCursor cursor(printform->document()), cellCursor;
-	blockFormat.setAlignment( Qt::AlignHCenter );
-	cursor.setBlockFormat( blockFormat );
-	textCharFormat.setFontPointSize( 13 );
-	cursor.insertText(codec->toUnicode("ВІДОМІСТЬ"), textCharFormat);
-	blockFormat.setAlignment( Qt::AlignHCenter );
-	cursor.insertBlock(blockFormat);
-	textCharFormat.setFontPointSize( 12 );
-	if (abonType == 0)
-		cursor.insertText("УСІХ ", textCharFormat);
-	else if (abonType == 1)
-		cursor.insertText("під'єднаних до ЦО ", textCharFormat);
-	else if (abonType == 2)
-		cursor.insertText("від'єднаних від ЦО ", textCharFormat);
-	cursor.insertText(codec->toUnicode("абонентів, борг яких перевищує ") + 
-						uMToStr2(minBorg) +
-						codec->toUnicode(" грн."), textCharFormat);
-	blockFormat.setAlignment( Qt::AlignRight );
-	cursor.insertBlock(blockFormat);
-	textCharFormat.setFontPointSize( 9 );
-	cursor.insertText(codec->toUnicode("Аналізований інтервал місяців: ") +
-						QVariant(pochDate.month()).toString() + "." +
-						QVariant(pochDate.year()).toString() + "." +
-						codec->toUnicode("р. - ") +
-						QVariant(kincDate.month()).toString() + "." +
-						QVariant(kincDate.year()).toString() + "." +
-						codec->toUnicode("р."), textCharFormat);
-	cursor.insertBlock(blockFormat);
-	blockFormat.setAlignment( Qt::AlignCenter );
-	cursor.insertBlock(blockFormat);
-	textCharFormat.setFontPointSize( 12 );
-	cursor.insertText("ЗВЕДЕНА ТАБЛИЦЯ ПО БУДИНКАХ", textCharFormat);
-	cursor.insertBlock(blockFormat);
-	cursor.insertBlock(blockFormat);
-	textCharFormat.setFontPointSize( 9 );
-	
-	//Налаштування таблиці
-	QTextTable *table = NULL;
-	QTextTableFormat tableFormat;
-	QVector<QTextLength> constraints;
-	
-	//Зведена Таблиця боргу по будинках
-	constraints.clear();
-	constraints << QTextLength(QTextLength::FixedLength, 40);
-	constraints << QTextLength(QTextLength::FixedLength, 150);
-	constraints << QTextLength(QTextLength::FixedLength, 100);
-	constraints << QTextLength(QTextLength::FixedLength, 100);
-	tableFormat.setColumnWidthConstraints(constraints);
-	tableFormat.setCellSpacing(0);
-	tableFormat.setCellPadding(1);
-	tableFormat.setBorder(0.5);
-	tableFormat.setBorderBrush(QColor(Qt::black));
-	QTextTable *sumaryTable = cursor.insertTable(2, 4, tableFormat);
-	UPopulateTextTableCells tableCell(sumaryTable);
-	tableCell.setAlignment(Qt::AlignCenter);
-	tableCell.set(0,0,"№ з/п");
-	tableCell.set(0,1,"Будинок");
-	tableCell.set(0,2,"К-сть боржників");
-	tableCell.set(0,3,"Сума боргу, грн.");
-	
-	int sumaryTableRow = 1;
-	int sumaryTableBorgBudCount = 0, sumaryTableBorgAllCount = 0;
-	double sumaryTableBorgBudSum = 0, sumaryTableBorgAllSum = 0;
-	
-	cursor.movePosition(QTextCursor::End);
-	cursor.insertBlock(blockFormat);
-	cursor.insertBlock(blockFormat);
-	blockFormat.setAlignment( Qt::AlignCenter );
-	cursor.insertBlock(blockFormat);
-	textCharFormat.setFontPointSize( 12 );
-	cursor.insertText("ПЕРЕЛІК АБОНЕНТІВ - БОРЖНИКІВ", textCharFormat);
-	blockFormat.setAlignment( Qt::AlignLeft );
-	cursor.insertBlock(blockFormat);
-	textCharFormat.setFontPointSize( 9 );
-	
-	
-	//Таблиця боржників по будинках
-	constraints.clear();
-	constraints << QTextLength(QTextLength::FixedLength, 20);
-	constraints << QTextLength(QTextLength::FixedLength, 50);
-	constraints << QTextLength(QTextLength::FixedLength, 80);
-	constraints << QTextLength(QTextLength::FixedLength, 120);
-	constraints << QTextLength(QTextLength::FixedLength, 40);
-	constraints << QTextLength(QTextLength::FixedLength, 55);
-	constraints << QTextLength(QTextLength::FixedLength, 55);
-	constraints << QTextLength(QTextLength::FixedLength, 55);
-	constraints << QTextLength(QTextLength::FixedLength, 55);
-	constraints << QTextLength(QTextLength::FixedLength, 55);
-	constraints << QTextLength(QTextLength::FixedLength, 55);
-	constraints << QTextLength(QTextLength::FixedLength, 55);
-	tableFormat.setColumnWidthConstraints(constraints);
-	tableFormat.setCellSpacing(0);
-	tableFormat.setCellPadding(1);
-	tableFormat.setBorder(0.5);
-	tableFormat.setBorderBrush(QColor(Qt::black));
-	
-	//Запит з фільтром абонентів по будинках
-	QSqlQuery *abonQuery = new QSqlQuery();
-	QSqlQuery *budQuery = new QSqlQuery();
-	QSqlQuery *pokaznQuery = new QSqlQuery();
-	QString filtrStr;
-	
-	bool needWhere = true;
-	if (BudId>0){
-		filtrStr += (needWhere?" WHERE ":" and ") + QString("Budynok_ID=")+QVariant(BudId).toString();
-		needWhere = false;
-	}
-	if (abonType>0){
-		filtrStr += (needWhere?" WHERE ":" and ") + QString("Opal=")+(abonType==1?"true":"false");
-		needWhere = false;
-	}
+    pochDate.setYMD(pochDate.year(), pochDate.month(), 1);
+    kincDate.setYMD(kincDate.year(), kincDate.month(), kincDate.daysInMonth());
+    //Заголовок документа
+    printform = new UPrintForm(0,codec->toUnicode((isPereplata)?"Відомість по переплаті":"Відомість боржників"));
+    QTextBlockFormat blockFormat;
+    QTextTableCell cell;
+    QTextCharFormat textCharFormat;
+    printform->document()->clear();
+    QTextCursor cursor(printform->document()), cellCursor;
+    blockFormat.setAlignment( Qt::AlignHCenter );
+    cursor.setBlockFormat( blockFormat );
+    textCharFormat.setFontPointSize( 13 );
+    cursor.insertText(codec->toUnicode("ВІДОМІСТЬ"), textCharFormat);
+    blockFormat.setAlignment( Qt::AlignHCenter );
+    cursor.insertBlock(blockFormat);
+    textCharFormat.setFontPointSize( 12 );
+    if (abonType == 0)
+        cursor.insertText("УСІХ ", textCharFormat);
+    else if (abonType == 1)
+        cursor.insertText("під'єднаних до ЦО ", textCharFormat);
+    else if (abonType == 2)
+        cursor.insertText("від'єднаних від ЦО ", textCharFormat);
+    QString informStr;
+    if (isPereplata)
+        informStr = "абонентів, переплата яких перевищує ";
+    else
+        informStr = "абонентів, борг яких перевищує ";
+        cursor.insertText( informStr +
+                        uMToStr2(minSum) +
+                        codec->toUnicode(" грн."), textCharFormat);
+    blockFormat.setAlignment( Qt::AlignRight );
+    cursor.insertBlock(blockFormat);
+    textCharFormat.setFontPointSize( 9 );
+    cursor.insertText(codec->toUnicode("Аналізований інтервал місяців: ") +
+                        QVariant(pochDate.month()).toString() + "." +
+                        QVariant(pochDate.year()).toString() + "." +
+                        codec->toUnicode("р. - ") +
+                        QVariant(kincDate.month()).toString() + "." +
+                        QVariant(kincDate.year()).toString() + "." +
+                        codec->toUnicode("р."), textCharFormat);
+    cursor.insertBlock(blockFormat);
+    blockFormat.setAlignment( Qt::AlignCenter );
+    cursor.insertBlock(blockFormat);
+    textCharFormat.setFontPointSize( 12 );
+    cursor.insertText("ЗВЕДЕНА ТАБЛИЦЯ ПО БУДИНКАХ", textCharFormat);
+    cursor.insertBlock(blockFormat);
+    cursor.insertBlock(blockFormat);
+    textCharFormat.setFontPointSize( 9 );
 
-	abonQuery->exec("SELECT count(*) FROM abonent" + filtrStr);
-	abonQuery->seek(0);
-	UPostupForm *postup_form = new UPostupForm(0, abonQuery->value(0).toInt());
-	postup_form->show();
-	
-	abonQuery->exec("SELECT Rahunok, Budynok_ID FROM abonent INNER JOIN budynky ON budynky.id=abonent.budynok_ID"
-						+filtrStr+" ORDER BY Vulycia, Bud_num, Rahunok");
-	int old_bud=0;
-	int iterBorj=0;
-	while (abonQuery->next()){
-		double zagVh_Saldo, zagNarah, zagNarahGV, zagNarahST, zagSubs, zagOplata, zagVyh_Saldo, zagPereved, zagDebitorska;
-		double potVh_Saldo, potNarah, potSubs, potOplata, potNarahGV, potNarahST, potPereved, potDebitorska;
-		int Rahunok = abonQuery->value(0).toInt();
-		//Обрахунок поточних показників
-		pokaznQuery->exec("SELECT Vh_saldo FROM narahuvannya \
-							WHERE Rahunok=" +QVariant(Rahunok).toString()+
-									" and month=" +QVariant(kincDate.month()).toString()+
-									" and year=" +QVariant(kincDate.year()).toString()+
-									" and Status=0");
-		pokaznQuery->seek(0);
-		potVh_Saldo = pokaznQuery->value(0).toDouble();
-		
-		pokaznQuery->exec("SELECT sum(Narah), sum(Narah_GV), sum(Narah_ST) FROM narahuvannya \
-							WHERE Rahunok=" +QVariant(Rahunok).toString()+
-									" and month=" +QVariant(kincDate.month()).toString()+
-									" and year=" +QVariant(kincDate.year()).toString());
-		pokaznQuery->seek(0);
-		potNarah = pokaznQuery->value(0).toDouble();
-		potNarahGV = pokaznQuery->value(1).toDouble();
-		potNarahST = pokaznQuery->value(2).toDouble();
-		
-		pokaznQuery->exec("SELECT sum(Suma), sum(Suma_d), sum(Suma_GV), sum(Suma_d_GV) FROM subs \
-							WHERE Rahunok_ID=" +QVariant(Rahunok).toString()+
-									" and month=" +QVariant(kincDate.month()).toString()+
-									" and year=" +QVariant(kincDate.year()).toString());
-		pokaznQuery->seek(0);
-		potSubs = pokaznQuery->value(0).toDouble() + pokaznQuery->value(1).toDouble() + pokaznQuery->value(2).toDouble() + pokaznQuery->value(3).toDouble();
-		
-		pokaznQuery->exec("SELECT sum(Suma) FROM kvytancii \
-							WHERE Rahunok_ID=" +QVariant(Rahunok).toString()+
-							" and year(Plata_date)=" +QVariant(kincDate.year()).toString()+
-							" and month(Plata_date)=" +QVariant(kincDate.month()).toString());
-		pokaznQuery->seek(0);
-		potOplata = pokaznQuery->value(0).toDouble();
-		
-		pokaznQuery->exec("SELECT sum(Suma) FROM narahuvannyaPereved \
-							WHERE Rahunok_id="+sqlStr(Rahunok)+" \
-								and year(CDate)="+sqlStr(kincDate.year())+" \
-								and month(CDate)="+sqlStr(kincDate.month()));
-		pokaznQuery->next();
-		potPereved = uDToM(pokaznQuery->value(0).toDouble());
-		
-		pokaznQuery->exec("SELECT sum(Vh_saldo), sum(ZaborgAdd), sum(OplataSuma) \
-							FROM debitorskaZaborg \
-							WHERE Rahunok="+sqlStr(Rahunok)+" \
-								and year(CDate)="+sqlStr(kincDate.year())+" \
-								and month(CDate)="+sqlStr(kincDate.month()));
-		if (pokaznQuery->next())
-			potDebitorska = uDToM(pokaznQuery->value(0).toDouble() + pokaznQuery->value(1).toDouble() - pokaznQuery->value(2).toDouble());
-		else
-			potDebitorska = 0;
-		
-		///
-		zagVyh_Saldo = potVh_Saldo + potNarah + potNarahGV + potNarahST - potSubs - potOplata + potPereved + potDebitorska;
-		///
-		if (zagVyh_Saldo >= minBorg){
-			iterBorj++;
-			
-			pokaznQuery->exec("SELECT Vh_saldo FROM narahuvannya \
-								WHERE Rahunok=" +QVariant(Rahunok).toString()+
-									" and month=" +QVariant(pochDate.month()).toString()+
-									" and year=" +QVariant(pochDate.year()).toString()+
-									" and Status=0");
-			pokaznQuery->seek(0);
-			zagVh_Saldo = pokaznQuery->value(0).toDouble();
-			
-			pokaznQuery->exec("SELECT sum(Narah), sum(Narah_GV), sum(Narah_ST) FROM narahuvannya \
-							WHERE Rahunok="+QVariant(Rahunok).toString()+" and \
-							(("+QVariant(pochDate.year()).toString()+"="+QVariant(kincDate.year()).toString()+" \
-								and year="+QVariant(kincDate.year()).toString()+" \
-								and month<="+QVariant(kincDate.month()).toString()+" \
-								and month>="+QVariant(pochDate.month()).toString()+") \
-							OR ("+QVariant(pochDate.year()).toString()+"<"+QVariant(kincDate.year()).toString()+" \
-								and ((year="+QVariant(pochDate.year()).toString()+" \
-									and month>="+QVariant(pochDate.month()).toString()+") \
-									or (year>"+QVariant(pochDate.year()).toString()+" and year<"+QVariant(kincDate.year()).toString()+") \
-									or (year="+QVariant(kincDate.year()).toString()+" and month<="+QVariant(kincDate.month()).toString()+"))))");
-			pokaznQuery->seek(0);
-			zagNarah = pokaznQuery->value(0).toDouble();
-			zagNarahGV = pokaznQuery->value(1).toDouble();
-			zagNarahST = pokaznQuery->value(2).toDouble();
-			
-			pokaznQuery->exec("SELECT sum(Suma), sum(Suma_d), sum(Suma_GV), sum(Suma_d_GV) FROM subs \
-							WHERE Rahunok="+QVariant(Rahunok).toString()+" and Status=0 and \
-							(("+QVariant(pochDate.year()).toString()+"="+QVariant(kincDate.year()).toString()+" \
-								and year="+QVariant(kincDate.year()).toString()+" \
-								and month<="+QVariant(kincDate.month()).toString()+" \
-								and month>="+QVariant(pochDate.month()).toString()+") \
-							OR ("+QVariant(pochDate.year()).toString()+"<"+QVariant(kincDate.year()).toString()+" \
-								and ((year="+QVariant(pochDate.year()).toString()+" \
-									and month>="+QVariant(pochDate.month()).toString()+") \
-									or (year>"+QVariant(pochDate.year()).toString()+" and year<"+QVariant(kincDate.year()).toString()+") \
-									or (year="+QVariant(kincDate.year()).toString()+" and month<="+QVariant(kincDate.month()).toString()+"))))");
-			pokaznQuery->seek(0);
-			zagSubs = pokaznQuery->value(0).toDouble() + pokaznQuery->value(1).toDouble() + pokaznQuery->value(2).toDouble() + pokaznQuery->value(3).toDouble();
-			
-			int opl_poch_month = pochDate.month();
-			int opl_poch_year = pochDate.year();
-			int opl_kinc_month = kincDate.month();
-			int opl_kinc_year = kincDate.year();
-			opl_poch_month --;
-			if (opl_poch_month==0){
-				opl_poch_month = 12;
-				opl_poch_year --;
-			}
-			opl_kinc_month ++;
-			if (opl_kinc_month==13){
-				opl_kinc_month = 1;
-				opl_kinc_year ++;
-			}
-			pokaznQuery->exec("SELECT sum(Suma) FROM kvytancii \
-								WHERE Rahunok_ID=" +QVariant(Rahunok).toString()+
-								" and Plata_date BETWEEN CDate('1."+QVariant(opl_poch_month).toString()+"."+QVariant(opl_poch_year).toString()+"') \
-													AND CDATE('1."+QVariant(opl_kinc_month).toString()+"."+QVariant(opl_kinc_year).toString()+"')");
-			pokaznQuery->seek(0);
-			zagOplata = pokaznQuery->value(0).toDouble();
-			
-			pokaznQuery->exec("SELECT sum(Suma) FROM narahuvannyaPereved \
-								WHERE Rahunok_id="+sqlStr(Rahunok)+" \
-									and (CDate BETWEEN cdate("+sqlStr(pochDate)+") AND cdate("+sqlStr(kincDate)+"))");
-			pokaznQuery->next();
-			zagPereved = uDToM(pokaznQuery->value(0).toDouble());
-			
-			zagDebitorska = potDebitorska;
-			
-			
-				//Створення нового заголовка і таблиці для нового будинку
-			if (old_bud != abonQuery->value(1).toInt()){
-				cursor.movePosition(QTextCursor::End);
-				blockFormat.setAlignment( Qt::AlignLeft );
-				cursor.insertBlock(blockFormat);
-				textCharFormat.setFontPointSize( 9 );
-				budQuery->exec("SELECT Vulycia & ' ' & Bud_num FROM budynky WHERE id="+abonQuery->value(1).toString());
-				budQuery->seek(0);
-				
-				//Створення шапки таблиці боржників для поточного будинку
-				table = cursor.insertTable(2, 12, tableFormat);
-				table->mergeCells ( 0, 0, 1, 12);
-				
-					//заповнення шапки таблиці
-				cell = table->cellAt(0, 0);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("Будинок ") + budQuery->value(0).toString(), textCharFormat);	
-					
-				cell = table->cellAt(1, 0);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("№ п/п"), textCharFormat);
-	
-				cell = table->cellAt(1, 1);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("Рахунок"), textCharFormat);
-				
-				cell = table->cellAt(1, 2);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("№ тел."), textCharFormat);
-				
-				cell = table->cellAt(1, 3);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("П І Б"), textCharFormat);
-	
-				cell = table->cellAt(1, 4);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("Кварт."), textCharFormat);
-	
-				cell = table->cellAt(1, 5);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("Вх. сальдо"), textCharFormat);
-	
-				cell = table->cellAt(1, 6);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("Нарах."), textCharFormat);
-			
-				cell = table->cellAt(1, 7);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("Субс."), textCharFormat);
-	
-				cell = table->cellAt(1, 8);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("Оплач."), textCharFormat);
-				
-				cell = table->cellAt(1, 9);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("Перев. заборг. + Дебіт."), textCharFormat);
-				
-				cell = table->cellAt(1, 10);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("Вих. сальдо"), textCharFormat);
-				
-				cell = table->cellAt(1, 11);
-				cellCursor = cell.firstCursorPosition();
-				blockFormat.setAlignment( Qt::AlignCenter );
-				cellCursor.setBlockFormat( blockFormat );
-				cellCursor.insertText(codec->toUnicode("Ост. нарах."), textCharFormat);
-				//Кінець роботи з таблицею
-				
-				//Запис даних в зведену таблицю
-				sumaryTable->insertRows(sumaryTableRow, 1);
-				
-				
-				tableCell.setAlignment(Qt::AlignCenter);
-				//"№ з/п"
-				tableCell.set(sumaryTableRow,0,sumaryTableRow);
-				//"Будинок"
-				tableCell.setAlignment(Qt::AlignLeft);
-				tableCell.set(sumaryTableRow,1,budQuery->value(0).toString());
-				if (old_bud > 0){
-					tableCell.setAlignment(Qt::AlignRight);
-					//"К-сть боржників"
-					tableCell.set(sumaryTableRow-1,2,sumaryTableBorgBudCount);
-					//"Сума боргу, грн."
-					tableCell.set(sumaryTableRow-1,3,sumaryTableBorgBudSum);
-				}
-				sumaryTableBorgAllCount += sumaryTableBorgBudCount;
-				sumaryTableBorgAllSum += sumaryTableBorgBudSum;
-				sumaryTableRow++;
-				sumaryTableBorgBudCount = 0;
-				sumaryTableBorgBudSum = 0;
-				//Кінець запису даних в зведену таблицю
-				
-				old_bud = abonQuery->value(1).toInt();
-				iterBorj = 0;
-			}
-			
-			table->insertRows( iterBorj+2, 1 );
-			//Внесення даних в стрічку
-			pokaznQuery->exec("SELECT Prizv, Imya, Batk, Kvartyra, tel FROM abonent \
-								WHERE Rahunok=" + QVariant(Rahunok).toString());
-			pokaznQuery->seek(0);
-				//№ п/п"
-			cell = table->cellAt(iterBorj+2, 0);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(QVariant(iterBorj+1).toString(), textCharFormat);
-				//Рахунок
-			cell = table->cellAt(iterBorj+2, 1);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(QVariant(Rahunok).toString(), textCharFormat);
-				//Телефон
-			cell = table->cellAt(iterBorj+2, 2);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(pokaznQuery->value(4).toString());
-				//П І Б
-			cell = table->cellAt(iterBorj+2, 3);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			QString str = pokaznQuery->value(0).toString() + " ";
-			if (pokaznQuery->value(1).toString().size() > 0)
-				str += pokaznQuery->value(1).toString().at(0) + QString(".");
-			if (pokaznQuery->value(2).toString().size() > 0)
-				str += pokaznQuery->value(2).toString().at(0) + QString(".");
-			cellCursor.insertText( str, textCharFormat);
-				//Квартира
-			cell = table->cellAt(iterBorj+2, 4);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(pokaznQuery->value(3).toString(), textCharFormat);
-				//Вх.сальдо
-			cell = table->cellAt(iterBorj+2, 5);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(uMToStr2(zagVh_Saldo), textCharFormat);
-				//Нарахув.
-			cell = table->cellAt(iterBorj+2, 6);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(uMToStr2(zagNarah + zagNarahGV + zagNarahST), textCharFormat);
-				//Субс.
-			cell = table->cellAt(iterBorj+2, 7);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(uMToStr2(zagSubs), textCharFormat);
-				//Оплач.
-			cell = table->cellAt(iterBorj+2, 8);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(uMToStr2(zagOplata), textCharFormat);
-				//Переведення заборгованості
-			cell = table->cellAt(iterBorj+2, 9);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(uMToStr2(zagPereved + zagDebitorska), textCharFormat);
-				//Вих. сальдо
-			cell = table->cellAt(iterBorj+2, 10);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(uMToStr2(zagVyh_Saldo), textCharFormat);
-				//Ост.нарах.
-			cell = table->cellAt(iterBorj+2, 11);
-			cellCursor = cell.firstCursorPosition();
-			blockFormat.setAlignment( Qt::AlignCenter );
-			cellCursor.setBlockFormat( blockFormat );
-			cellCursor.insertText(uMToStr2(potNarah), textCharFormat);
-			
-			sumaryTableBorgBudCount++;
-			sumaryTableBorgBudSum += zagVyh_Saldo;
-		}
-		postup_form->inc_pos();
-	}
-	
-	//Запис кількості боржників та суми боргу для останнього будинку та запис сумарної кількості боржників та суми боргу
-	if (old_bud > 0){
-		tableCell.setAlignment(Qt::AlignRight);
-		//"К-сть боржників"
-		tableCell.set(sumaryTableRow-1,2,sumaryTableBorgBudCount);
-		//"Сума боргу, грн."
-		tableCell.set(sumaryTableRow-1,3,sumaryTableBorgBudSum);
-	}
-	sumaryTableBorgAllCount += sumaryTableBorgBudCount;
-	sumaryTableBorgAllSum += sumaryTableBorgBudSum;
-	sumaryTable->mergeCells(sumaryTableRow,0,1,2);
-	tableCell.set(sumaryTableRow,0,"Всього");
-	//"К-сть боржників"
-	tableCell.set(sumaryTableRow,2,sumaryTableBorgAllCount);
-	//"Сума боргу, грн."
-	tableCell.set(sumaryTableRow,3,sumaryTableBorgAllSum);
-	
-	
-	delete abonQuery;
-	delete budQuery;
-	delete pokaznQuery;
-	delete postup_form;
-	printform->printer()->setDocName("Відомість боржників");
-	printform->show();
+    //Налаштування таблиці
+    QTextTable *table = NULL;
+    QTextTableFormat tableFormat;
+    QVector<QTextLength> constraints;
+
+    //Зведена Таблиця боргу по будинках
+    constraints.clear();
+    constraints << QTextLength(QTextLength::FixedLength, 40);
+    constraints << QTextLength(QTextLength::FixedLength, 150);
+    constraints << QTextLength(QTextLength::FixedLength, 100);
+    constraints << QTextLength(QTextLength::FixedLength, 100);
+    tableFormat.setColumnWidthConstraints(constraints);
+    tableFormat.setCellSpacing(0);
+    tableFormat.setCellPadding(1);
+    tableFormat.setBorder(0.5);
+    tableFormat.setBorderBrush(QColor(Qt::black));
+    QTextTable *sumaryTable = cursor.insertTable(2, 4, tableFormat);
+    UPopulateTextTableCells tableCell(sumaryTable);
+    tableCell.setAlignment(Qt::AlignCenter);
+    tableCell.set(0,0,"№ з/п");
+    tableCell.set(0,1,"Будинок");
+    tableCell.set(0,2,(isPereplata)?"К-сть переплатників":"К-сть боржників");
+    tableCell.set(0,3,(isPereplata)?"Сума переплати, грн":"Сума боргу, грн.");
+
+    if (isPereplata)
+        minSum = minSum *-1;
+    int sumaryTableRow = 1;
+    int sumaryTableBorgBudCount = 0, sumaryTableBorgAllCount = 0;
+    double sumaryTableBorgBudSum = 0, sumaryTableBorgAllSum = 0;
+
+    cursor.movePosition(QTextCursor::End);
+    cursor.insertBlock(blockFormat);
+    cursor.insertBlock(blockFormat);
+    blockFormat.setAlignment( Qt::AlignCenter );
+    cursor.insertBlock(blockFormat);
+    textCharFormat.setFontPointSize( 12 );
+    cursor.insertText((isPereplata)?"ПЕРЕЛІК АБОНЕНТІВ - ПЕРЕПЛАТНИКІВ":"ПЕРЕЛІК АБОНЕНТІВ - БОРЖНИКІВ", textCharFormat);
+    blockFormat.setAlignment( Qt::AlignLeft );
+    cursor.insertBlock(blockFormat);
+    textCharFormat.setFontPointSize( 9 );
+
+
+    //Таблиця боржників по будинках
+    constraints.clear();
+    constraints << QTextLength(QTextLength::FixedLength, 20);
+    constraints << QTextLength(QTextLength::FixedLength, 50);
+    constraints << QTextLength(QTextLength::FixedLength, 80);
+    constraints << QTextLength(QTextLength::FixedLength, 120);
+    constraints << QTextLength(QTextLength::FixedLength, 40);
+    constraints << QTextLength(QTextLength::FixedLength, 55);
+    constraints << QTextLength(QTextLength::FixedLength, 55);
+    constraints << QTextLength(QTextLength::FixedLength, 55);
+    constraints << QTextLength(QTextLength::FixedLength, 55);
+    constraints << QTextLength(QTextLength::FixedLength, 55);
+    constraints << QTextLength(QTextLength::FixedLength, 55);
+    constraints << QTextLength(QTextLength::FixedLength, 55);
+    tableFormat.setColumnWidthConstraints(constraints);
+    tableFormat.setCellSpacing(0);
+    tableFormat.setCellPadding(1);
+    tableFormat.setBorder(0.5);
+    tableFormat.setBorderBrush(QColor(Qt::black));
+
+    //Запит з фільтром абонентів по будинках
+    QSqlQuery *abonQuery = new QSqlQuery();
+    QSqlQuery *budQuery = new QSqlQuery();
+    QSqlQuery *pokaznQuery = new QSqlQuery();
+    QString filtrStr;
+
+    bool needWhere = true;
+    if (BudId>0){
+        filtrStr += (needWhere?" WHERE ":" and ") + QString("Budynok_ID=")+QVariant(BudId).toString();
+        needWhere = false;
+    }
+    if (abonType>0){
+        filtrStr += (needWhere?" WHERE ":" and ") + QString("Opal=")+(abonType==1?"true":"false");
+        needWhere = false;
+    }
+
+    abonQuery->exec("SELECT count(*) FROM abonent" + filtrStr);
+    abonQuery->seek(0);
+    UPostupForm *postup_form = new UPostupForm(0, abonQuery->value(0).toInt());
+    postup_form->show();
+
+    abonQuery->exec("SELECT Rahunok, Budynok_ID FROM abonent INNER JOIN budynky ON budynky.id=abonent.budynok_ID"
+                        +filtrStr+" ORDER BY Vulycia, Bud_num, Rahunok");
+    int old_bud=0;
+    int iterBorj=0;
+    while (abonQuery->next()){
+        double zagVh_Saldo, zagNarah, zagNarahGV, zagNarahST, zagSubs, zagOplata, zagVyh_Saldo, zagPereved, zagDebitorska;
+        double potVh_Saldo, potNarah, potSubs, potOplata, potNarahGV, potNarahST, potPereved, potDebitorska;
+        int Rahunok = abonQuery->value(0).toInt();
+        //Обрахунок поточних показників
+        pokaznQuery->exec("SELECT Vh_saldo FROM narahuvannya \
+                            WHERE Rahunok=" +QVariant(Rahunok).toString()+
+                                     " and month=" +QVariant(kincDate.month()).toString()+
+                                     " and year=" +QVariant(kincDate.year()).toString()+
+                                     " and Status=0");
+        pokaznQuery->seek(0);
+        potVh_Saldo = pokaznQuery->value(0).toDouble();
+
+        pokaznQuery->exec("SELECT sum(Narah), sum(Narah_GV), sum(Narah_ST) FROM narahuvannya \
+                            WHERE Rahunok=" +QVariant(Rahunok).toString()+
+                                    " and month=" +QVariant(kincDate.month()).toString()+
+                                    " and year=" +QVariant(kincDate.year()).toString());
+        pokaznQuery->seek(0);
+        potNarah = pokaznQuery->value(0).toDouble();
+        potNarahGV = pokaznQuery->value(1).toDouble();
+        potNarahST = pokaznQuery->value(2).toDouble();
+
+        pokaznQuery->exec("SELECT sum(Suma), sum(Suma_d), sum(Suma_GV), sum(Suma_d_GV) FROM subs \
+                            WHERE Rahunok_ID=" +QVariant(Rahunok).toString()+
+                                " and month=" +QVariant(kincDate.month()).toString()+
+                                " and year=" +QVariant(kincDate.year()).toString());
+        pokaznQuery->seek(0);
+        potSubs = pokaznQuery->value(0).toDouble() + pokaznQuery->value(1).toDouble() + pokaznQuery->value(2).toDouble() + pokaznQuery->value(3).toDouble();
+
+        pokaznQuery->exec("SELECT sum(Suma) FROM kvytancii \
+                            WHERE Rahunok_ID=" +QVariant(Rahunok).toString()+
+                            " and year(Plata_date)=" +QVariant(kincDate.year()).toString()+
+                            " and month(Plata_date)=" +QVariant(kincDate.month()).toString());
+        pokaznQuery->seek(0);
+        potOplata = pokaznQuery->value(0).toDouble();
+
+        pokaznQuery->exec("SELECT sum(Suma) FROM narahuvannyaPereved \
+                            WHERE Rahunok_id="+sqlStr(Rahunok)+" \
+                            and year(CDate)="+sqlStr(kincDate.year())+" \
+                            and month(CDate)="+sqlStr(kincDate.month()));
+        pokaznQuery->next();
+        potPereved = uDToM(pokaznQuery->value(0).toDouble());
+
+        pokaznQuery->exec("SELECT sum(Vh_saldo), sum(ZaborgAdd), sum(OplataSuma) \
+                            FROM debitorskaZaborg \
+                            WHERE Rahunok="+sqlStr(Rahunok)+" \
+                            and year(CDate)="+sqlStr(kincDate.year())+" \
+                            and month(CDate)="+sqlStr(kincDate.month()));
+        if (pokaznQuery->next())
+            potDebitorska = uDToM(pokaznQuery->value(0).toDouble() + pokaznQuery->value(1).toDouble() - pokaznQuery->value(2).toDouble());
+        else
+            potDebitorska = 0;
+
+    ///
+        zagVyh_Saldo = potVh_Saldo + potNarah + potNarahGV + potNarahST - potSubs - potOplata + potPereved + potDebitorska;
+    ///
+        if (!isPereplata) goto l;
+        if (zagVyh_Saldo <= minSum && zagVyh_Saldo < 0){
+                goto m;
+                l:
+        if (zagVyh_Saldo >= minSum){
+                m:
+            iterBorj++;
+
+            pokaznQuery->exec("SELECT Vh_saldo FROM narahuvannya \
+                                WHERE Rahunok=" +QVariant(Rahunok).toString()+
+                                " and month=" +QVariant(pochDate.month()).toString()+
+                                " and year=" +QVariant(pochDate.year()).toString()+
+                                " and Status=0");
+            pokaznQuery->seek(0);
+            zagVh_Saldo = pokaznQuery->value(0).toDouble();
+
+            pokaznQuery->exec("SELECT sum(Narah), sum(Narah_GV), sum(Narah_ST) FROM narahuvannya \
+                               WHERE Rahunok="+QVariant(Rahunok).toString()+" and \
+                              (("+QVariant(pochDate.year()).toString()+"="+QVariant(kincDate.year()).toString()+" \
+                               and year="+QVariant(kincDate.year()).toString()+" \
+                               and month<="+QVariant(kincDate.month()).toString()+" \
+                               and month>="+QVariant(pochDate.month()).toString()+") \
+                               OR ("+QVariant(pochDate.year()).toString()+"<"+QVariant(kincDate.year()).toString()+" \
+                               and ((year="+QVariant(pochDate.year()).toString()+" \
+                               and month>="+QVariant(pochDate.month()).toString()+") \
+                               or (year>"+QVariant(pochDate.year()).toString()+" and year<"+QVariant(kincDate.year()).toString()+") \
+                               or (year="+QVariant(kincDate.year()).toString()+" and month<="+QVariant(kincDate.month()).toString()+"))))");
+            pokaznQuery->seek(0);
+            zagNarah = pokaznQuery->value(0).toDouble();
+            zagNarahGV = pokaznQuery->value(1).toDouble();
+            zagNarahST = pokaznQuery->value(2).toDouble();
+
+            pokaznQuery->exec("SELECT sum(Suma), sum(Suma_d), sum(Suma_GV), sum(Suma_d_GV) FROM subs \
+                               WHERE Rahunok="+QVariant(Rahunok).toString()+" and Status=0 and \
+                              (("+QVariant(pochDate.year()).toString()+"="+QVariant(kincDate.year()).toString()+" \
+                              and year="+QVariant(kincDate.year()).toString()+" \
+                              and month<="+QVariant(kincDate.month()).toString()+" \
+                              and month>="+QVariant(pochDate.month()).toString()+") \
+                              OR ("+QVariant(pochDate.year()).toString()+"<"+QVariant(kincDate.year()).toString()+" \
+                              and ((year="+QVariant(pochDate.year()).toString()+" \
+                              and month>="+QVariant(pochDate.month()).toString()+") \
+                              or (year>"+QVariant(pochDate.year()).toString()+" and year<"+QVariant(kincDate.year()).toString()+") \
+                              or (year="+QVariant(kincDate.year()).toString()+" and month<="+QVariant(kincDate.month()).toString()+"))))");
+            pokaznQuery->seek(0);
+            zagSubs = pokaznQuery->value(0).toDouble() + pokaznQuery->value(1).toDouble() + pokaznQuery->value(2).toDouble() + pokaznQuery->value(3).toDouble();
+
+            int opl_poch_month = pochDate.month();
+            int opl_poch_year = pochDate.year();
+            int opl_kinc_month = kincDate.month();
+            int opl_kinc_year = kincDate.year();
+            opl_poch_month --;
+            if (opl_poch_month==0){
+                opl_poch_month = 12;
+                opl_poch_year --;
+            }
+            opl_kinc_month ++;
+            if (opl_kinc_month==13){
+                opl_kinc_month = 1;
+                opl_kinc_year ++;
+            }
+            pokaznQuery->exec("SELECT sum(Suma) FROM kvytancii \
+                               WHERE Rahunok_ID=" +QVariant(Rahunok).toString()+
+                              " and Plata_date BETWEEN CDate('1."+QVariant(opl_poch_month).toString()+"."+QVariant(opl_poch_year).toString()+"') \
+                                                AND CDATE('1."+QVariant(opl_kinc_month).toString()+"."+QVariant(opl_kinc_year).toString()+"')");
+            pokaznQuery->seek(0);
+            zagOplata = pokaznQuery->value(0).toDouble();
+
+            pokaznQuery->exec("SELECT sum(Suma) FROM narahuvannyaPereved \
+                               WHERE Rahunok_id="+sqlStr(Rahunok)+" \
+                                and (CDate BETWEEN cdate("+sqlStr(pochDate)+") AND cdate("+sqlStr(kincDate)+"))");
+            pokaznQuery->next();
+            zagPereved = uDToM(pokaznQuery->value(0).toDouble());
+
+            zagDebitorska = potDebitorska;
+
+
+            //Створення нового заголовка і таблиці для нового будинку
+            if (old_bud != abonQuery->value(1).toInt()){
+                cursor.movePosition(QTextCursor::End);
+                blockFormat.setAlignment( Qt::AlignLeft );
+                cursor.insertBlock(blockFormat);
+                textCharFormat.setFontPointSize( 9 );
+                budQuery->exec("SELECT Vulycia & ' ' & Bud_num FROM budynky WHERE id="+abonQuery->value(1).toString());
+                budQuery->seek(0);
+
+                //Створення шапки таблиці боржників для поточного будинку
+                table = cursor.insertTable(2, 12, tableFormat);
+                table->mergeCells ( 0, 0, 1, 12);
+
+                //заповнення шапки таблиці
+                cell = table->cellAt(0, 0);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("Будинок ") + budQuery->value(0).toString(), textCharFormat);
+
+                cell = table->cellAt(1, 0);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("№ п/п"), textCharFormat);
+
+                cell = table->cellAt(1, 1);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("Рахунок"), textCharFormat);
+
+                cell = table->cellAt(1, 2);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("№ тел."), textCharFormat);
+
+                cell = table->cellAt(1, 3);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("П І Б"), textCharFormat);
+
+                cell = table->cellAt(1, 4);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("Кварт."), textCharFormat);
+
+                cell = table->cellAt(1, 5);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("Вх. сальдо"), textCharFormat);
+
+                cell = table->cellAt(1, 6);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("Нарах."), textCharFormat);
+
+                cell = table->cellAt(1, 7);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("Субс."), textCharFormat);
+
+                cell = table->cellAt(1, 8);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("Оплач."), textCharFormat);
+
+                cell = table->cellAt(1, 9);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("Перев. заборг. + Дебіт."), textCharFormat);
+
+                cell = table->cellAt(1, 10);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("Вих. сальдо"), textCharFormat);
+
+                cell = table->cellAt(1, 11);
+                cellCursor = cell.firstCursorPosition();
+                blockFormat.setAlignment( Qt::AlignCenter );
+                cellCursor.setBlockFormat( blockFormat );
+                cellCursor.insertText(codec->toUnicode("Ост. нарах."), textCharFormat);
+                //Кінець роботи з таблицею
+
+            //Запис даних в зведену таблицю
+                sumaryTable->insertRows(sumaryTableRow, 1);
+
+
+                tableCell.setAlignment(Qt::AlignCenter);
+                //"№ з/п"
+                tableCell.set(sumaryTableRow,0,sumaryTableRow);
+                //"Будинок"
+                tableCell.setAlignment(Qt::AlignLeft);
+                tableCell.set(sumaryTableRow,1,budQuery->value(0).toString());
+                if (old_bud > 0){
+                    tableCell.setAlignment(Qt::AlignRight);
+                    //"К-сть боржників"
+                    tableCell.set(sumaryTableRow-1,2,sumaryTableBorgBudCount);
+                    //"Сума боргу, грн."
+                    tableCell.set(sumaryTableRow-1,3,(isPereplata) ? sumaryTableBorgBudSum*-1 : sumaryTableBorgBudSum);
+                }
+                sumaryTableBorgAllCount += sumaryTableBorgBudCount;
+                sumaryTableBorgAllSum += sumaryTableBorgBudSum;
+                sumaryTableRow++;
+                sumaryTableBorgBudCount = 0;
+                sumaryTableBorgBudSum = 0;
+                //Кінець запису даних в зведену таблицю
+
+                old_bud = abonQuery->value(1).toInt();
+                iterBorj = 0;
+            }
+
+            table->insertRows( iterBorj+2, 1 );
+            //Внесення даних в стрічку
+            pokaznQuery->exec("SELECT Prizv, Imya, Batk, Kvartyra, tel FROM abonent \
+                                WHERE Rahunok=" + QVariant(Rahunok).toString());
+            pokaznQuery->seek(0);
+                //№ п/п"
+            cell = table->cellAt(iterBorj+2, 0);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText(QVariant(iterBorj+1).toString(), textCharFormat);
+                //Рахунок
+            cell = table->cellAt(iterBorj+2, 1);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText(QVariant(Rahunok).toString(), textCharFormat);
+                //Телефон
+            cell = table->cellAt(iterBorj+2, 2);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText(pokaznQuery->value(4).toString());
+            //П І Б
+            cell = table->cellAt(iterBorj+2, 3);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            QString str = pokaznQuery->value(0).toString() + " ";
+            if (pokaznQuery->value(1).toString().size() > 0)
+                str += pokaznQuery->value(1).toString().at(0) + QString(".");
+            if (pokaznQuery->value(2).toString().size() > 0)
+                str += pokaznQuery->value(2).toString().at(0) + QString(".");
+            cellCursor.insertText( str, textCharFormat);
+            //Квартира
+            cell = table->cellAt(iterBorj+2, 4);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText(pokaznQuery->value(3).toString(), textCharFormat);
+             //Вх.сальдо
+            cell = table->cellAt(iterBorj+2, 5);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText(uMToStr2(zagVh_Saldo), textCharFormat);
+            //Нарахув.
+            cell = table->cellAt(iterBorj+2, 6);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText(uMToStr2(zagNarah + zagNarahGV + zagNarahST), textCharFormat);
+              //Субс.
+            cell = table->cellAt(iterBorj+2, 7);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText(uMToStr2(zagSubs), textCharFormat);
+            //Оплач.
+            cell = table->cellAt(iterBorj+2, 8);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText(uMToStr2(zagOplata), textCharFormat);
+            //Переведення заборгованості
+            cell = table->cellAt(iterBorj+2, 9);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText(uMToStr2(zagPereved + zagDebitorska), textCharFormat);
+            //Вих. сальдо
+            cell = table->cellAt(iterBorj+2, 10);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText((isPereplata)? uMToStr2(zagVyh_Saldo*-1) : uMToStr2(zagVyh_Saldo), textCharFormat);
+            //Ост.нарах.
+            cell = table->cellAt(iterBorj+2, 11);
+            cellCursor = cell.firstCursorPosition();
+            blockFormat.setAlignment( Qt::AlignCenter );
+            cellCursor.setBlockFormat( blockFormat );
+            cellCursor.insertText(uMToStr2(potNarah), textCharFormat);
+
+            sumaryTableBorgBudCount++;
+            sumaryTableBorgBudSum += zagVyh_Saldo;
+        }
+        }
+        postup_form->inc_pos();
+     }
+
+     //Запис кількості боржників та суми боргу для останнього будинку та запис сумарної кількості боржників та суми боргу
+    if (old_bud > 0){
+         tableCell.setAlignment(Qt::AlignRight);
+         //"К-сть боржників"
+        tableCell.set(sumaryTableRow-1,2,sumaryTableBorgBudCount);
+        //"Сума боргу, грн."
+        tableCell.set(sumaryTableRow-1,3,(isPereplata) ? sumaryTableBorgBudSum*-1 : sumaryTableBorgBudSum);
+    }
+    sumaryTableBorgAllCount += sumaryTableBorgBudCount;
+    sumaryTableBorgAllSum += sumaryTableBorgBudSum;
+    sumaryTable->mergeCells(sumaryTableRow,0,1,2);
+    tableCell.set(sumaryTableRow,0,"Всього");
+    //"К-сть боржників"
+    tableCell.set(sumaryTableRow,2,sumaryTableBorgAllCount);
+    //"Сума боргу, грн."
+    tableCell.set(sumaryTableRow,3,(isPereplata) ? sumaryTableBorgAllSum*-1 : sumaryTableBorgAllSum);
+
+
+    delete abonQuery;
+    delete budQuery;
+    delete pokaznQuery;
+    delete postup_form;
+    printform->printer()->setDocName((isPereplata)? "Відомість переплати" : "Відомість боржників");
+    printform->show();
 }
 //------------------------------------------------------------
 void UPrintDocs::print_vidomist_borjnykiv_riznyc(QDate pochDate, QDate kincDate, double minBorg, int BudId)

@@ -167,6 +167,7 @@ class Browser;
 		void action_insert_dbf_kvyt_oshchadbank_activated();
 		void action_set_data_sources_activated();
 		void action_print_borjnyky_activated();
+        void action_print_pereplata_activated();
 		void action_debuger_form_activated();
 		void action_archiv_vidomosti_kvytanciy_ob_activated();
 		void action_insert_subs_dbf_activated();
